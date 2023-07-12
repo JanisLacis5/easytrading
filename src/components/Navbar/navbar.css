@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Noto+Serif&family=Roboto:ital,wght@1,300&display=swap");
+
+nav {
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    padding: 1.5rem;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: "Inter", sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.logo-easy {
+    color: var(--color-green-700);
+}
+
+.logo-trading {
+    color: var(--color-red-700);
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.link {
+    color: var(--clr-white);
+    font-size: 20px;
+    font-weight: 300;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.link:hover {
+    opacity: 0.5;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-btn {
+    font-size: 25px;
+    font-weight: 800;
+    border: 2px solid var(--clr-white);
+    padding: 0.3rem;
+    width: 7rem;
+    text-align: center;
+    border-radius: 3rem;
+    color: var(--clr-white);
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    opacity: 0.5;
+}
