@@ -117,3 +117,12 @@ p {
     color: var(--clr-primary);
     background: var(--clr-primary-light);
 }
+
+main {
+    min-height: 100vh;
+}
+
+.page {
+    padding-top: 10rem;
+    min-height: 100vh;
+}

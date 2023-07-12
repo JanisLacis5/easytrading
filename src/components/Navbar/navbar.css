@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Noto+Serif&family=Roboto:ital,wght@1,300&display=swap");
 
 nav {
-    background-color: transparent;
     display: grid;
     grid-template-columns: 2fr 3fr 2fr;
     padding: 1.5rem;
-    position: absolute;
     width: 100%;
     z-index: 1000;
+    background-color: transparent;
+    position: absolute;
+    height: 5rem;
 }
 
 .logo {

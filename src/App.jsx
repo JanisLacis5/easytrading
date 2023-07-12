@@ -1,5 +1,12 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
-import {SiteLayout, LandingPage, About, Pricing, Contact} from "./components"
+import {
+    SiteLayout,
+    LandingPage,
+    About,
+    Pricing,
+    Contact,
+    Login,
+} from "./components"
 
 function App() {
     const router = createBrowserRouter([
@@ -10,6 +17,10 @@ function App() {
                 {
                     index: true,
                     element: <LandingPage />,
+                },
+                {
+                    path: "login",
+                    element: <Login />,
                 },
                 {
                     path: "about",
