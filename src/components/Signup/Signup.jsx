@@ -1,7 +1,7 @@
+import {useState} from "react"
 import "../Login/login.css"
+import SignupForm from "./SignupForm"
 import "./signup.css"
-import userIcon from "../../assets/user-icon.svg"
-import passwordIcon from "../../assets/password-icon.svg"
 import {SlSocialGoogle, SlSocialFacebook, SlSocialTwitter} from "react-icons/sl"
 
 const Signup = () => {
@@ -13,59 +13,7 @@ const Signup = () => {
                         <h2>Sign Up</h2>
                     </div>
                     <div className="login-main">
-                        <form className="login-form">
-                            <div className="signup-input">
-                                <div className="signup-icon">
-                                    <img
-                                        src={userIcon}
-                                        alt="icon"
-                                        className="user-icon"
-                                    />
-                                </div>
-                                <input
-                                    className="signup-input-field"
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Email"
-                                />
-                            </div>
-                            <div className="signup-input">
-                                <div className="signup-icon">
-                                    <img
-                                        src={passwordIcon}
-                                        alt="icon"
-                                        className="user-icon"
-                                    />
-                                </div>
-                                <input
-                                    className="signup-input-field"
-                                    type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="Password"
-                                />
-                            </div>
-                            <div className="signup-input">
-                                <div className="signup-icon">
-                                    <img
-                                        src={passwordIcon}
-                                        alt="icon"
-                                        className="user-icon"
-                                    />
-                                </div>
-                                <input
-                                    className="signup-input-field"
-                                    type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="Confirm Password"
-                                />
-                            </div>
-                            <button type="submit" className="login-button">
-                                Sign Up
-                            </button>
-                        </form>
+                        <SignupForm />
                     </div>
                     <div className="social-signup">
                         <p>or sign up with</p>
