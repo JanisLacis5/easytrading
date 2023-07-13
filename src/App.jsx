@@ -6,6 +6,7 @@ import {
     Pricing,
     Contact,
     Login,
+    Signup,
 } from "./components"
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
                 {
                     path: "login",
                     element: <Login />,
+                },
+                {
+                    path: "signup",
+                    element: <Signup />,
                 },
                 {
                     path: "about",

@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom"
 import backImage from "../../photos/candlestick-chart.jpg"
 import "./landingpage.css"
 
@@ -14,14 +15,12 @@ const LandingPage = () => {
                     <h1>EasyTrading</h1>
                 </div>
                 <div className="description">
-                    <h3>Trading trackers, charts and more</h3>
+                    <h3>Trading trackers, screeners and more</h3>
                     <div className="buttons">
-                        <button type="button" className="button">
-                            Read more
-                        </button>
-                        <button type="button" className="button">
+                        <Link className="landing-button">Read more</Link>
+                        <Link to="/signup" className="landing-button">
                             Sign Up
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

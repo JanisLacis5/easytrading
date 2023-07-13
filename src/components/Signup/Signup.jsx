@@ -1,15 +1,16 @@
-import "./login.css"
+import "../Login/login.css"
+import "./signup.css"
 import userIcon from "../../assets/user-icon.svg"
 import passwordIcon from "../../assets/password-icon.svg"
 import {SlSocialGoogle, SlSocialFacebook, SlSocialTwitter} from "react-icons/sl"
 
-const Login = () => {
+const Signup = () => {
     return (
         <main>
             <div className="page">
-                <div className="login-box">
-                    <div className="login-title">
-                        <h2>User Login</h2>
+                <div className="signup-box">
+                    <div className="signup-title">
+                        <h2>Sign Up</h2>
                     </div>
                     <div className="login-main">
                         <form className="login-form">
@@ -43,13 +44,28 @@ const Login = () => {
                                     placeholder="Password"
                                 />
                             </div>
+                            <div className="login-input">
+                                <div className="icon">
+                                    <img
+                                        src={passwordIcon}
+                                        alt="icon"
+                                        className="user-icon"
+                                    />
+                                </div>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    placeholder="Confirm Password"
+                                />
+                            </div>
                             <button type="submit" className="login-button">
-                                Login
+                                Sign Up
                             </button>
                         </form>
                     </div>
-                    <div className="social-login">
-                        <p>or login with</p>
+                    <div className="social-signup">
+                        <p>or sign up with</p>
                         <div className="social-login-buttons">
                             <button type="button" className="social-button">
                                 <SlSocialGoogle className="social-icon" />
@@ -68,4 +84,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Signup

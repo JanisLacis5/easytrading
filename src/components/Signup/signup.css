@@ -1,0 +1,35 @@
+.signup-box {
+    height: 75vh;
+    width: 30%;
+    background-image: linear-gradient(
+        var(--color-green-400),
+        var(--color-green-950)
+    );
+    border-radius: 4rem;
+    display: grid;
+    grid-template-rows: 1fr 3fr 2fr;
+}
+
+.signup-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.signup-title h2 {
+    color: var(--clr-white);
+}
+
+.social-signup {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.social-signup p {
+    text-align: center;
+    color: var(--clr-white);
+}

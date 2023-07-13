@@ -6,6 +6,11 @@
     background-color: #00000076;
     padding-bottom: 5rem;
     max-height: 100vh;
+    background-image: linear-gradient(
+        210deg,
+        rgba(163, 230, 53, 0.3) 50%,
+        rgba(101, 163, 13, 0.3) 50%
+    );
 }
 
 .login-box {
@@ -16,16 +21,18 @@
         var(--color-green-950)
     );
     border-radius: 4rem;
+    display: grid;
+    grid-template-rows: 1fr 3fr 2fr;
 }
 
-.title {
+.login-title {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 3rem;
 }
 
-.title h2 {
+.login-title h2 {
     color: var(--clr-white);
 }
 
@@ -36,24 +43,99 @@
 }
 
 .login-input {
-    display: block;
+    display: flex;
+    align-items: center;
     margin-bottom: 2rem;
-    height: 3rem;
+    height: 4rem;
     width: 80%;
     position: relative;
 }
 
 input {
     width: 100%;
-    height: 100%;
+    height: 3rem;
     border: none;
     border-radius: 2rem;
-    padding-left: 1rem;
+    padding-left: 4.5rem;
+    opacity: 0.5;
+    font-size: 1rem;
+}
+
+input::placeholder {
+    font-size: 1rem;
+    color: #000;
 }
 
 .icon {
     position: absolute;
     height: 4rem;
     width: 4rem;
-    background-color: #000;
+    background-color: var(--clr-grey-10);
+    border-radius: 50%;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-icon {
+    position: absolute;
+    height: 70%;
+    width: 70%;
+}
+
+.login-button {
+    margin: 0 2rem;
+    width: 7rem;
+    height: 2rem;
+    border: none;
+    border-radius: 3rem;
+    font-size: 20px;
+    opacity: 0.5;
+    cursor: pointer;
+    background-color: var(--clr-white);
+    color: #000;
+}
+
+.login-button:hover {
+    opacity: 0.3;
+}
+
+.social-login {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.social-login p {
+    text-align: center;
+    color: var(--clr-white);
+}
+
+.social-login-buttons {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: 45%;
+}
+
+.social-button {
+    height: 3rem;
+    width: 3rem;
+    border: 0;
+    border-radius: 50%;
+    background-color: var(--clr-grey-10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.social-button:hover {
+    opacity: 0.5;
+}
+
+.social-icon {
+    width: 50%;
+    height: 50%;
 }
