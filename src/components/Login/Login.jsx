@@ -6,7 +6,7 @@ import {SlSocialGoogle, SlSocialFacebook, SlSocialTwitter} from "react-icons/sl"
 const Login = () => {
     return (
         <main>
-            <div className="page">
+            <div className="card-page">
                 <div className="login-box">
                     <div className="login-title">
                         <h2>User Login</h2>
@@ -14,7 +14,7 @@ const Login = () => {
                     <div className="login-main">
                         <form className="login-form">
                             <div className="login-input">
-                                <div className="icon">
+                                <div className="login-icon">
                                     <img
                                         src={userIcon}
                                         alt="icon"
@@ -22,6 +22,7 @@ const Login = () => {
                                     />
                                 </div>
                                 <input
+                                    className="login-input-field"
                                     type="email"
                                     name="email"
                                     id="email"
@@ -29,7 +30,7 @@ const Login = () => {
                                 />
                             </div>
                             <div className="login-input">
-                                <div className="icon">
+                                <div className="login-icon">
                                     <img
                                         src={passwordIcon}
                                         alt="icon"
@@ -37,6 +38,7 @@ const Login = () => {
                                     />
                                 </div>
                                 <input
+                                    className="login-input-field"
                                     type="password"
                                     name="password"
                                     id="password"

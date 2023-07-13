@@ -7,15 +7,15 @@ import {SlSocialGoogle, SlSocialFacebook, SlSocialTwitter} from "react-icons/sl"
 const Signup = () => {
     return (
         <main>
-            <div className="page">
+            <div className="card-page">
                 <div className="signup-box">
                     <div className="signup-title">
                         <h2>Sign Up</h2>
                     </div>
                     <div className="login-main">
                         <form className="login-form">
-                            <div className="login-input">
-                                <div className="icon">
+                            <div className="signup-input">
+                                <div className="signup-icon">
                                     <img
                                         src={userIcon}
                                         alt="icon"
@@ -23,14 +23,15 @@ const Signup = () => {
                                     />
                                 </div>
                                 <input
+                                    className="signup-input-field"
                                     type="email"
                                     name="email"
                                     id="email"
                                     placeholder="Email"
                                 />
                             </div>
-                            <div className="login-input">
-                                <div className="icon">
+                            <div className="signup-input">
+                                <div className="signup-icon">
                                     <img
                                         src={passwordIcon}
                                         alt="icon"
@@ -38,14 +39,15 @@ const Signup = () => {
                                     />
                                 </div>
                                 <input
+                                    className="signup-input-field"
                                     type="password"
                                     name="password"
                                     id="password"
                                     placeholder="Password"
                                 />
                             </div>
-                            <div className="login-input">
-                                <div className="icon">
+                            <div className="signup-input">
+                                <div className="signup-icon">
                                     <img
                                         src={passwordIcon}
                                         alt="icon"
@@ -53,6 +55,7 @@ const Signup = () => {
                                     />
                                 </div>
                                 <input
+                                    className="signup-input-field"
                                     type="password"
                                     name="password"
                                     id="password"

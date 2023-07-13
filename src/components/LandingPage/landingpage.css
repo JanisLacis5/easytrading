@@ -27,8 +27,8 @@ main {
 .title h1 {
     width: 100%;
     text-align: center;
-    color: var(--clr-white);
-    font-size: 6rem;
+    color: var(--color-grey-100);
+    font-size: 5.5rem;
     position: absolute;
     bottom: 0;
     padding-bottom: 1rem;
@@ -41,7 +41,7 @@ main {
 
 .description h3 {
     text-align: center;
-    color: var(--clr-white);
+    color: var(--color-grey-100);
     font-weight: 400;
     font-size: 25px;
 }
@@ -57,8 +57,8 @@ main {
     margin: 0 2rem;
     width: 13rem;
     height: 4rem;
-    background-color: var(--color-green-700);
-    color: var(--clr-white);
+    background-color: var(--color-grey-600);
+    color: var(--color-grey-100);
     border: none;
     border-radius: 3rem;
     font-size: 20px;

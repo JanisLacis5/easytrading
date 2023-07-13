@@ -10,18 +10,22 @@ nav {
     position: absolute;
 }
 
-.logo {
+.logo h1 {
     font-family: "Inter", sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 900;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo-easy {
-    color: var(--color-green-700);
+    color: var(--color-grey-100);
 }
 
 .logo-trading {
-    color: var(--color-red-700);
+    color: var(--color-grey-400);
 }
 
 .links {
@@ -31,8 +35,8 @@ nav {
 }
 
 .link {
-    color: var(--clr-white);
-    font-size: 20px;
+    color: var(--color-grey-200);
+    font-size: 1rem;
     font-weight: 300;
     cursor: pointer;
     padding: 1rem;
@@ -45,21 +49,26 @@ nav {
 .login {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
-.login-btn {
+.login-btn,
+.signup-btn {
     font-size: 25px;
     font-weight: 800;
-    border: 2px solid var(--clr-white);
     padding: 0.3rem;
     width: 7rem;
     text-align: center;
     border-radius: 3rem;
-    color: var(--clr-white);
+    color: var(--color-grey-300);
     cursor: pointer;
 }
 
-.login-btn:hover {
+.signup-btn {
+    border: 2px solid var(--color-grey-200);
+}
+
+.login-btn:hover,
+.signup-btn:hover {
     opacity: 0.5;
 }

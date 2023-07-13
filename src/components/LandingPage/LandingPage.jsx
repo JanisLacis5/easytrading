@@ -17,9 +17,11 @@ const LandingPage = () => {
                 <div className="description">
                     <h3>Trading trackers, screeners and more</h3>
                     <div className="buttons">
-                        <Link className="landing-button">Read more</Link>
+                        <Link className="landing-button" to="/about">
+                            Read more
+                        </Link>
                         <Link to="/signup" className="landing-button">
-                            Sign Up
+                            Get Started
                         </Link>
                     </div>
                 </div>
