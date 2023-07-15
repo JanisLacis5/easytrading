@@ -3,18 +3,22 @@ import userIcon from "../../assets/user-icon.svg"
 import passwordIcon from "../../assets/password-icon.svg"
 import customFetch from "../../utils"
 import {useState} from "react"
+import md5 from "md5"
+import {toast} from "react-toastify"
 
 const LoginForm = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [user, setUser] = useState({})
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const res = await customFetch.post("/login", {
+            const {data} = await customFetch.post("/login", {
                 email: email,
-                password: password,
+                password: md5(password),
             })
+            setUser(data)
         } catch (error) {
             console.log(error)
         }

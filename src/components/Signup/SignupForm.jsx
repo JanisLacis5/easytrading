@@ -1,15 +1,21 @@
 import "./signup.css"
 import "../Login/login.css"
 import userIcon from "../../assets/user-icon.svg"
+import infoIcon from "../../assets/info-icon.svg"
 import passwordIcon from "../../assets/password-icon.svg"
 import {useState} from "react"
 import customFetch from "../../utils"
 import {toast} from "react-toastify"
+import md5 from "md5"
+import Requirements from "./Requirements"
+import {useGlobalContext} from "../../context"
 
 const SignupForm = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+
+    const {isHovered, setIsHovered} = useGlobalContext()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -17,9 +23,11 @@ const SignupForm = () => {
         if (password === confirmPassword) {
             const res = await customFetch.post("/signup", {
                 email: email,
-                password: password,
+                password: md5(password),
             })
-            console.log(res)
+            setEmail("")
+            setPassword("")
+            setConfirmPassword("")
         } else {
             toast.error("Passwords do not match")
             setEmail("")
@@ -57,6 +65,15 @@ const SignupForm = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <div
+                    className="signup-info-icon"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}>
+                    <img src={infoIcon} alt="info-icon" className="info-icon" />
+                </div>
+                <div className={isHovered ? "password-show" : "password"}>
+                    <Requirements />
+                </div>
             </div>
             <div className="signup-input">
                 <div className="signup-icon">
