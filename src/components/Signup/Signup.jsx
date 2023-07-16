@@ -38,10 +38,30 @@ const Signup = () => {
                                 }}>
                                 <SlSocialGoogle className="social-icon" />
                             </button>
-                            <button type="button" className="social-button">
+                            <button
+                                type="button"
+                                className="social-button"
+                                onClick={async () => {
+                                    window.location.replace(
+                                        "http://localhost:3000/api/login/facebook"
+                                    )
+                                    const {data} = await customFetch.get(
+                                        "/login/facebook"
+                                    )
+                                }}>
                                 <SlSocialFacebook className="social-icon" />
                             </button>
-                            <button type="button" className="social-button">
+                            <button
+                                type="button"
+                                className="social-button"
+                                onClick={async () => {
+                                    window.location.replace(
+                                        "http://localhost:3000/api/login/twitter"
+                                    )
+                                    const {data} = await customFetch.get(
+                                        "/login/twitter"
+                                    )
+                                }}>
                                 <SlSocialTwitter className="social-icon" />
                             </button>
                         </div>
