@@ -7,6 +7,7 @@ import {
     Contact,
     Login,
     Signup,
+    Dashboard,
 } from "./components"
 
 function App() {
@@ -15,6 +16,10 @@ function App() {
             path: "/",
             element: <SiteLayout />,
             children: [
+                {
+                    path: "dashboard",
+                    element: <Dashboard />,
+                },
                 {
                     index: true,
                     element: <LandingPage />,
