@@ -25,11 +25,48 @@
 
 .default-dashboard-graph {
     width: 100%;
-    display: inline-block;
+    height: 100%;
     grid-row: span 2;
+    display: grid;
+    grid-template-rows: 1fr 6fr 3fr;
 }
 
 .graph-title {
     width: 100%;
     text-align: center;
+    color: var(--color-grey-200);
+    padding-top: 1.5rem;
+}
+
+.pie-garph-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    padding-top: 1rem;
+    place-items: center;
+}
+
+.pie-garph-container div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.pie-garph-container select {
+    place-self: start;
+    margin-left: 2rem;
+    min-width: 20%;
+    min-height: 1.5rem;
+    background-color: transparent;
+    color: var(--color-grey-200);
+}
+
+option {
+    color: #000;
+}
+
+.overall-stats {
+    color: var(--color-grey-200);
+    padding-left: 2rem;
 }

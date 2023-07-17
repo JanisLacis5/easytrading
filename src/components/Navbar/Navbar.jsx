@@ -1,7 +1,12 @@
 import {Link} from "react-router-dom"
 import "./navbar.css"
+import {useDispatch, useSelector} from "react-redux"
+import {logout} from "../../features/userSlice"
 
 const Navbar = () => {
+    const dispatch = useDispatch()
+    const {isLogged} = useSelector((store) => store.user)
+
     return (
         <nav>
             <div className="logo">
@@ -25,12 +30,26 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="login">
-                <Link className="signup-btn" to="/signup">
-                    Sign up
-                </Link>
-                <Link className="login-btn" to="/login">
-                    Login
-                </Link>
+                {!isLogged && (
+                    <Link className="signup-btn" to="/signup">
+                        Sign up
+                    </Link>
+                )}
+                {isLogged ? (
+                    <button
+                        type="button"
+                        className="login-btn"
+                        onClick={() => {
+                            dispatch(logout())
+                            location.assign("http://localhost:5173")
+                        }}>
+                        Logout
+                    </button>
+                ) : (
+                    <Link className="login-btn" to="/login">
+                        Login
+                    </Link>
+                )}
             </div>
         </nav>
     )

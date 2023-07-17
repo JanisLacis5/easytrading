@@ -1,14 +1,13 @@
-import {useState} from "react"
 import "../Login/login.css"
 import SignupForm from "./SignupForm"
 import "./signup.css"
 import {SlSocialGoogle, SlSocialFacebook, SlSocialTwitter} from "react-icons/sl"
 import {useGlobalContext} from "../../context"
-import axios from "axios"
 import customFetch from "../../utils"
 
 const Signup = () => {
     const {isHovered} = useGlobalContext()
+
     return (
         <main>
             <div className="card-page">
@@ -29,12 +28,10 @@ const Signup = () => {
                                 type="button"
                                 className="social-button"
                                 onClick={async () => {
-                                    window.location.replace(
+                                    location.assign(
                                         "http://localhost:3000/api/login/google"
                                     )
-                                    const {data} = await customFetch.get(
-                                        "/login/google"
-                                    )
+                                    await customFetch.get("/login/google")
                                 }}>
                                 <SlSocialGoogle className="social-icon" />
                             </button>
@@ -42,12 +39,10 @@ const Signup = () => {
                                 type="button"
                                 className="social-button"
                                 onClick={async () => {
-                                    window.location.replace(
+                                    location.assign(
                                         "http://localhost:3000/api/login/facebook"
                                     )
-                                    const {data} = await customFetch.get(
-                                        "/login/facebook"
-                                    )
+                                    await customFetch.get("/login/facebook")
                                 }}>
                                 <SlSocialFacebook className="social-icon" />
                             </button>
@@ -55,12 +50,10 @@ const Signup = () => {
                                 type="button"
                                 className="social-button"
                                 onClick={async () => {
-                                    window.location.replace(
+                                    location.assign(
                                         "http://localhost:3000/api/login/twitter"
                                     )
-                                    const {data} = await customFetch.get(
-                                        "/login/twitter"
-                                    )
+                                    await customFetch.get("/login/twitter")
                                 }}>
                                 <SlSocialTwitter className="social-icon" />
                             </button>

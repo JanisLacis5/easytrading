@@ -61,7 +61,9 @@ nav {
     text-align: center;
     border-radius: 3rem;
     color: var(--color-grey-300);
+    background-color: transparent;
     cursor: pointer;
+    border: none;
 }
 
 .signup-btn {

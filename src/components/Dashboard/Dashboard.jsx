@@ -2,6 +2,8 @@ import {Link} from "react-router-dom"
 import "./dashboard.css"
 import Aside from "./Aside"
 import WinLossGraph from "./WinLossGraph"
+import ProfitableStocks from "./ProfitableStocks"
+import Screener from "./Screener"
 
 const Dashboard = () => {
     return (
@@ -13,8 +15,12 @@ const Dashboard = () => {
                 <section className="default-dashboard-graph">
                     <WinLossGraph />
                 </section>
-                <div></div>
-                <div></div>
+                <section className="stock-graph">
+                    <ProfitableStocks />
+                </section>
+                <section>
+                    <Screener />
+                </section>
             </div>
         </main>
     )

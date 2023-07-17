@@ -9,6 +9,9 @@ import {toast} from "react-toastify"
 import md5 from "md5"
 import Requirements from "./Requirements"
 import {useGlobalContext} from "../../context"
+import {useNavigate} from "react-router-dom"
+import {useDispatch} from "react-redux"
+import {login} from "../../features/userSlice"
 
 const SignupForm = () => {
     const [email, setEmail] = useState("")
@@ -17,17 +20,28 @@ const SignupForm = () => {
 
     const {isHovered, setIsHovered} = useGlobalContext()
 
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         //TODO: make requriments for passwords strength
         if (password === confirmPassword) {
-            const res = await customFetch.post("/signup", {
+            const {data} = await customFetch.post("/signup", {
                 email: email,
                 password: md5(password),
             })
+            console.log(data)
             setEmail("")
             setPassword("")
             setConfirmPassword("")
+            if (data.message !== "success") {
+                toast.error(data.message)
+                return
+            }
+            toast.success("success")
+            dispatch(login(data))
+            navigate("/")
         } else {
             toast.error("Passwords do not match")
             setEmail("")

@@ -9,19 +9,21 @@ import {
     Signup,
     Dashboard,
 } from "./components"
+import {useSelector} from "react-redux"
 
 function App() {
+    const {isLogged} = useSelector((store) => store.user)
     const router = createBrowserRouter([
         {
             path: "/",
             element: <SiteLayout />,
             children: [
                 {
-                    path: "dashboard",
+                    index: isLogged ? true : null,
                     element: <Dashboard />,
                 },
                 {
-                    index: true,
+                    index: isLogged ? null : true,
                     element: <LandingPage />,
                 },
                 {

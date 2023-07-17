@@ -117,5 +117,10 @@ main {
     padding-top: 6.5rem;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: 15fr 42.5fr 42.5fr;
+    grid-template-columns: 15fr 42fr 42fr;
+    padding-right: 1rem;
+}
+
+li {
+    list-style: none;
 }
