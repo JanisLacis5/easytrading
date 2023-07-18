@@ -1,9 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit"
-import customFetch from "../utils"
-import {useEffect} from "react"
 
 const initialState = {
-    isLogged: false,
+    isLogged: localStorage.getItem("user") ? true : false,
     user: {},
 }
 
@@ -12,9 +10,11 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         login: (state, {payload}) => {
+            localStorage.setItem("user", JSON.stringify(payload))
             return {...state, isLogged: true, user: {...payload}}
         },
         logout: (state) => {
+            localStorage.clear()
             return {...state, isLogged: false, user: {}}
         },
     },

@@ -16,15 +16,21 @@ const Login = () => {
                     <div className="social-login">
                         <p>or login with</p>
                         <div className="social-login-buttons">
-                            <button type="button" className="social-button">
+                            <a
+                                href="http://localhost:3000/auth/google"
+                                className="social-button">
                                 <SlSocialGoogle className="social-icon" />
-                            </button>
-                            <button type="button" className="social-button">
+                            </a>
+                            <a
+                                href="http://localhost:3000/auth/facebook"
+                                className="social-button">
                                 <SlSocialFacebook className="social-icon" />
-                            </button>
-                            <button type="button" className="social-button">
+                            </a>
+                            {/* <a
+                                href="http://localHost:3000/auth/twitter"
+                                className="social-button">
                                 <SlSocialTwitter className="social-icon" />
-                            </button>
+                            </a> */}
                         </div>
                     </div>
                 </div>

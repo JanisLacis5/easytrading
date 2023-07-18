@@ -17,6 +17,7 @@
     align-items: center;
     padding-left: 1rem;
     font-size: 1rem;
+    cursor: pointer;
 }
 
 .dashboard-page:hover {
@@ -69,4 +70,17 @@ option {
 .overall-stats {
     color: var(--color-grey-200);
     padding-left: 2rem;
+}
+
+.secondary-link {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    height: 2.5rem;
+    border-bottom: 1px solid var(--color-background);
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    font-size: 0.9rem;
+    color: var(--color-grey-600);
 }

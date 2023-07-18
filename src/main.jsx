@@ -9,12 +9,10 @@ import {Provider} from "react-redux"
 import {store} from "./store.js"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-        <AppContext>
-            <ToastContainer position="top-center" autoClose={2000} />
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </AppContext>
-    </React.StrictMode>
+    <AppContext>
+        <ToastContainer position="top-center" autoClose={2000} />
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </AppContext>
 )

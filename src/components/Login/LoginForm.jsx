@@ -29,7 +29,7 @@ const LoginForm = () => {
             }
             dispatch(login(data))
             toast.success("success")
-            navigate("/")
+            navigate("/dashboard")
         } catch (error) {
             console.log(error)
         }

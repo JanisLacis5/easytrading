@@ -1,7 +1,6 @@
 import "./dashboard.css"
 import {Pie} from "react-chartjs-2"
-import {Chart} from "chart.js/auto"
-import {useEffect} from "react"
+import "chart.js/auto"
 
 const WinLossGraph = () => {
     const data = {

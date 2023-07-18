@@ -16,7 +16,9 @@ const Navbar = () => {
                 </h1>
             </div>
             <div className="links">
-                <Link className="link" to="/">
+                <Link
+                    className="link"
+                    to={isLogged ? "/dashboard" : "/landing"}>
                     Home
                 </Link>
                 <Link className="link" to="/about">

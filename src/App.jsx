@@ -1,4 +1,8 @@
-import {createBrowserRouter, RouterProvider} from "react-router-dom"
+import {
+    createBrowserRouter,
+    RouterProvider,
+    useNavigate,
+} from "react-router-dom"
 import {
     SiteLayout,
     LandingPage,
@@ -8,22 +12,41 @@ import {
     Login,
     Signup,
     Dashboard,
+    AddTrade,
 } from "./components"
-import {useSelector} from "react-redux"
+import {useDispatch} from "react-redux"
+import {useEffect} from "react"
+import {login} from "./features/userSlice"
 
 function App() {
-    const {isLogged} = useSelector((store) => store.user)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        try {
+            const user = localStorage.getItem("user")
+            if (user) {
+                dispatch(login(JSON.parse(user)))
+            }
+        } catch {
+            return
+        }
+    }, [])
+
     const router = createBrowserRouter([
         {
             path: "/",
             element: <SiteLayout />,
             children: [
                 {
-                    index: isLogged ? true : null,
+                    path: "dashboard",
                     element: <Dashboard />,
                 },
                 {
-                    index: isLogged ? null : true,
+                    path: "dashboard/addtrade",
+                    element: <AddTrade />,
+                },
+                {
+                    path: "landing",
                     element: <LandingPage />,
                 },
                 {
