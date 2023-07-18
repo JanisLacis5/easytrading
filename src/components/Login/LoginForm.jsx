@@ -23,12 +23,12 @@ const LoginForm = () => {
                 email: email,
                 password: md5(password),
             })
+            console.log(data)
             if (data.message) {
                 toast.error(data.message)
                 return
             }
             dispatch(login(data))
-            toast.success("success")
             navigate("/dashboard")
         } catch (error) {
             console.log(error)

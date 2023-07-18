@@ -115,10 +115,9 @@ main {
 .page {
     min-height: 100vh;
     padding-top: 6.5rem;
-    display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: 15fr 42fr 42fr;
     padding-right: 1rem;
+    display: grid;
+    grid-template-columns: 15fr 85fr;
 }
 
 li {

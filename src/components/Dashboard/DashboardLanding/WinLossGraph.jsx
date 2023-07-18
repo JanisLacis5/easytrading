@@ -1,4 +1,4 @@
-import "./dashboard.css"
+import "../dashboard.css"
 import {Pie} from "react-chartjs-2"
 import "chart.js/auto"
 
@@ -34,9 +34,9 @@ const WinLossGraph = () => {
             <div className="pie-garph-container">
                 <select>
                     <option value="today">Today</option>
-                    <option value="this week">This week</option>
-                    <option value="this month">This month</option>
-                    <option value="this year">This year</option>
+                    <option value="week">This week</option>
+                    <option value="month">This month</option>
+                    <option value="year">This year</option>
                 </select>
                 <div>
                     <Pie data={data} options={options} />

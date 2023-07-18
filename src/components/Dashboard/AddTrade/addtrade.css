@@ -1,0 +1,122 @@
+.addtrade {
+    height: calc(100vh - 6.5rem);
+    display: grid;
+    grid-template-columns: repeat(2, 4fr);
+    grid-template-rows: 15fr 10fr 25fr 25fr 25fr;
+    place-self: center;
+    width: 80%;
+    color: var(--color-grey-300);
+}
+
+.addtrade input {
+    background-color: transparent;
+    color: var(--color-grey-300);
+}
+
+.addtrade input::placeholder {
+    border: none;
+    border-radius: 10px;
+    opacity: 0.5;
+}
+
+.addtrade h2 {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+}
+
+.addtrade-stock-input {
+    grid-column: span 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.addtrade-stock-input label {
+    padding-right: 3rem;
+    font-size: 2rem;
+}
+
+.addtrade-stock-input input {
+    height: 30%;
+}
+
+.addtrade-account-input-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    border-right: 2px solid var(--color-grey-200);
+}
+
+.addtrade-account-input {
+    display: flex;
+    align-items: center;
+}
+
+.addtrade-account-input label {
+    padding-right: 3rem;
+    font-size: 2rem;
+}
+
+.addtrade-account-input input {
+    height: 25%;
+}
+
+input#pl {
+    height: 12.5%;
+}
+
+label#pl-label {
+    padding: 0 3rem;
+}
+
+.addtrade-daytime-inputs-container {
+    grid-column: span 2;
+    margin-top: 3rem;
+}
+
+.addtrade-daytime-inputs {
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.addtrade-daytime-input {
+    display: flex;
+    align-items: center;
+}
+
+.addtrade-daytime-input label {
+    padding-right: 3rem;
+    font-size: 2rem;
+}
+
+.addtrade-daytime-input input {
+    height: 30%;
+}
+
+.addtrade-btn {
+    grid-column: span 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+.addtrade-btn button {
+    width: 20%;
+    height: 30%;
+    background-color: var(--color-grey-500);
+    border: none;
+    border-radius: 0.7rem;
+    color: var(--color-grey-300);
+    font-size: 1.5rem;
+}
+
+.addtrade-btn button:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}

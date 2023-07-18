@@ -11,12 +11,13 @@ import {
     Contact,
     Login,
     Signup,
-    Dashboard,
     AddTrade,
+    Dashboard,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
 import {login} from "./features/userSlice"
+import DashboardLayout from "./components/Dashboard/DashboardLayout"
 
 function App() {
     const dispatch = useDispatch()
@@ -39,11 +40,17 @@ function App() {
             children: [
                 {
                     path: "dashboard",
-                    element: <Dashboard />,
-                },
-                {
-                    path: "dashboard/addtrade",
-                    element: <AddTrade />,
+                    element: <DashboardLayout />,
+                    children: [
+                        {
+                            index: true,
+                            element: <Dashboard />,
+                        },
+                        {
+                            path: "addtrade",
+                            element: <AddTrade />,
+                        },
+                    ],
                 },
                 {
                     path: "landing",
