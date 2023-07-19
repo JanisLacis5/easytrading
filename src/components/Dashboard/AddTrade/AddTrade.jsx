@@ -2,11 +2,15 @@ import "../dashboard.css"
 import "./addtrade.css"
 import {useGlobalContext} from "../../../context"
 import customFetch from "../../../utils"
+import {useNavigate} from "react-router-dom"
+import {useDispatch, useSelector} from "react-redux"
+import {login} from "../../../features/userSlice"
 
 const AddTrade = () => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {user} = useSelector((store) => store.user)
     const {
-        isHovered,
-        setIsHovered,
         stock,
         setStock,
         accBefore,
@@ -25,6 +29,7 @@ const AddTrade = () => {
         e.preventDefault()
 
         const {data} = await customFetch.post("/newtrade", {
+            id: user.id,
             stock: stock,
             accBefore: accBefore,
             accAfter: accAfter,
@@ -32,6 +37,8 @@ const AddTrade = () => {
             date: date,
             time: time,
         })
+        dispatch(login({id: data.id, trades: data.trades}))
+        navigate("/dashboard")
     }
 
     return (
@@ -46,6 +53,7 @@ const AddTrade = () => {
                     placeholder="AAPL"
                     value={stock}
                     onChange={(e) => setStock(e.target.value)}
+                    required
                 />
             </div>
             <div className="addtrade-account-input-container">
@@ -58,6 +66,7 @@ const AddTrade = () => {
                         placeholder="1000.00"
                         value={accBefore}
                         onChange={(e) => setAccBefore(e.target.value)}
+                        required
                     />
                 </div>
                 <div className="addtrade-account-input">
@@ -69,6 +78,7 @@ const AddTrade = () => {
                         placeholder="10000.00"
                         value={accAfter}
                         onChange={(e) => setAccAfter(e.target.value)}
+                        required
                     />
                 </div>
             </div>
@@ -81,7 +91,8 @@ const AddTrade = () => {
                     name="pl"
                     id="pl"
                     placeholder="+100.00"
-                    value={Number(accBefore) - Number(accAfter)}
+                    value={Number(accAfter) - Number(accBefore)}
+                    readOnly
                 />
             </div>
             <div className="addtrade-daytime-inputs-container">
@@ -94,6 +105,7 @@ const AddTrade = () => {
                             id="date"
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
+                            required
                         />
                     </div>
                     <div className="addtrade-daytime-input">
@@ -104,6 +116,7 @@ const AddTrade = () => {
                             id="time"
                             value={time}
                             onChange={(e) => setTime(e.target.value)}
+                            required
                         />
                     </div>
                 </div>

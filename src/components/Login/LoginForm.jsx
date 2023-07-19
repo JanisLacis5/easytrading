@@ -4,7 +4,7 @@ import passwordIcon from "../../assets/password-icon.svg"
 import customFetch from "../../utils"
 import {useState} from "react"
 import md5 from "md5"
-import {useDispatch, useSelector} from "react-redux"
+import {useDispatch} from "react-redux"
 import {toast} from "react-toastify"
 import {login} from "../../features/userSlice"
 import {useNavigate} from "react-router-dom"
@@ -23,12 +23,11 @@ const LoginForm = () => {
                 email: email,
                 password: md5(password),
             })
-            console.log(data)
             if (data.message) {
                 toast.error(data.message)
                 return
             }
-            dispatch(login(data))
+            dispatch(login({id: data.id, trades: data.trades}))
             navigate("/dashboard")
         } catch (error) {
             console.log(error)

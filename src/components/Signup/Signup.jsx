@@ -1,13 +1,11 @@
 import "../Login/login.css"
 import SignupForm from "./SignupForm"
 import "./signup.css"
-import {SlSocialGoogle, SlSocialFacebook, SlSocialTwitter} from "react-icons/sl"
+import {SlSocialGoogle, SlSocialFacebook} from "react-icons/sl"
 import {useGlobalContext} from "../../context"
-import {useDispatch} from "react-redux"
 
 const Signup = () => {
     const {isHovered} = useGlobalContext()
-    const dispatch = useDispatch()
 
     return (
         <main>

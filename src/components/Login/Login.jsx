@@ -1,5 +1,5 @@
 import "./login.css"
-import {SlSocialGoogle, SlSocialFacebook, SlSocialTwitter} from "react-icons/sl"
+import {SlSocialGoogle, SlSocialFacebook} from "react-icons/sl"
 import LoginForm from "./LoginForm"
 
 const Login = () => {
@@ -26,11 +26,6 @@ const Login = () => {
                                 className="social-button">
                                 <SlSocialFacebook className="social-icon" />
                             </a>
-                            {/* <a
-                                href="http://localHost:3000/auth/twitter"
-                                className="social-button">
-                                <SlSocialTwitter className="social-icon" />
-                            </a> */}
                         </div>
                     </div>
                 </div>

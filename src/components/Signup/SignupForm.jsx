@@ -31,7 +31,6 @@ const SignupForm = () => {
                 email: email,
                 password: md5(password),
             })
-            console.log(data)
             setEmail("")
             setPassword("")
             setConfirmPassword("")
@@ -40,8 +39,8 @@ const SignupForm = () => {
                 return
             }
             toast.success("success")
-            dispatch(login(data))
-            navigate("/")
+            dispatch(login({id: data.id}))
+            navigate("/dashboard")
         } else {
             toast.error("Passwords do not match")
             setEmail("")

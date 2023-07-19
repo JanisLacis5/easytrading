@@ -11,7 +11,11 @@ const userSlice = createSlice({
     reducers: {
         login: (state, {payload}) => {
             localStorage.setItem("user", JSON.stringify(payload))
-            return {...state, isLogged: true, user: {...payload}}
+            return {
+                ...state,
+                isLogged: true,
+                user: {id: payload.id, trades: payload.trades},
+            }
         },
         logout: (state) => {
             localStorage.clear()
