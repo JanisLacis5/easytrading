@@ -1,6 +1,6 @@
 import "../dashboard.css"
 import "./addtrade.css"
-import {useGlobalContext} from "../../../context"
+import {useGlobalContext} from "../../../context/globalContext"
 import customFetch from "../../../utils"
 import {useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
@@ -17,23 +17,22 @@ const AddTrade = () => {
         setAccBefore,
         accAfter,
         setAccAfter,
-        pl,
-        setPl,
         date,
         setDate,
         time,
         setTime,
+        action,
+        setAction,
     } = useGlobalContext()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
         const {data} = await customFetch.post("/newtrade", {
             id: user.id,
             stock: stock,
             accBefore: accBefore,
             accAfter: accAfter,
-            pl: pl,
+            pl: Number(accAfter) - Number(accBefore),
             date: date,
             time: time,
         })
@@ -51,6 +50,18 @@ const AddTrade = () => {
                     name="stock"
                     id="stock"
                     placeholder="AAPL"
+                    value={stock}
+                    onChange={(e) => setStock(e.target.value)}
+                    required
+                />
+            </div>
+            <div className="addtrade-stock-input">
+                <label htmlFor="action">Action: </label>
+                <input
+                    type="text"
+                    name="stock"
+                    id="stock"
+                    placeholder="Long / Short"
                     value={stock}
                     onChange={(e) => setStock(e.target.value)}
                     required

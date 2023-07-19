@@ -8,10 +8,25 @@ const SiteLayout = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
+        const currentPage = localStorage.getItem("currentPage")
         if (isLogged) {
-            navigate("/dashboard")
+            if (currentPage) {
+                navigate(currentPage)
+            } else {
+                navigate("/dashboard")
+            }
         } else {
             navigate("/landing")
+        }
+    }, [])
+
+    useEffect(() => {
+        const handleBeforeUnload = () => {
+            localStorage.setItem("currentPage", window.location.pathname)
+        }
+        window.addEventListener("beforeunload", handleBeforeUnload)
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload)
         }
     }, [])
 

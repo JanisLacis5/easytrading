@@ -16,6 +16,11 @@
     --color-grey-950: #0a0a0a;
     /* other */
     --color-background: #121212;
+    --color-trade-green: #50a343;
+    --color-trade-red: #da473a;
+
+    /* PADDING */
+    --default-page-padding: 1.5rem 0 1rem 1rem;
 }
 
 * {
@@ -112,8 +117,8 @@ main {
     min-height: 100vh;
 }
 
-.page {
-    min-height: 100vh;
+.dashboard-page-1 {
+    height: 100vh;
     padding-top: 6.5rem;
     padding-right: 1rem;
     display: grid;

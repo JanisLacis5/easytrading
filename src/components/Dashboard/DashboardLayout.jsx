@@ -4,7 +4,7 @@ import Aside from "./Aside"
 const DashboardLayout = () => {
     return (
         <main>
-            <div className="page">
+            <div className="dashboard-page-1">
                 <aside className="dashboard-pages">
                     <Aside />
                 </aside>

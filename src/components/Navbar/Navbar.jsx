@@ -19,7 +19,7 @@ const Navbar = () => {
                 <Link
                     className="link"
                     to={isLogged ? "/dashboard" : "/landing"}>
-                    Home
+                    {isLogged ? "Dashboard" : "Landing"}
                 </Link>
                 <Link className="link" to="/about">
                     About

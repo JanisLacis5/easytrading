@@ -13,6 +13,10 @@
     color: var(--color-grey-300);
 }
 
+.addtrade input {
+    color-scheme: dark;
+}
+
 .addtrade input::placeholder {
     border: none;
     border-radius: 10px;
@@ -28,7 +32,6 @@
 }
 
 .addtrade-stock-input {
-    grid-column: span 2;
     width: 100%;
     height: 100%;
     display: flex;

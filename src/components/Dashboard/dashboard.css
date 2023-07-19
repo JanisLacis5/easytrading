@@ -71,7 +71,7 @@
 }
 
 option {
-    color: #000;
+    color: var(--color-grey-950);
 }
 
 .overall-stats {
@@ -90,4 +90,20 @@ option {
     padding-left: 2rem;
     font-size: 0.9rem;
     color: var(--color-grey-600);
+}
+
+.stat {
+    color: var(--color-grey-500);
+    width: 25%;
+}
+
+.stat p {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stat span {
+    padding-left: 1rem;
+    color: var(--color-grey-300);
 }

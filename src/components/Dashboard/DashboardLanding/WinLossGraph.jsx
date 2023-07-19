@@ -1,21 +1,30 @@
 import "../dashboard.css"
 import {Pie} from "react-chartjs-2"
 import "chart.js/auto"
+import {useSelector} from "react-redux"
+import {filterChart, countStats} from "../../../functions"
+import {useState} from "react"
 
 const WinLossGraph = () => {
+    const [filter, setFilter] = useState("all-time")
+    const {user} = useSelector((store) => store.user)
+    const trades =
+        filter === "all-time" ? user.trades : filterChart(user.trades, filter)
+    const {wonTrades, lostTrades, totalProfit} = countStats(trades)
+
     const data = {
         labels: ["Won", "Lost"],
         datasets: [
             {
-                data: [300, 50],
+                data: [wonTrades, lostTrades],
                 backgroundColor: ["rgb(80, 163, 67)", "rgb(218, 71, 58)"],
                 hoverOffset: 4,
             },
         ],
     }
-
     const options = {
         animation: false,
+        showLine: false,
         plugins: {
             legend: {
                 position: "bottom",
@@ -32,31 +41,65 @@ const WinLossGraph = () => {
         <>
             <h2 className="graph-title">Won / Lost Trades</h2>
             <div className="pie-garph-container">
-                <select>
-                    <option value="today">Today</option>
+                <select
+                    onChange={(e) => {
+                        setFilter(e.target.value)
+                    }}>
+                    <option value="all-time">All time</option>
+                    <option value="day">Today</option>
                     <option value="week">This week</option>
                     <option value="month">This month</option>
                     <option value="year">This year</option>
                 </select>
                 <div>
-                    <Pie data={data} options={options} />
+                    {wonTrades || lostTrades ? (
+                        <Pie data={data} options={options} />
+                    ) : (
+                        <h2 style={{color: "var(--color-grey-300)"}}>
+                            No Data
+                        </h2>
+                    )}
                 </div>
             </div>
             <ul className="overall-stats">
                 <li className="stat">
-                    <p>Won Trades : </p>
+                    <p>
+                        Won Trades : <span>{wonTrades}</span>
+                    </p>
                 </li>
                 <li className="stat">
-                    <p>Lost Trades : </p>
+                    <p>
+                        Lost Trades : <span>{lostTrades}</span>
+                    </p>
                 </li>
                 <li className="stat">
-                    <p>Total Trades : </p>
+                    <p>
+                        Total Trades : <span>{trades?.length || 0}</span>
+                    </p>
                 </li>
                 <li className="stat">
-                    <p>Win % : </p>
+                    <p>
+                        Win % :{" "}
+                        <span>
+                            {((wonTrades / trades?.length) * 100).toFixed(0) ||
+                                0}
+                            %
+                        </span>
+                    </p>
                 </li>
                 <li className="stat">
-                    <p>Total profit $ : </p>
+                    <p>
+                        Total P/L $ :{" "}
+                        <span
+                            style={
+                                totalProfit < 0
+                                    ? {color: "var(--color-trade-red)"}
+                                    : {color: "var(--color-trade-green)"}
+                            }>
+                            {totalProfit < 0 ? "-" : "+"}$
+                            {totalProfit < 0 ? totalProfit * -1 : totalProfit}
+                        </span>
+                    </p>
                 </li>
             </ul>
         </>

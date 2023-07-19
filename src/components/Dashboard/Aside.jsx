@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux"
 import "./dashboard.css"
 import {toggleTrading} from "../../features/asideSlice"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 
 const Aside = () => {
     const {tradingButton} = useSelector((store) => store.aside)
@@ -19,6 +19,9 @@ const Aside = () => {
                 <div>
                     <Link className="secondary-link" to="/dashboard/addtrade">
                         Add Trade
+                    </Link>
+                    <Link className="secondary-link" to="/dashboard/log">
+                        Your Trades
                     </Link>
                 </div>
             )}

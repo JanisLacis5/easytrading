@@ -13,6 +13,7 @@ import {
     Signup,
     AddTrade,
     Dashboard,
+    TradeLog,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -49,6 +50,10 @@ function App() {
                         {
                             path: "addtrade",
                             element: <AddTrade />,
+                        },
+                        {
+                            path: "log",
+                            element: <TradeLog />,
                         },
                     ],
                 },

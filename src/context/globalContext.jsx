@@ -7,13 +7,12 @@ const AppContext = ({children}) => {
     const [isHovered, setIsHovered] = useState(false)
 
     // ADD TRADE FORM
-
     const [stock, setStock] = useState("")
     const [accBefore, setAccBefore] = useState("")
     const [accAfter, setAccAfter] = useState("")
-    const [pl, setPl] = useState(0.0)
     const [date, setDate] = useState("")
     const [time, setTime] = useState("")
+    const [action, setAction] = useState("")
 
     return (
         <GlobalContext.Provider
@@ -26,12 +25,12 @@ const AppContext = ({children}) => {
                 setAccBefore,
                 accAfter,
                 setAccAfter,
-                pl,
-                setPl,
                 date,
                 setDate,
                 time,
                 setTime,
+                action,
+                setAction,
             }}>
             {children}
         </GlobalContext.Provider>
