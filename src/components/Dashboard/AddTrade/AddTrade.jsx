@@ -29,7 +29,7 @@ const AddTrade = () => {
         e.preventDefault()
         const {data} = await customFetch.post("/newtrade", {
             id: user.id,
-            stock: stock,
+            stock: stock.toUpperCase(),
             accBefore: accBefore,
             accAfter: accAfter,
             pl: Number(accAfter) - Number(accBefore),
@@ -57,15 +57,15 @@ const AddTrade = () => {
             </div>
             <div className="addtrade-stock-input">
                 <label htmlFor="action">Action: </label>
-                <input
-                    type="text"
-                    name="stock"
-                    id="stock"
-                    placeholder="Long / Short"
-                    value={stock}
-                    onChange={(e) => setStock(e.target.value)}
-                    required
-                />
+                <select
+                    name="action"
+                    onChange={(e) => setAction(e.target.value)}
+                    value={action}
+                    required>
+                    <option value="default">Long / Short</option>
+                    <option value="long">Long</option>
+                    <option value="short">Short</option>
+                </select>
             </div>
             <div className="addtrade-account-input-container">
                 <div className="addtrade-account-input">

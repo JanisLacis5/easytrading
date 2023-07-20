@@ -1,14 +1,23 @@
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import "./tradelog.css"
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import Filters from "./Filters"
+import {setFilteredProducts} from "../../../features/filterSlice"
+import {useGlobalContext} from "../../../context/globalContext"
 
 const TradeLog = () => {
-    const [isFilters, setIsFilters] = useState(false)
+    const dispatch = useDispatch()
+
     const [filter, setFilter] = useState("all-time")
 
+    const {isFilters, setIsFilters} = useGlobalContext()
     const {user} = useSelector((store) => store.user)
-    const allTrades = user.trades
+
+    useEffect(() => {
+        dispatch(setFilteredProducts({trades: user.trades}))
+    }, [user.trades])
+
+    const {filteredProducts} = useSelector((store) => store.filter)
 
     return (
         <section className="tradelog">
@@ -24,14 +33,6 @@ const TradeLog = () => {
                     <option value="month">This month</option>
                     <option value="year">This year</option>
                 </select>
-                <select>
-                    <option value="newest">Newest</option>
-                    <option value="oldest">Oldest</option>
-                    <option value="stock-asc">Stock A-Z</option>
-                    <option value="stock-desc">Stock Z-A</option>
-                    <option value="profits">Profits descending</option>
-                    <option value="losses">Profits ascending</option>
-                </select>
                 <button type="button" onClick={() => setIsFilters(!isFilters)}>
                     Filters
                 </button>
@@ -46,7 +47,7 @@ const TradeLog = () => {
                 <p>Action</p>
             </div>
             <div className="tradelog-trades">
-                {allTrades?.map((trade, index) => {
+                {filteredProducts?.map((trade, index) => {
                     const pl = trade.pl < 0 ? trade.pl * -1 : trade.pl
                     const {date, time, stock, accBefore, accAfter} = trade
                     return (

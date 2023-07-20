@@ -43,7 +43,21 @@
     font-size: 2rem;
 }
 
-.addtrade-stock-input input {
+.addtrade-stock-input option {
+    color: var(--color-grey-300);
+}
+
+.addtrade-stock-input select {
+    color: var(--color-grey-600);
+}
+
+.addtrade-stock-input label {
+    padding-right: 3rem;
+    font-size: 2rem;
+}
+
+.addtrade-stock-input input,
+select {
     height: 30%;
 }
 

@@ -1,5 +1,5 @@
 import {Outlet, useNavigate} from "react-router-dom"
-import Navbar from "./Navbar/Navbar"
+import Navbar from "./components/Navbar/Navbar"
 import {useEffect} from "react"
 import {useSelector} from "react-redux"
 
@@ -8,7 +8,7 @@ const SiteLayout = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const currentPage = sessionStorage.getItem("currentPage")
+        const currentPage = localStorage.getItem("currentPage")
         if (isLogged) {
             if (currentPage) {
                 navigate(currentPage)
@@ -22,7 +22,7 @@ const SiteLayout = () => {
 
     useEffect(() => {
         const handleBeforeUnload = () => {
-            sessionStorage.setItem("currentPage", window.location.pathname)
+            localStorage.setItem("currentPage", window.location.pathname)
         }
         window.addEventListener("beforeunload", handleBeforeUnload)
         return () => {

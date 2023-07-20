@@ -14,6 +14,9 @@ const AppContext = ({children}) => {
     const [time, setTime] = useState("")
     const [action, setAction] = useState("")
 
+    //FILTERS
+    const [isFilters, setIsFilters] = useState(false)
+
     return (
         <GlobalContext.Provider
             value={{
@@ -31,6 +34,8 @@ const AppContext = ({children}) => {
                 setTime,
                 action,
                 setAction,
+                isFilters,
+                setIsFilters,
             }}>
             {children}
         </GlobalContext.Provider>
