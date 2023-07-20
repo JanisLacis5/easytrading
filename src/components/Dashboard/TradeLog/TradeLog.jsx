@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux"
 import Filters from "./Filters"
 import {setFilteredProducts} from "../../../features/filterSlice"
 import {useGlobalContext} from "../../../context/globalContext"
+import {updateSort, sortTrades} from "../../../features/sortSlice"
 
 const TradeLog = () => {
     const dispatch = useDispatch()
@@ -12,12 +13,24 @@ const TradeLog = () => {
 
     const {isFilters, setIsFilters} = useGlobalContext()
     const {user} = useSelector((store) => store.user)
+    const {option, value} = useSelector((store) => store.sort)
 
     useEffect(() => {
         dispatch(setFilteredProducts({trades: user.trades}))
     }, [user.trades])
 
     const {filteredProducts} = useSelector((store) => store.filter)
+    // console.log(filteredProducts)
+
+    // useEffect(() => {
+    //     console.log(dispatch(updateSort({trades: filteredProducts})))
+    // }, [])
+
+    const handleChange = (e) => {
+        dispatch(updateSort({name: e.target.name}))
+        const tradesArray = dispatch(sortTrades({trades: filteredProducts}))
+        dispatch(setFilteredProducts({trades: tradesArray}))
+    }
 
     return (
         <section className="tradelog">
@@ -39,15 +52,27 @@ const TradeLog = () => {
             </div>
             <div className="tradelog-trades-header">
                 {isFilters && <Filters />}
-                <p>Time</p>
-                <p>Stock</p>
-                <p>Account Before $</p>
-                <p>Account After $</p>
-                <p>P/L $</p>
-                <p>Action</p>
+                <button type="button" name="time" onClick={handleChange}>
+                    Time
+                </button>
+                <button type="button" name="stock" onClick={handleChange}>
+                    Stock
+                </button>
+                <button type="button" name="accBefore" onClick={handleChange}>
+                    Account Before $
+                </button>
+                <button type="button" name="accAfter" onClick={handleChange}>
+                    Account After $
+                </button>
+                <button type="button" name="pl" onClick={handleChange}>
+                    P/L $
+                </button>
+                <button type="button" name="action" onClick={handleChange}>
+                    Action
+                </button>
             </div>
             <div className="tradelog-trades">
-                {filteredProducts?.map((trade, index) => {
+                {/* {filteredProducts?.map((trade, index) => {
                     const pl = trade.pl < 0 ? trade.pl * -1 : trade.pl
                     const {date, time, stock, accBefore, accAfter} = trade
                     return (
@@ -70,7 +95,7 @@ const TradeLog = () => {
                             <p>action</p>
                         </div>
                     )
-                })}
+                })} */}
             </div>
         </section>
     )

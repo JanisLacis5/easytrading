@@ -129,3 +129,12 @@ select:focus {
     color: var(--color-grey-300);
     border-radius: 2px;
 }
+
+.tradelog-trades-header button {
+    border: none;
+    background-color: transparent;
+    color: var(--color-grey-500);
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
