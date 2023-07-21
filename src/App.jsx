@@ -14,6 +14,7 @@ import {
     AddTrade,
     Dashboard,
     TradeLog,
+    BrokerLogin,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -54,6 +55,10 @@ function App() {
                         {
                             path: "log",
                             element: <TradeLog />,
+                        },
+                        {
+                            path: "brokerlogin",
+                            element: <BrokerLogin />,
                         },
                     ],
                 },

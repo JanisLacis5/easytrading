@@ -10,13 +10,14 @@ import {
 import {toggleFilters} from "../../../features/filterSlice"
 import {filterChart} from "../../../functions"
 import {useEffect, useState} from "react"
+import {BiSolidDownArrow, BiSolidUpArrow} from "react-icons/bi"
 
 const TradeLog = () => {
     const dispatch = useDispatch()
 
     const [filter, setFilter] = useState("")
 
-    const {sortedTrades} = useSelector((store) => store.sort)
+    const {sortedTrades, option, value} = useSelector((store) => store.sort)
     const {isFilters} = useSelector((store) => store.filter)
     const {user} = useSelector((store) => store.user)
 
@@ -52,22 +53,90 @@ const TradeLog = () => {
             <div className="tradelog-trades-header">
                 {isFilters && <Filters />}
                 <button type="button" name="date" onClick={handleChange}>
-                    Time
+                    <span>Time </span>
+                    <span>
+                        {option === "date" ? (
+                            value === null ? (
+                                ""
+                            ) : value ? (
+                                <BiSolidDownArrow className="tradelog-trades-header-icon" />
+                            ) : (
+                                <BiSolidUpArrow className="tradelog-trades-header-icon" />
+                            )
+                        ) : (
+                            ""
+                        )}
+                    </span>
                 </button>
                 <button type="button" name="stock" onClick={handleChange}>
-                    Stock
+                    <span>Stock</span>
+                    <span>
+                        {option === "stock" ? (
+                            value ? (
+                                <BiSolidDownArrow className="tradelog-trades-header-icon" />
+                            ) : (
+                                <BiSolidUpArrow className="tradelog-trades-header-icon" />
+                            )
+                        ) : (
+                            ""
+                        )}
+                    </span>
                 </button>
                 <button type="button" name="accBefore" onClick={handleChange}>
-                    Account Before $
+                    <span>Acc Before $</span>
+                    <span>
+                        {option === "accBefore" ? (
+                            !value ? (
+                                <BiSolidDownArrow className="tradelog-trades-header-icon" />
+                            ) : (
+                                <BiSolidUpArrow className="tradelog-trades-header-icon" />
+                            )
+                        ) : (
+                            ""
+                        )}
+                    </span>
                 </button>
                 <button type="button" name="accAfter" onClick={handleChange}>
-                    Account After $
+                    <span>Acc After $</span>
+                    <span>
+                        {option === "accAfter" ? (
+                            !value ? (
+                                <BiSolidDownArrow className="tradelog-trades-header-icon" />
+                            ) : (
+                                <BiSolidUpArrow className="tradelog-trades-header-icon" />
+                            )
+                        ) : (
+                            ""
+                        )}
+                    </span>
                 </button>
                 <button type="button" name="pl" onClick={handleChange}>
-                    P/L $
+                    <span>P/L $</span>
+                    <span>
+                        {option === "pl" ? (
+                            !value ? (
+                                <BiSolidDownArrow className="tradelog-trades-header-icon" />
+                            ) : (
+                                <BiSolidUpArrow className="tradelog-trades-header-icon" />
+                            )
+                        ) : (
+                            ""
+                        )}
+                    </span>
                 </button>
                 <button type="button" name="action" onClick={handleChange}>
-                    Action
+                    <span>Action</span>
+                    <span>
+                        {option === "action" ? (
+                            value ? (
+                                <BiSolidDownArrow className="tradelog-trades-header-icon" />
+                            ) : (
+                                <BiSolidUpArrow className="tradelog-trades-header-icon" />
+                            )
+                        ) : (
+                            ""
+                        )}
+                    </span>
                 </button>
             </div>
             <div className="tradelog-trades">

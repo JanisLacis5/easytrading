@@ -5,7 +5,7 @@ import {createSlice} from "@reduxjs/toolkit"
 
 const initialState = {
     option: "date",
-    value: true,
+    value: null,
     sortedTrades: [],
 }
 
@@ -18,10 +18,21 @@ const sortSlice = createSlice({
         },
 
         updateSort: (state, {payload}) => {
+            if (payload.name === "date" && state.value === null) {
+                state.value = false
+                return
+            }
             if (payload.name === state.option) {
                 state.value = !state.value
-            } else {
+            } else if (
+                payload.name === "accAfter" ||
+                payload.name === "accBefore" ||
+                payload.name === "pl"
+            ) {
                 state.value = true
+                state.option = payload.name
+            } else {
+                state.value = false
                 state.option = payload.name
             }
         },
@@ -38,9 +49,9 @@ const sortSlice = createSlice({
                     })
                 } else {
                     state.sortedTrades = ansArr.sort((a, b) => {
-                        const date1 = a.date.replaceAll("-", "")
-                        const date2 = b.date.replaceAll("-", "")
-                        return Number(date2) - Number(date1)
+                        const date1 = Number(a.date.replaceAll("-", ""))
+                        const date2 = Number(b.date.replaceAll("-", ""))
+                        return date2 - date1
                     })
                 }
             }
