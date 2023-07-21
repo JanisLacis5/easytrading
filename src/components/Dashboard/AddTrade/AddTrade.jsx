@@ -35,6 +35,7 @@ const AddTrade = () => {
             pl: Number(accAfter) - Number(accBefore),
             date: date,
             time: time,
+            action: action,
         })
         dispatch(login({id: data.id, trades: data.trades}))
         navigate("/dashboard")

@@ -1,5 +1,4 @@
 import {createSlice} from "@reduxjs/toolkit"
-import dayjs from "dayjs"
 
 const initialState = {
     filters: {
@@ -8,6 +7,7 @@ const initialState = {
         date: "",
         PL: "",
     },
+    isFilters: false,
     filteredProducts: [],
 }
 
@@ -25,27 +25,28 @@ const filterSlice = createSlice({
         filterProducts: (state, {payload}) => {
             const {stock, action, date, PL} = state.filters
             const {trades} = payload
-            let ansArr = [...trades]
+            if (trades) {
+                let ansArr = [...trades]
 
-            if (stock) {
-                ansArr = ansArr.filter((trade) =>
-                    trade.stock.startsWith(stock.toUpperCase())
-                )
+                if (stock) {
+                    ansArr = ansArr.filter((trade) =>
+                        trade.stock.startsWith(stock.toUpperCase())
+                    )
+                }
+                if (action !== "default") {
+                    ansArr = trades.filter((trade) => trade.action === action)
+                }
+                if (date) {
+                    ansArr = ansArr.filter((trade) => trade.date === date)
+                }
+                if (PL === "positive") {
+                    ansArr = ansArr.filter((trade) => trade.pl > 0)
+                }
+                if (PL === "negative") {
+                    ansArr = ansArr.filter((trade) => trade.pl < 0)
+                }
+                state.filteredProducts = ansArr
             }
-            // if (action !== "default") {
-            //     ansArr = trades.filter((trade)=>trade.action === action)
-            // }
-            if (date) {
-                ansArr = ansArr.filter((trade) => trade.date === date)
-            }
-            if (PL === "positive") {
-                ansArr = ansArr.filter((trade) => trade.pl > 0)
-            }
-            if (PL === "negative") {
-                ansArr = ansArr.filter((trade) => trade.pl < 0)
-            }
-
-            state.filteredProducts = ansArr
         },
         clearFilters: (state, {payload}) => {
             const {trades} = payload
@@ -55,6 +56,12 @@ const filterSlice = createSlice({
             state.filters.PL = ""
             state.filteredProducts = trades
         },
+        toggleFilters: (state) => {
+            state.isFilters = !state.isFilters
+        },
+        closeFilters: (state) => {
+            state.isFilters = false
+        },
     },
 })
 
@@ -63,5 +70,7 @@ export const {
     filterProducts,
     setFilteredProducts,
     clearFilters,
+    toggleFilters,
+    closeFilters,
 } = filterSlice.actions
 export default filterSlice.reducer

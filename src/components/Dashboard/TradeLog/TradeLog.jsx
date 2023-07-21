@@ -1,36 +1,35 @@
-import {useEffect, useState} from "react"
 import "./tradelog.css"
 import {useDispatch, useSelector} from "react-redux"
 import Filters from "./Filters"
-import {setFilteredProducts} from "../../../features/filterSlice"
-import {useGlobalContext} from "../../../context/globalContext"
-import {updateSort, sortTrades} from "../../../features/sortSlice"
+import Trades from "./Trades"
+import {
+    updateSort,
+    sortTrades,
+    setSortedTrades,
+} from "../../../features/sortSlice"
+import {toggleFilters} from "../../../features/filterSlice"
+import {filterChart} from "../../../functions"
+import {useEffect, useState} from "react"
 
 const TradeLog = () => {
     const dispatch = useDispatch()
 
-    const [filter, setFilter] = useState("all-time")
+    const [filter, setFilter] = useState("")
 
-    const {isFilters, setIsFilters} = useGlobalContext()
+    const {sortedTrades} = useSelector((store) => store.sort)
+    const {isFilters} = useSelector((store) => store.filter)
     const {user} = useSelector((store) => store.user)
-    const {option, value} = useSelector((store) => store.sort)
 
     useEffect(() => {
-        dispatch(setFilteredProducts({trades: user.trades}))
+        dispatch(setSortedTrades({trades: user.trades}))
     }, [user.trades])
-
-    const {filteredProducts} = useSelector((store) => store.filter)
-    // console.log(filteredProducts)
-
-    // useEffect(() => {
-    //     console.log(dispatch(updateSort({trades: filteredProducts})))
-    // }, [])
 
     const handleChange = (e) => {
         dispatch(updateSort({name: e.target.name}))
-        const tradesArray = dispatch(sortTrades({trades: filteredProducts}))
-        dispatch(setFilteredProducts({trades: tradesArray}))
+        dispatch(sortTrades({trades: sortedTrades}))
     }
+
+    const trades = filter ? filterChart(sortedTrades, filter) : sortedTrades
 
     return (
         <section className="tradelog">
@@ -40,19 +39,19 @@ const TradeLog = () => {
                     onChange={(e) => {
                         setFilter(e.target.value)
                     }}>
-                    <option value="all-time">All time</option>
+                    <option value="">All time</option>
                     <option value="day">Today</option>
                     <option value="week">This week</option>
                     <option value="month">This month</option>
                     <option value="year">This year</option>
                 </select>
-                <button type="button" onClick={() => setIsFilters(!isFilters)}>
+                <button type="button" onClick={() => dispatch(toggleFilters())}>
                     Filters
                 </button>
             </div>
             <div className="tradelog-trades-header">
                 {isFilters && <Filters />}
-                <button type="button" name="time" onClick={handleChange}>
+                <button type="button" name="date" onClick={handleChange}>
                     Time
                 </button>
                 <button type="button" name="stock" onClick={handleChange}>
@@ -72,32 +71,10 @@ const TradeLog = () => {
                 </button>
             </div>
             <div className="tradelog-trades">
-                {/* {filteredProducts?.map((trade, index) => {
-                    const pl = trade.pl < 0 ? trade.pl * -1 : trade.pl
-                    const {date, time, stock, accBefore, accAfter} = trade
-                    return (
-                        <div key={index} className="tradelog-trade-container">
-                            <div className="tradelog-trade-time">
-                                <p>{date}</p>
-                                <p>{time}</p>
-                            </div>
-                            <p>{stock.toUpperCase()}</p>
-                            <p>${accBefore}</p>
-                            <p>${accAfter}</p>
-                            <p
-                                style={
-                                    trade.pl > 0
-                                        ? {color: "var(--color-trade-green)"}
-                                        : {color: "var(--color-trade-red)"}
-                                }>
-                                {trade.pl > 0 ? "+" : "-"}${pl}
-                            </p>
-                            <p>action</p>
-                        </div>
-                    )
-                })} */}
+                <Trades trades={trades} />
             </div>
         </section>
     )
 }
+
 export default TradeLog

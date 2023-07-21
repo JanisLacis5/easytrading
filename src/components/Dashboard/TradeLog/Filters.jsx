@@ -4,10 +4,10 @@ import {
     updateFilters,
     filterProducts,
     clearFilters,
+    closeFilters,
 } from "../../../features/filterSlice"
 import {RxCross1} from "react-icons/rx"
 import {useGlobalContext} from "../../../context/globalContext"
-import Select from "react-select"
 
 const Filters = () => {
     const dispatch = useDispatch()
@@ -71,7 +71,7 @@ const Filters = () => {
             <button
                 type="button"
                 className="tradelog-filters-cross"
-                onClick={() => setIsFilters(false)}>
+                onClick={() => dispatch(closeFilters())}>
                 <RxCross1 />
             </button>
 
