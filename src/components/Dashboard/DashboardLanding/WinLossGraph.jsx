@@ -79,10 +79,13 @@ const WinLossGraph = () => {
                 </li>
                 <li className="stat">
                     <p>
-                        Win % :{" "}
+                        Win % :
                         <span>
-                            {((wonTrades / trades?.length) * 100).toFixed(0) ||
-                                0}
+                            {trades
+                                ? ((wonTrades / trades?.length) * 100).toFixed(
+                                      0
+                                  ) || 0
+                                : 0}
                             %
                         </span>
                     </p>

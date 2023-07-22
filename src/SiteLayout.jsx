@@ -2,21 +2,30 @@ import {Outlet, useNavigate} from "react-router-dom"
 import Navbar from "./components/Navbar/Navbar"
 import {useEffect} from "react"
 import {useSelector} from "react-redux"
+import {useGlobalContext} from "./context/globalContext"
 
 const SiteLayout = () => {
     const {isLogged} = useSelector((store) => store.user)
     const navigate = useNavigate()
+    const {isSocialLink, isReqLoading, setIsReqLoading} = useGlobalContext()
 
     useEffect(() => {
-        const currentPage = localStorage.getItem("currentPage")
-        if (isLogged) {
-            if (currentPage) {
-                navigate(currentPage)
-            } else {
-                navigate("/dashboard")
+        if (!isReqLoading) {
+            if (!isSocialLink) {
+                const currentPage = localStorage.getItem("currentPage")
+                if (isLogged) {
+                    if (currentPage) {
+                        navigate(currentPage)
+                    } else {
+                        navigate("/dashboard")
+                    }
+                } else {
+                    navigate("/landing")
+                }
             }
         } else {
-            navigate("/landing")
+            setIsReqLoading(false)
+            navigate("/dashboard")
         }
     }, [])
 

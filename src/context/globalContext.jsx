@@ -14,8 +14,12 @@ const AppContext = ({children}) => {
     const [time, setTime] = useState("")
     const [action, setAction] = useState("")
 
-    //FILTERS
+    // FILTERS
     const [isFilters, setIsFilters] = useState(false)
+
+    // LOADING
+    const [isSocialLink, setIsSocialLink] = useState(false)
+    const [isReqLoading, setIsReqLoading] = useState(false)
 
     return (
         <GlobalContext.Provider
@@ -36,6 +40,10 @@ const AppContext = ({children}) => {
                 setAction,
                 isFilters,
                 setIsFilters,
+                isSocialLink,
+                setIsSocialLink,
+                isReqLoading,
+                setIsReqLoading,
             }}>
             {children}
         </GlobalContext.Provider>

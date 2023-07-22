@@ -15,15 +15,17 @@ export const countStats = (trades) => {
     let lostTrades = 0
     let totalProfit = 0
 
-    trades?.map((trade) => {
-        if (trade.pl > 0) {
-            wonTrades++
-        }
-        if (trade.pl < 0) {
-            lostTrades++
-        }
-        totalProfit += trade.pl
-    })
+    if (trades) {
+        trades?.map((trade) => {
+            if (trade.pl > 0) {
+                wonTrades++
+            }
+            if (trade.pl < 0) {
+                lostTrades++
+            }
+            totalProfit += trade.pl
+        })
+    }
 
     return {wonTrades, lostTrades, totalProfit}
 }
