@@ -35,11 +35,6 @@ const Signup = () => {
                                 role="button">
                                 <SlSocialFacebook className="social-icon" />
                             </a>
-                            {/* <a
-                                href="http://localHost:3000/auth/twitter"
-                                className="social-button">
-                                <SlSocialTwitter className="social-icon" />
-                            </a> */}
                         </div>
                     </div>
                 </div>

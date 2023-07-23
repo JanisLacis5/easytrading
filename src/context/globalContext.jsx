@@ -17,10 +17,6 @@ const AppContext = ({children}) => {
     // FILTERS
     const [isFilters, setIsFilters] = useState(false)
 
-    // LOADING
-    const [isSocialLink, setIsSocialLink] = useState(false)
-    const [isReqLoading, setIsReqLoading] = useState(false)
-
     return (
         <GlobalContext.Provider
             value={{
@@ -40,10 +36,6 @@ const AppContext = ({children}) => {
                 setAction,
                 isFilters,
                 setIsFilters,
-                isSocialLink,
-                setIsSocialLink,
-                isReqLoading,
-                setIsReqLoading,
             }}>
             {children}
         </GlobalContext.Provider>

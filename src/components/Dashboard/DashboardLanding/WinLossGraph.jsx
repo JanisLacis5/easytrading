@@ -81,7 +81,7 @@ const WinLossGraph = () => {
                     <p>
                         Win % :
                         <span>
-                            {trades
+                            {trades && trades.length
                                 ? ((wonTrades / trades?.length) * 100).toFixed(
                                       0
                                   ) || 0
@@ -100,7 +100,13 @@ const WinLossGraph = () => {
                                     : {color: "var(--color-trade-green)"}
                             }>
                             {totalProfit < 0 ? "-" : "+"}$
-                            {totalProfit < 0 ? totalProfit * -1 : totalProfit}
+                            {totalProfit < 0
+                                ? totalProfit % 1 === 0
+                                    ? totalProfit * -1
+                                    : (totalProfit * -1).toFixed(2)
+                                : totalProfit % 1 === 0
+                                ? totalProfit
+                                : totalProfit.toFixed(2)}
                         </span>
                     </p>
                 </li>

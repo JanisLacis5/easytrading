@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux"
 import "./tradelog.css"
-import {useEffect, useState} from "react"
+import {useEffect} from "react"
 import {setSortedTrades} from "../../../features/sortSlice"
 import {
     filterProducts,
@@ -26,30 +26,41 @@ const Trades = ({trades}) => {
 
     return (
         <>
-            {trades?.map((trade, index) => {
-                const pl = trade.pl < 0 ? trade.pl * -1 : trade.pl
-                const {date, time, stock, accBefore, accAfter, action} = trade
-                return (
-                    <div key={index} className="tradelog-trade-container">
-                        <div className="tradelog-trade-time">
-                            <p>{date}</p>
-                            <p>{time}</p>
+            {trades && trades.length ? (
+                trades.map((trade, index) => {
+                    const pl = trade.pl < 0 ? trade.pl * -1 : trade.pl
+                    const {date, time, stock, accBefore, accAfter, action} =
+                        trade
+                    return (
+                        <div key={index} className="tradelog-trade-container">
+                            <div className="tradelog-trade-time">
+                                <p>{date}</p>
+                                <p>{time}</p>
+                            </div>
+                            <p>{stock.toUpperCase()}</p>
+                            <p>${accBefore}</p>
+                            <p>
+                                $
+                                {Number(accAfter) % 1 === 0
+                                    ? Number(accAfter)
+                                    : Number(accAfter).toFixed(2)}
+                            </p>
+                            <p
+                                style={
+                                    trade.pl > 0
+                                        ? {color: "var(--color-trade-green)"}
+                                        : {color: "var(--color-trade-red)"}
+                                }>
+                                {trade.pl > 0 ? "+" : "-"}$
+                                {pl % 1 === 0 ? pl : pl.toFixed(2)}
+                            </p>
+                            <p>{action}</p>
                         </div>
-                        <p>{stock.toUpperCase()}</p>
-                        <p>${accBefore}</p>
-                        <p>${accAfter}</p>
-                        <p
-                            style={
-                                trade.pl > 0
-                                    ? {color: "var(--color-trade-green)"}
-                                    : {color: "var(--color-trade-red)"}
-                            }>
-                            {trade.pl > 0 ? "+" : "-"}${pl}
-                        </p>
-                        <p>{action}</p>
-                    </div>
-                )
-            })}
+                    )
+                })
+            ) : (
+                <h2 style={{textAlign: "center"}}>No data</h2>
+            )}
         </>
     )
 }

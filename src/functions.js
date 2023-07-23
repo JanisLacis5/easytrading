@@ -15,8 +15,8 @@ export const countStats = (trades) => {
     let lostTrades = 0
     let totalProfit = 0
 
-    if (trades) {
-        trades?.map((trade) => {
+    if (trades && trades.length) {
+        trades.map((trade) => {
             if (trade.pl > 0) {
                 wonTrades++
             }

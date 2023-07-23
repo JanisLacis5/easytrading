@@ -38,6 +38,12 @@ const AddTrade = () => {
             action: action,
         })
         dispatch(login({id: data.id, trades: data.trades}))
+        setStock("")
+        setAccBefore("")
+        setAccAfter("")
+        setDate("")
+        setTime("")
+        setAction("")
         navigate("/dashboard")
     }
 
