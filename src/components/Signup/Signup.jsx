@@ -10,10 +10,7 @@ const Signup = () => {
     return (
         <main>
             <div className="card-page">
-                <div
-                    className={`signup-box ${
-                        isHovered ? "signup-box-hovered" : ""
-                    }`}>
+                <div className="signup-box">
                     <div className="signup-title">
                         <h2>Sign Up</h2>
                     </div>

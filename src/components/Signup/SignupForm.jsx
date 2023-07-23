@@ -12,6 +12,7 @@ import {useGlobalContext} from "../../context/globalContext"
 import {useNavigate} from "react-router-dom"
 import {useDispatch} from "react-redux"
 import {login} from "../../features/userSlice"
+import {passwordRequirements} from "../../functions"
 
 const SignupForm = () => {
     const [email, setEmail] = useState("")
@@ -25,7 +26,11 @@ const SignupForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        //TODO: make requriments for passwords strength
+
+        if (!passwordRequirements(password)) {
+            return
+        }
+
         if (password === confirmPassword) {
             const {data} = await customFetch.post("/signup", {
                 email: email,
@@ -50,7 +55,7 @@ const SignupForm = () => {
     }
 
     return (
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="signup-form" onSubmit={handleSubmit}>
             <div className="signup-input">
                 <div className="signup-icon">
                     <img src={userIcon} alt="icon" className="user-icon" />
@@ -84,10 +89,13 @@ const SignupForm = () => {
                     onMouseLeave={() => setIsHovered(false)}>
                     <img src={infoIcon} alt="info-icon" className="info-icon" />
                 </div>
-                <div className={isHovered ? "password-show" : "password"}>
-                    <Requirements />
-                </div>
             </div>
+            {/* <div>
+                <p>
+                    Password does not meet the requirements (hover 'info'
+                    button)
+                </p>
+            </div> */}
             <div className="signup-input">
                 <div className="signup-icon">
                     <img src={passwordIcon} alt="icon" className="user-icon" />
@@ -101,6 +109,9 @@ const SignupForm = () => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
+                <div className={isHovered ? "password-show" : "password"}>
+                    <Requirements />
+                </div>
             </div>
             <button type="submit" className="login-button">
                 Sign Up

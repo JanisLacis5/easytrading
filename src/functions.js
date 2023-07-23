@@ -29,3 +29,15 @@ export const countStats = (trades) => {
 
     return {wonTrades, lostTrades, totalProfit}
 }
+
+export const passwordRequirements = (password) => {
+    if (
+        password.length < 8 ||
+        !/[A-Z]/.test(password) ||
+        !/a-z/.test(password) ||
+        !/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)
+    ) {
+        return false
+    }
+    return true
+}
