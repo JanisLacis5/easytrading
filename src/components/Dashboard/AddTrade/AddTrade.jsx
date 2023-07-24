@@ -69,7 +69,7 @@ const AddTrade = () => {
                     onChange={(e) => setAction(e.target.value)}
                     value={action}
                     required>
-                    <option value="default">Long / Short</option>
+                    <option value="">Long / Short</option>
                     <option value="long">Long</option>
                     <option value="short">Short</option>
                 </select>

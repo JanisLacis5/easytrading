@@ -11,10 +11,11 @@ const userSlice = createSlice({
     reducers: {
         login: (state, {payload}) => {
             localStorage.setItem("user", JSON.stringify(payload))
+            let reverseTrades = payload.trades
             return {
                 ...state,
                 isLogged: true,
-                user: {id: payload.id, trades: payload.trades},
+                user: {id: payload.id, trades: reverseTrades.reverse()},
             }
         },
         logout: (state) => {

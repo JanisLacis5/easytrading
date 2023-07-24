@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit"
 const initialState = {
     filters: {
         stock: "",
-        action: "default",
+        action: "",
         date: "",
         PL: "",
     },
@@ -33,7 +33,7 @@ const filterSlice = createSlice({
                         trade.stock.startsWith(stock.toUpperCase())
                     )
                 }
-                if (action !== "default") {
+                if (action) {
                     ansArr = trades.filter((trade) => trade.action === action)
                 }
                 if (date) {

@@ -14,6 +14,7 @@ import {
     Dashboard,
     TradeLog,
     BrokerLogin,
+    Stats,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -52,6 +53,10 @@ function App() {
                         {
                             index: true,
                             element: <Dashboard />,
+                        },
+                        {
+                            path: "stats",
+                            element: <Stats />,
                         },
                         {
                             path: "addtrade",
