@@ -14,6 +14,9 @@ const AppContext = ({children}) => {
     const [time, setTime] = useState("")
     const [action, setAction] = useState("")
 
+    // REQUIREMENTS
+    const [isMetReq, setIsMetReq] = useState(true)
+
     // FILTERS
     const [isFilters, setIsFilters] = useState(false)
 
@@ -36,6 +39,8 @@ const AppContext = ({children}) => {
                 setAction,
                 isFilters,
                 setIsFilters,
+                isMetReq,
+                setIsMetReq,
             }}>
             {children}
         </GlobalContext.Provider>

@@ -6,16 +6,16 @@ const Requirements = () => {
             Password must contain at least :
             <ul>
                 <li>
-                    <p>8 characters</p>
+                    <h4>8 characters</h4>
                 </li>
                 <li>
-                    <p>1 capital letter</p>
+                    <h4>1 capital letter</h4>
                 </li>
                 <li>
-                    <p>1 lowercase letter</p>
+                    <h4>1 lowercase letter</h4>
                 </li>
                 <li>
-                    <p>1 sybol</p>
+                    <h4>1 sybol</h4>
                 </li>
             </ul>
         </div>

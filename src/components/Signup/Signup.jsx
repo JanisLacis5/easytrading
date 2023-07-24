@@ -3,6 +3,7 @@ import SignupForm from "./SignupForm"
 import "./signup.css"
 import {SlSocialGoogle, SlSocialFacebook} from "react-icons/sl"
 import {useGlobalContext} from "../../context/globalContext"
+import Requirements from "./Requirements"
 
 const Signup = () => {
     const {isHovered} = useGlobalContext()
@@ -18,6 +19,12 @@ const Signup = () => {
                         <SignupForm />
                     </div>
                     <div className="social-signup">
+                        <div
+                            className={
+                                isHovered ? "password-show" : "password"
+                            }>
+                            <Requirements />
+                        </div>
                         <p>or sign up with</p>
                         <div className="social-login-buttons">
                             <a

@@ -27,7 +27,8 @@ const sortSlice = createSlice({
             } else if (
                 payload.name === "accAfter" ||
                 payload.name === "accBefore" ||
-                payload.name === "pl"
+                payload.name === "pl" ||
+                payload.name === "stock"
             ) {
                 state.value = true
                 state.option = payload.name

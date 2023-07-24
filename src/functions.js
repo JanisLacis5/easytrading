@@ -34,7 +34,7 @@ export const passwordRequirements = (password) => {
     if (
         password.length < 8 ||
         !/[A-Z]/.test(password) ||
-        !/a-z/.test(password) ||
+        !/[a-z]/.test(password) ||
         !/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)
     ) {
         return false

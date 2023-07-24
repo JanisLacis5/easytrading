@@ -7,7 +7,6 @@ import {useState} from "react"
 import customFetch from "../../utils"
 import {toast} from "react-toastify"
 import md5 from "md5"
-import Requirements from "./Requirements"
 import {useGlobalContext} from "../../context/globalContext"
 import {useNavigate} from "react-router-dom"
 import {useDispatch} from "react-redux"
@@ -19,7 +18,7 @@ const SignupForm = () => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
-    const {isHovered, setIsHovered} = useGlobalContext()
+    const {isHovered, setIsHovered, isMetReq, setIsMetReq} = useGlobalContext()
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -27,16 +26,19 @@ const SignupForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!passwordRequirements(password)) {
-            return
-        }
-
         if (password === confirmPassword) {
+            if (!passwordRequirements(password)) {
+                setIsMetReq(false)
+                setPassword("")
+                setConfirmPassword("")
+                return
+            }
             const {data} = await customFetch.post("/signup", {
                 email: email,
                 password: md5(password),
             })
             setEmail("")
+            setIsMetReq(true)
             setPassword("")
             setConfirmPassword("")
             if (data.message !== "success") {
@@ -83,19 +85,23 @@ const SignupForm = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <div
-                    className="signup-info-icon"
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}>
-                    <img src={infoIcon} alt="info-icon" className="info-icon" />
-                </div>
-            </div>
-            {/* <div>
-                <p>
-                    Password does not meet the requirements (hover 'info'
+                <img
+                    src={infoIcon}
+                    alt="info-icon"
+                    className="info-icon"
+                    onClick={() => setIsHovered(!isHovered)}
+                />
+                <h6
+                    className={
+                        isMetReq
+                            ? "requirements-not-met"
+                            : "requirements-not-met-show"
+                    }>
+                    Password does not meet the requirements (click on
+                    <span>&#9432;</span>
                     button)
-                </p>
-            </div> */}
+                </h6>
+            </div>
             <div className="signup-input">
                 <div className="signup-icon">
                     <img src={passwordIcon} alt="icon" className="user-icon" />
@@ -109,9 +115,6 @@ const SignupForm = () => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <div className={isHovered ? "password-show" : "password"}>
-                    <Requirements />
-                </div>
             </div>
             <button type="submit" className="login-button">
                 Sign Up
