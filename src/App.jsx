@@ -15,6 +15,7 @@ import {
     TradeLog,
     BrokerLogin,
     Stats,
+    Calendar,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -61,6 +62,10 @@ function App() {
                         {
                             path: "addtrade",
                             element: <AddTrade />,
+                        },
+                        {
+                            path: "calendar",
+                            element: <Calendar />,
                         },
                         {
                             path: "log",
