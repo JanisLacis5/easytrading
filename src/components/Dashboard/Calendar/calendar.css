@@ -1,26 +1,24 @@
 .calendar-main {
     padding-left: 1rem;
     height: 100%;
-}
-
-.calendar-container {
     display: flex;
     justify-content: center;
 }
 
-.calendar-component {
-    max-width: 100%;
+.calendar-container {
+    width: 80%;
+    padding-top: 2%;
 }
 
-.calendar-year {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 1rem;
+/* REACT-BIG-CALENDAR BUILT-IN CLASSES */
+.rbc-toolbar {
+    padding-right: 17%;
 }
 
-/* REACT-CALENDAR BUILT-IN CLASSES */
-.react-calendar {
-    background-color: var(--color-grey-700);
-    border: 0;
+.rbc-button-link {
+    cursor: default;
+}
+
+.calendar-container .rbc-day-bg {
+    background-color: var(--color-grey-600);
 }
