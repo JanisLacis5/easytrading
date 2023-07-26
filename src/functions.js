@@ -44,6 +44,7 @@ export const passwordRequirements = (password) => {
 
 export const profitableStocks = (trades) => {
     let tempTrades = [...trades]
+    console.log(trades)
     const tempTradesSet = new Set()
     let ansArr = Array(tempTrades.length).fill(0)
 
@@ -61,8 +62,23 @@ export const profitableStocks = (trades) => {
         ansArr[j] += tempTrades[i].pl
     }
 
+    ansArr = ansArr.slice(0, tempTradesSet.size)
+    let profits = ansArr.slice(0, tempTradesSet.size)
+    let returnProfits = []
+    let returnStocks = []
+    let stocks = Array(...tempTradesSet)
+
+    for (let i = 0; i < 5; i++) {
+        const maxElement = Math.max(...profits)
+        const indexMain = ansArr.indexOf(maxElement)
+        const indexTemp = profits.indexOf(maxElement)
+        returnProfits.push(maxElement)
+        returnStocks.push(stocks[indexMain])
+        profits.splice(indexTemp, 1)
+    }
+
     return {
-        profits: ansArr.slice(0, tempTradesSet.size),
-        stocks: tempTradesSet,
+        profits: returnProfits,
+        stocks: returnStocks,
     }
 }

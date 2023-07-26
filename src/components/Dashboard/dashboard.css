@@ -5,13 +5,13 @@
     flex-direction: column;
     display: inline-block;
     grid-row: span 2;
-    height: 100%;
 }
 
 .dashboard-landing {
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: 42fr 42fr;
+    max-height: 100vh;
 }
 
 .dashboard-page {
@@ -38,6 +38,11 @@
     grid-row: span 2;
     display: grid;
     grid-template-rows: 1fr 6fr 3fr;
+}
+
+.stock-graph {
+    display: grid;
+    grid-template-rows: 1fr, 4fr;
 }
 
 .graph-title {
@@ -108,4 +113,10 @@ option {
 .stat span {
     padding-left: 1rem;
     color: var(--color-grey-300);
+}
+
+.profitable-stocks {
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
 }
