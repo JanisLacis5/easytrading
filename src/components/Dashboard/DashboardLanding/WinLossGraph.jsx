@@ -7,6 +7,7 @@ import {useState} from "react"
 
 const WinLossGraph = () => {
     const [filter, setFilter] = useState("all-time")
+
     const {user} = useSelector((store) => store.user)
     const trades =
         filter === "all-time" ? user.trades : filterChart(user.trades, filter)
