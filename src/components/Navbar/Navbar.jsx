@@ -1,10 +1,11 @@
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import "./navbar.css"
 import {useDispatch, useSelector} from "react-redux"
-import {logout} from "../../features/userSlice"
+import {logout, setIsLoading} from "../../features/userSlice"
 
 const Navbar = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const {isLogged} = useSelector((store) => store.user)
 
     return (
@@ -43,7 +44,8 @@ const Navbar = () => {
                         className="login-btn"
                         onClick={() => {
                             dispatch(logout())
-                            location.assign("http://localhost:5173")
+                            dispatch(setIsLoading())
+                            navigate("/landing")
                         }}>
                         Logout
                     </button>

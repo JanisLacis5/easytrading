@@ -1,8 +1,22 @@
 import {Link} from "react-router-dom"
 import backImage from "../../photos/candlestick-chart.jpg"
 import "./landingpage.css"
+import {useEffect} from "react"
+import {setIsNotLoading} from "../../features/userSlice"
+import {useDispatch, useSelector} from "react-redux"
 
 const LandingPage = () => {
+    const dispatch = useDispatch()
+    const {isLoading} = useSelector((store) => store.user)
+
+    useEffect(() => {
+        dispatch(setIsNotLoading())
+    }, [])
+
+    if (isLoading) {
+        return <div className="loading"></div>
+    }
+
     return (
         <main>
             <img

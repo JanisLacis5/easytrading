@@ -4,9 +4,9 @@ import passwordIcon from "../../assets/password-icon.svg"
 import customFetch from "../../utils"
 import {useState} from "react"
 import md5 from "md5"
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import {toast} from "react-toastify"
-import {login} from "../../features/userSlice"
+import {login, setIsLoading, setIsNotLoading} from "../../features/userSlice"
 import {useNavigate} from "react-router-dom"
 
 const LoginForm = () => {
@@ -16,8 +16,11 @@ const LoginForm = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const {isLoading} = useSelector((store) => store.user)
+
     const handleSubmit = async (e) => {
         e.preventDefault()
+        dispatch(setIsLoading())
         try {
             const {data} = await customFetch.post("/login", {
                 email: email,
@@ -25,14 +28,20 @@ const LoginForm = () => {
             })
             localStorage.setItem("token", data.token)
             if (data.message) {
+                dispatch(setIsNotLoading())
                 toast.error(data.message)
                 return
             }
             dispatch(login({id: data.id, trades: data.trades}))
             navigate("/dashboard")
         } catch (error) {
+            dispatch(setIsNotLoading())
             console.log(error)
         }
+    }
+
+    if (isLoading) {
+        return <div className="loading"></div>
     }
 
     return (

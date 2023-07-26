@@ -9,8 +9,8 @@ import {toast} from "react-toastify"
 import md5 from "md5"
 import {useGlobalContext} from "../../context/globalContext"
 import {useNavigate} from "react-router-dom"
-import {useDispatch} from "react-redux"
-import {login} from "../../features/userSlice"
+import {useDispatch, useSelector} from "react-redux"
+import {login, setIsLoading, setIsNotLoading} from "../../features/userSlice"
 import {passwordRequirements} from "../../functions"
 
 const SignupForm = () => {
@@ -19,13 +19,14 @@ const SignupForm = () => {
     const [confirmPassword, setConfirmPassword] = useState("")
 
     const {isHovered, setIsHovered, isMetReq, setIsMetReq} = useGlobalContext()
+    const {isLoading} = useSelector((store) => store.user)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        dispatch(setIsLoading())
         if (password === confirmPassword) {
             // if (!passwordRequirements(password)) {
             //     setIsMetReq(false)
@@ -42,6 +43,7 @@ const SignupForm = () => {
             setPassword("")
             setConfirmPassword("")
             if (data.message !== "success") {
+                dispatch(setIsNotLoading())
                 toast.error(data.message)
                 return
             }
@@ -50,11 +52,16 @@ const SignupForm = () => {
             toast.success("success")
             navigate("/dashboard")
         } else {
+            dispatch(setIsNotLoading())
             toast.error("Passwords do not match")
             setEmail("")
             setPassword("")
             setConfirmPassword("")
         }
+    }
+
+    if (isLoading) {
+        return <div className="loading"></div>
     }
 
     return (

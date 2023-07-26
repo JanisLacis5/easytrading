@@ -5,16 +5,19 @@ const initialState = {
     isLogged: localStorage.getItem("userId") ? true : false,
     isLoading: false,
     user: {
-        id: "",
-        trades: [],
+        id:
+            typeof localStorage.getItem("userId") !== "undefined"
+                ? JSON.parse(localStorage.getItem("userId"))
+                : "",
+        trades: JSON.parse(localStorage.getItem("userTrades")),
     },
 }
 
 export const clearTrades = createAsyncThunk("user/clearTrades", async () => {
-    const userCopy = localStorage.getItem("user")
+    const id = localStorage.getItem("userId")
     try {
         const {data} = await customFetch.delete(
-            `/deleteTrades/${JSON.parse(userCopy).id}`,
+            `/deleteTrades/${JSON.parse(id)}`,
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -30,14 +33,17 @@ export const clearTrades = createAsyncThunk("user/clearTrades", async () => {
 const userSlice = createSlice({
     name: "user",
     initialState,
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: false,
-        }),
     reducers: {
+        setIsLoading: (state) => {
+            state.isLoading = true
+        },
+        setIsNotLoading: (state) => {
+            state.isLoading = false
+        },
         login: (state, {payload}) => {
+            const trades = payload.trades || []
             localStorage.setItem("userId", JSON.stringify(payload.id))
-            localStorage.setItem("userTrades", JSON.stringify(payload.trades))
+            localStorage.setItem("userTrades", JSON.stringify(trades))
             let reverseTrades = payload.trades
             if (payload.trades && payload.trades.length) {
                 reverseTrades = reverseTrades.reverse()
@@ -49,6 +55,7 @@ const userSlice = createSlice({
             return {
                 ...state,
                 isLogged: true,
+                isLoading: false,
                 user: {
                     ...state.user,
                     id: payload.id,
@@ -58,11 +65,7 @@ const userSlice = createSlice({
         },
         logout: (state) => {
             localStorage.clear()
-            return {...state, isLogged: false, user: {}}
-        },
-        clearTrades: (state) => {
-            localStorage.setItem("userTrades", [])
-            state.user.trades = []
+            return {...state, isLoading: false, isLogged: false, user: {}}
         },
     },
     extraReducers: (builder) => {
@@ -71,6 +74,7 @@ const userSlice = createSlice({
                 state.isLoading = true
             })
             .addCase(clearTrades.fulfilled, (state, {payload}) => {
+                localStorage.setItem("userTrades", [])
                 state.user.trades = []
             })
             .addCase(clearTrades.rejected, (state) => {
@@ -79,5 +83,5 @@ const userSlice = createSlice({
     },
 })
 
-export const {login, logout} = userSlice.actions
+export const {login, logout, setIsLoading, setIsNotLoading} = userSlice.actions
 export default userSlice.reducer
