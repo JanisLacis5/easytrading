@@ -23,6 +23,7 @@ const LoginForm = () => {
                 email: email,
                 password: md5(password),
             })
+            localStorage.setItem("token", data.token)
             if (data.message) {
                 toast.error(data.message)
                 return

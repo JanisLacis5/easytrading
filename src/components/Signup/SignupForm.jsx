@@ -27,12 +27,12 @@ const SignupForm = () => {
         e.preventDefault()
 
         if (password === confirmPassword) {
-            if (!passwordRequirements(password)) {
-                setIsMetReq(false)
-                setPassword("")
-                setConfirmPassword("")
-                return
-            }
+            // if (!passwordRequirements(password)) {
+            //     setIsMetReq(false)
+            //     setPassword("")
+            //     setConfirmPassword("")
+            //     return
+            // }
             const {data} = await customFetch.post("/signup", {
                 email: email,
                 password: md5(password),
@@ -45,8 +45,9 @@ const SignupForm = () => {
                 toast.error(data.message)
                 return
             }
-            toast.success("success")
+            localStorage.setItem("token", data.token)
             dispatch(login({id: data.id}))
+            toast.success("success")
             navigate("/dashboard")
         } else {
             toast.error("Passwords do not match")
@@ -70,6 +71,7 @@ const SignupForm = () => {
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                 />
             </div>
             <div className="signup-input">
@@ -84,6 +86,7 @@ const SignupForm = () => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
                 <img
                     src={infoIcon}
@@ -114,6 +117,7 @@ const SignupForm = () => {
                     placeholder="Confirm Password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
                 />
             </div>
             <button type="submit" className="login-button">

@@ -11,6 +11,8 @@ import {toggleFilters} from "../../../features/filterSlice"
 import {filterChart} from "../../../functions"
 import {useEffect, useState} from "react"
 import {BiSolidDownArrow, BiSolidUpArrow} from "react-icons/bi"
+import {useGlobalContext} from "../../../context/globalContext"
+import Modal from "./Modal"
 
 const TradeLog = () => {
     const dispatch = useDispatch()
@@ -20,6 +22,7 @@ const TradeLog = () => {
     const {sortedTrades, option, value} = useSelector((store) => store.sort)
     const {isFilters} = useSelector((store) => store.filter)
     const {user} = useSelector((store) => store.user)
+    const {showModal, setShowModal} = useGlobalContext()
 
     useEffect(() => {
         dispatch(setSortedTrades({trades: user.trades}))
@@ -36,19 +39,35 @@ const TradeLog = () => {
         <section className="tradelog">
             <h2>Log</h2>
             <div className="tradelog-filter">
-                <select
-                    onChange={(e) => {
-                        setFilter(e.target.value)
-                    }}>
-                    <option value="">All time</option>
-                    <option value="day">Today</option>
-                    <option value="week">This week</option>
-                    <option value="month">This month</option>
-                    <option value="year">This year</option>
-                </select>
-                <button type="button" onClick={() => dispatch(toggleFilters())}>
-                    Filters
-                </button>
+                <div>
+                    <select
+                        onChange={(e) => {
+                            setFilter(e.target.value)
+                        }}>
+                        <option value="">All time</option>
+                        <option value="day">Today</option>
+                        <option value="week">This week</option>
+                        <option value="month">This month</option>
+                        <option value="year">This year</option>
+                    </select>
+                </div>
+                <div>
+                    <button
+                        type="button"
+                        className="tradelog-filter-removebtn"
+                        onClick={() => {
+                            setShowModal(true)
+                        }}>
+                        Remove all trades
+                    </button>
+                </div>
+                <div>
+                    <button
+                        type="button"
+                        onClick={() => dispatch(toggleFilters())}>
+                        Filters
+                    </button>
+                </div>
             </div>
             <div className="tradelog-trades-header">
                 {isFilters && <Filters />}
@@ -142,6 +161,7 @@ const TradeLog = () => {
             <div className="tradelog-trades">
                 <Trades trades={trades} />
             </div>
+            {showModal && <Modal />}
         </section>
     )
 }

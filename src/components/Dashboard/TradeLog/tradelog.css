@@ -11,25 +11,41 @@
 
 .tradelog-filter {
     height: 100%;
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .tradelog-filter select {
-    min-width: 20%;
+    width: 70%;
     background-color: transparent;
     color: var(--color-grey-200);
-    min-height: 1.5rem;
+    height: 50%;
+    cursor: pointer;
+}
+
+.tradelog-filter div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .tradelog-filter button {
-    width: 10%;
-    min-height: 1.5rem;
+    width: 50%;
+    height: 50%;
     background-color: transparent;
     color: var(--color-grey-200);
     border: 0.5px solid var(--color-grey-500);
+    cursor: pointer;
+}
+
+button.tradelog-filter-removebtn {
+    color: var(--color-trade-red);
+    border-color: var(--color-trade-red);
+    cursor: pointer;
+}
+
+.tradelog-filter button:hover {
+    opacity: 0.5;
 }
 
 .tradelog h2 {
@@ -158,4 +174,82 @@ select:focus {
 .tradelog-trades-header-icon {
     width: 50%;
     place-self: center;
+}
+
+.remove-modal {
+    padding: 2rem;
+    height: 60%;
+    width: 33%;
+    background-color: var(--color-grey-100);
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    margin-left: -16.5%;
+    color: var(--color-grey-900);
+    display: grid;
+    grid-template-rows: 3fr 2fr 1fr 2fr;
+    border-radius: 10px;
+    place-items: center;
+}
+
+.remove-modal > * {
+    width: 100%;
+    height: 100%;
+}
+
+.remove-modal-cross {
+    height: 50%;
+    width: 50%;
+    color: var(--color-trade-red);
+}
+
+.remove-modal div:first-child {
+    height: 90%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid var(--color-trade-red);
+    border-radius: 50%;
+}
+
+.remove-modal h1 {
+    color: var(--color-trade-red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+.remove-modal p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove-modal-btn-container {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.remove-modal-btn-container button {
+    height: 33%;
+    width: 40%;
+    color: var(--color-grey-100);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.remove-modal-btn-container button:first-child {
+    background-color: var(--color-trade-red);
+    border: none;
+    cursor: pointer;
+}
+
+.remove-modal-btn-container button:nth-child(2) {
+    background-color: var(--color-grey-400);
+    border: none;
+    cursor: pointer;
 }

@@ -20,6 +20,9 @@ const AppContext = ({children}) => {
     // FILTERS
     const [isFilters, setIsFilters] = useState(false)
 
+    // MODAL
+    const [showModal, setShowModal] = useState(false)
+
     return (
         <GlobalContext.Provider
             value={{
@@ -41,6 +44,8 @@ const AppContext = ({children}) => {
                 setIsFilters,
                 isMetReq,
                 setIsMetReq,
+                showModal,
+                setShowModal,
             }}>
             {children}
         </GlobalContext.Provider>
