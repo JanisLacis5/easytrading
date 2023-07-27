@@ -51,6 +51,7 @@
     text-align: center;
     color: var(--color-grey-200);
     padding-top: 1.5rem;
+    font-size: 2rem;
 }
 
 .pie-garph-container {

@@ -61,23 +61,23 @@ p {
 
 @media screen and (min-width: 800px) {
     h1 {
-        font-size: 4rem;
-    }
-
-    h2 {
-        font-size: 2.5rem;
-    }
-
-    h3 {
         font-size: 2rem;
     }
 
-    h4 {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
         font-size: 1rem;
     }
 
     body {
         font-size: 1rem;
+    }
+
+    p {
+        font-size: 0.9rem;
     }
 
     h1,
@@ -119,7 +119,7 @@ main {
     padding-top: 6.5rem;
     padding-right: 1rem;
     display: grid;
-    grid-template-columns: 15fr 85fr;
+    grid-template-columns: 10fr 90fr;
 }
 
 li {

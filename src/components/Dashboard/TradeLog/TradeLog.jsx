@@ -38,7 +38,7 @@ const TradeLog = () => {
 
     return (
         <section className="tradelog">
-            <h2>Log</h2>
+            <h2 className="graph-title">Log</h2>
             <div className="tradelog-filter">
                 <div>
                     <select

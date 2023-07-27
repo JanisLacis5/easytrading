@@ -27,6 +27,11 @@ const LoginForm = () => {
                 password: md5(password),
             })
             localStorage.setItem("token", data.token)
+            if (data.message === "incorrect password") {
+                dispatch(setIsNotLoading())
+                setPassword("")
+                return
+            }
             if (data.message) {
                 dispatch(setIsNotLoading())
                 toast.error(data.message)

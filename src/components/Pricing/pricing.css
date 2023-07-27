@@ -41,6 +41,7 @@
     align-items: center;
     height: 80%;
     color: var(--color-grey-200);
+    font-size: 3rem;
 }
 
 .features {

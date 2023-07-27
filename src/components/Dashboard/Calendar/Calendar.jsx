@@ -7,6 +7,12 @@ import {useEffect} from "react"
 import events from "./events"
 import {useSelector} from "react-redux"
 
+moment.locale("ko", {
+    week: {
+        dow: 1,
+        doy: 1,
+    },
+})
 const localizer = momentLocalizer(moment)
 
 const MyCalendar = () => {
