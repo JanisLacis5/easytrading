@@ -44,7 +44,6 @@ export const passwordRequirements = (password) => {
 
 export const profitableStocks = (trades) => {
     let tempTrades = [...trades]
-    console.log(trades)
     const tempTradesSet = new Set()
     let ansArr = Array(tempTrades.length).fill(0)
 
@@ -81,4 +80,29 @@ export const profitableStocks = (trades) => {
         profits: returnProfits,
         stocks: returnStocks,
     }
+}
+
+export const profitsPerDate = (trades) => {
+    let temp = [...trades]
+    const sortedArr = temp.sort((a, b) => {
+        const date1 = Number(a.date.replaceAll("-", ""))
+        const date2 = Number(b.date.replaceAll("-", ""))
+        return date1 - date2
+    })
+
+    let date = sortedArr[0].date
+    let profits = {
+        [date]: sortedArr[0].pl,
+    }
+
+    for (let i = 1; i < trades.length; i++) {
+        if (sortedArr[i].date !== date) {
+            date = sortedArr[i].date
+            profits[date] = sortedArr[i].pl
+            continue
+        }
+        profits[date] += sortedArr[i].pl
+    }
+
+    return profits
 }

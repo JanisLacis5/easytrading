@@ -15,7 +15,6 @@ const Filters = () => {
     const {user} = useSelector((store) => store.user)
     const {filters} = useSelector((store) => store.filter)
     const {stock, date, action, PL} = filters
-    const {isFilters, setIsFilters} = useGlobalContext()
 
     const handleChange = (e) => {
         const name = e.target.name
@@ -48,6 +47,12 @@ const Filters = () => {
                     onChange={handleChange}
                 />
             </div>
+            <button
+                type="button"
+                className="tradelog-filters-cross"
+                onClick={() => dispatch(closeFilters())}>
+                <RxCross1 />
+            </button>
             <div>
                 <label htmlFor="action">Action: </label>
                 <select
@@ -68,16 +73,10 @@ const Filters = () => {
                     <option value="negative">-</option>
                 </select>
             </div>
-            <button
-                type="button"
-                className="tradelog-filters-cross"
-                onClick={() => dispatch(closeFilters())}>
-                <RxCross1 />
-            </button>
 
             <button
                 type="button"
-                className="tradelog-filters-clear"
+                id="tradelog-filters-clear"
                 onClick={() => {
                     dispatch(clearFilters({trades: user.trades}))
                 }}>

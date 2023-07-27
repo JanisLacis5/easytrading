@@ -8,7 +8,7 @@ import {
     setSortedTrades,
 } from "../../../features/sortSlice"
 import {toggleFilters} from "../../../features/filterSlice"
-import {filterChart} from "../../../functions"
+import {filterChart, profitsPerDate} from "../../../functions"
 import {useEffect, useState} from "react"
 import {BiSolidDownArrow, BiSolidUpArrow} from "react-icons/bi"
 import {useGlobalContext} from "../../../context/globalContext"
@@ -26,6 +26,7 @@ const TradeLog = () => {
 
     useEffect(() => {
         dispatch(setSortedTrades({trades: user.trades}))
+        profitsPerDate(user.trades)
     }, [user.trades])
 
     const handleChange = (e) => {

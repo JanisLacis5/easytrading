@@ -104,7 +104,17 @@ button.tradelog-filter-removebtn {
     background-color: var(--color-grey-300);
     padding: 0.8rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 3fr 2fr 1fr;
+    place-items: center;
+}
+
+.tradelog-filters div {
+    width: 100%;
+}
+
+.tradelog-filters button {
+    width: 80%;
+    place-self: end;
 }
 
 .tradelog-filters input,
@@ -124,26 +134,18 @@ select:focus {
     color: var(--color-grey-100);
 }
 
-.tradelog-filters-cross {
-    position: absolute;
-    right: 0;
+button.tradelog-filters-cross {
     background-color: transparent;
-    border: 0;
-    padding-top: 0.7rem;
-    padding-right: 1rem;
+    width: fit-content;
+    place-self: end;
 }
 
-.tradelog-filters-clear {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background-color: var(--color-grey-900);
-    border: 0;
-    margin-bottom: 1rem;
-    margin-right: 1rem;
-    padding: 0.5rem;
-    color: var(--color-grey-300);
-    border-radius: 2px;
+button#tradelog-filters-clear {
+    background-color: transparent;
+    display: flex;
+    justify-content: end;
+    font-size: 0.75rem;
+    align-items: center;
 }
 
 .tradelog-trades-header button {
@@ -157,7 +159,6 @@ select:focus {
     display: grid;
     grid-template-columns: 5fr 1.5fr;
     margin: 0;
-    place-items: center;
 }
 
 .tradelog-trades-header button span {
