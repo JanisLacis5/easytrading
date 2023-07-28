@@ -1,0 +1,16 @@
+.detailed-stats {
+    display: grid;
+    grid-template-rows: 15fr 85fr;
+    min-height: calc(100vh - 6.5rem);
+    color: var(--color-grey-300);
+}
+
+/* FOR TESTING ONLY */
+.detailed-stats-stat {
+    color: red;
+}
+
+.detailed-stats-table {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

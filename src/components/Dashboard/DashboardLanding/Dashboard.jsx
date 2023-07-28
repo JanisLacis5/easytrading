@@ -2,7 +2,6 @@ import "../dashboard.css"
 import WinLossGraph from "./WinLossGraph"
 import ProfitableStocks from "./ProfitableStocks"
 import Screener from "./Screener"
-import {useSelector} from "react-redux"
 
 const Dashboard = () => {
     return (
