@@ -157,8 +157,8 @@ button#tradelog-filters-clear {
     font-size: 1rem;
     height: 100%;
     cursor: pointer;
-    display: grid;
-    grid-template-columns: 5fr 1.5fr;
+    display: flex;
+    align-items: center;
     margin: 0;
 }
 

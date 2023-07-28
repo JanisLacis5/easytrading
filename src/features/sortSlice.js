@@ -46,12 +46,24 @@ const sortSlice = createSlice({
                     state.sortedTrades = ansArr.sort((a, b) => {
                         const date1 = Number(a.date.replaceAll("-", ""))
                         const date2 = Number(b.date.replaceAll("-", ""))
+                        const clock1 = Number(a.time.replaceAll(":", ""))
+                        const clock2 = Number(b.time.replaceAll(":", ""))
+                        console.log(clock1)
+                        if (date1 === date2) {
+                            return clock1 - clock2
+                        }
                         return date1 - date2
                     })
                 } else {
                     state.sortedTrades = ansArr.sort((a, b) => {
                         const date1 = Number(a.date.replaceAll("-", ""))
                         const date2 = Number(b.date.replaceAll("-", ""))
+                        const clock1 = Number(a.time.replaceAll(":", ""))
+                        const clock2 = Number(b.time.replaceAll(":", ""))
+                        console.log(clock1)
+                        if (date1 === date2) {
+                            return clock2 - clock1
+                        }
                         return date2 - date1
                     })
                 }
