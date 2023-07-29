@@ -10,9 +10,9 @@ const events = (trades) => {
     for (const [key, value] of Object.entries(dateProfits)) {
         let newValue = value
         if (value < 0) {
-            newValue = `-$${value * -1}`
+            newValue = `-$${(value * -1).toFixed(2)}`
         } else {
-            newValue = `$${value}`
+            newValue = `$${value.toFixed(2)}`
         }
         ansArr.push({
             title: newValue,

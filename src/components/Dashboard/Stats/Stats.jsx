@@ -3,19 +3,19 @@ import "../dashboard.css"
 import "./stats.css"
 import {useEffect, useState} from "react"
 import {lostPl, wonPl} from "./statsFunc"
+import {countStats} from "../../../functions"
 
 const Stats = () => {
     const [wonPlState, setWonPlState] = useState({})
     const [lostPlState, setLostPlState] = useState({})
+    const [countSt, setCountSt] = useState({})
     const {user} = useSelector((store) => store.user)
 
     useEffect(() => {
         setLostPlState(lostPl(user.trades))
         setWonPlState(wonPl(user.trades))
+        setCountSt(countStats(user.trades))
     }, [user.trades])
-
-    console.log(wonPlState)
-    console.log(lostPlState)
 
     return (
         <div className="detailed-stats">
@@ -34,45 +34,106 @@ const Stats = () => {
                     <span>Account increase / decrease: </span>
                 </div>
                 <div>
-                    {/* DONEEEEE */}
+                    <span>Account P/L </span>
+                    <span
+                        className="detailed-stats-stat"
+                        style={{
+                            color:
+                                countSt.totalProfit > 0
+                                    ? "var(--color-trade-green)"
+                                    : "var(--color-trade-red)",
+                        }}>
+                        {countSt.totalProfit && countSt.totalProfit > 0
+                            ? `$${countSt.totalProfit.toFixed(2)}`
+                            : `-$${(countSt.totalProfit * -1).toFixed(2)}`}
+                    </span>
+                </div>
+                <div>
                     <span>Average won day P/L: </span>
-                    <span className="detailed-stats-stat">
-                        {wonPlState.averageWonDayPl}
+                    <span
+                        className="detailed-stats-stat"
+                        style={{
+                            color: "var(--color-trade-green)",
+                        }}>
+                        {wonPlState.averageWonDayPl &&
+                        wonPlState.averageWonDayPl > 0
+                            ? `$${wonPlState.averageWonDayPl.toFixed(2)}`
+                            : `-$${(wonPlState.averageWonDayPl * -1).toFixed(
+                                  2
+                              )}`}
                     </span>
                 </div>
                 <div>
-                    {/* DONEEEEE */}
                     <span>Average lost day P/L: </span>
-                    <span className="detailed-stats-stat">
-                        {lostPlState.averageLostDayPl}
+                    <span
+                        className="detailed-stats-stat"
+                        style={{
+                            color: "var(--color-trade-red)",
+                        }}>
+                        {lostPlState.averageLostDayPl &&
+                            `-$${(lostPlState.averageLostDayPl * -1).toFixed(
+                                2
+                            )}`}
                     </span>
                 </div>
                 <div>
-                    {/* DONEEEEE */}
                     <span>Biggest win: </span>
-                    <span className="detailed-stats-stat">
-                        {wonPlState.biggestWin}
+                    <span
+                        className="detailed-stats-stat"
+                        style={{
+                            color: "var(--color-trade-green)",
+                        }}>
+                        {`$${wonPlState.biggestWin?.toFixed(2)}`}
                     </span>
                 </div>
                 <div>
-                    {/* DONEEEEE */}
                     <span>Biggest loss: </span>
-                    <span className="detailed-stats-stat">
-                        {lostPlState.biggestLoss}
+                    <span
+                        className="detailed-stats-stat"
+                        style={{
+                            color: "var(--color-trade-red)",
+                        }}>
+                        {lostPlState.biggestLoss &&
+                            `-$${(lostPlState.biggestLoss * -1).toFixed(2)}`}
                     </span>
                 </div>
                 <div>
-                    {/* DONEEEEE */}
                     <span>Won days: </span>
                     <span className="detailed-stats-stat">
                         {wonPlState.wonDays}
                     </span>
                 </div>
                 <div>
-                    {/* DONEEEEE */}
                     <span>Lost days: </span>
                     <span className="detailed-stats-stat">
                         {lostPlState.lostDays}
+                    </span>
+                </div>
+                <div>
+                    <span>Total won trades: </span>
+                    <span className="detailed-stats-stat">
+                        {countSt.wonTrades}
+                    </span>
+                </div>
+                <div>
+                    <span>Total lost trades: </span>
+                    <span className="detailed-stats-stat">
+                        {countSt.lostTrades}
+                    </span>
+                </div>
+                <div>
+                    <span>Total number of trades: </span>
+                    <span className="detailed-stats-stat">
+                        {user.trades.length}
+                    </span>
+                </div>
+                <div>
+                    <span>Won trades (%): </span>
+                    <span className="detailed-stats-stat">
+                        {`${(
+                            (countSt.wonTrades / user.trades?.length) *
+                            100
+                        ).toFixed(0)}%`}
                     </span>
                 </div>
             </div>

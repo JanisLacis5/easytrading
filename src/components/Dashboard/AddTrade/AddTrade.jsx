@@ -109,7 +109,7 @@ const AddTrade = () => {
                     name="pl"
                     id="pl"
                     placeholder="+100.00"
-                    value={Number(accAfter) - Number(accBefore)}
+                    value={(Number(accAfter) - Number(accBefore)).toFixed(2)}
                     readOnly
                 />
             </div>

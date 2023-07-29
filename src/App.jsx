@@ -16,6 +16,8 @@ import {
     BrokerLogin,
     Stats,
     Calendar,
+    SignupInfoForm,
+    SignupLayout,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -87,7 +89,17 @@ function App() {
                 },
                 {
                     path: "signup",
-                    element: <Signup />,
+                    element: <SignupLayout />,
+                    children: [
+                        {
+                            index: true,
+                            element: <Signup />,
+                        },
+                        {
+                            path: "form",
+                            element: <SignupInfoForm />,
+                        },
+                    ],
                 },
                 {
                     path: "about",

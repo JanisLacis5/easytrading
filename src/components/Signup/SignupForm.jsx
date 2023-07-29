@@ -26,38 +26,39 @@ const SignupForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        dispatch(setIsLoading())
-        if (password === confirmPassword) {
-            // if (!passwordRequirements(password)) {
-            //     setIsMetReq(false)
-            //     setPassword("")
-            //     setConfirmPassword("")
-            //     return
-            // }
-            const {data} = await customFetch.post("/signup", {
-                email: email,
-                password: md5(password),
-            })
-            setEmail("")
-            setIsMetReq(true)
-            setPassword("")
-            setConfirmPassword("")
-            if (data.message !== "success") {
-                dispatch(setIsNotLoading())
-                toast.error(data.message)
-                return
-            }
-            localStorage.setItem("token", data.token)
-            dispatch(login({id: data.id}))
-            toast.success("success")
-            navigate("/dashboard")
-        } else {
-            dispatch(setIsNotLoading())
-            toast.error("Passwords do not match")
-            setEmail("")
-            setPassword("")
-            setConfirmPassword("")
-        }
+        // dispatch(setIsLoading())
+        // if (password === confirmPassword) {
+        //     // if (!passwordRequirements(password)) {
+        //     //     setIsMetReq(false)
+        //     //     setPassword("")
+        //     //     setConfirmPassword("")
+        //     //     return
+        //     // }
+        //     const {data} = await customFetch.post("/signup", {
+        //         email: email,
+        //         password: md5(password),
+        //     })
+        //     setEmail("")
+        //     setIsMetReq(true)
+        //     setPassword("")
+        //     setConfirmPassword("")
+        //     if (data.message !== "success") {
+        //         dispatch(setIsNotLoading())
+        //         toast.error(data.message)
+        //         return
+        //     }
+        //     localStorage.setItem("token", data.token)
+        //     dispatch(login({id: data.id}))
+        //     toast.success("success")
+        //     navigate("/dashboard")
+        // } else {
+        //     dispatch(setIsNotLoading())
+        //     toast.error("Passwords do not match")
+        //     setEmail("")
+        //     setPassword("")
+        //     setConfirmPassword("")
+        // }
+        navigate("/signup/form")
     }
 
     if (isLoading) {
