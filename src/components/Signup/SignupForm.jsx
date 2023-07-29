@@ -79,7 +79,7 @@ const SignupForm = () => {
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
+                    // required
                 />
             </div>
             <div className="signup-input">
@@ -94,7 +94,7 @@ const SignupForm = () => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required
+                    // required
                 />
                 <img
                     src={infoIcon}
@@ -125,7 +125,7 @@ const SignupForm = () => {
                     placeholder="Confirm Password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    required
+                    // required
                 />
             </div>
             <button type="submit" className="login-button">

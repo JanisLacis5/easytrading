@@ -7,6 +7,20 @@ const SignupInfoForm = () => {
     const [lastName, setLastName] = useState("")
     const [username, setUsername] = useState("")
     const [account, setAccount] = useState("")
+    const [image, setImage] = useState(userIcon)
+
+    const temp = (e) => {
+        const tgt = e.target
+        const files = tgt.files
+
+        if (FileReader && files && files.length) {
+            const fr = new FileReader()
+            fr.onload = function () {
+                setImage(fr.result)
+            }
+            fr.readAsDataURL(files[0])
+        }
+    }
 
     return (
         <div className="signup-info-form">
@@ -20,18 +34,19 @@ const SignupInfoForm = () => {
                     <h2>Profile picture (optional)</h2>
                     <div className="signup-info-form-profile-pic-input">
                         <input
+                            onChange={temp}
                             type="file"
                             name="profilePic"
                             id="profilePic"
                             accept="image/*"
                         />
-                        <label htmlFor="profilePic">
-                            <img src={userIcon} alt="" />
+                        <label htmlFor="profilePic" id="outImage">
+                            <img src={image} alt="profile picture" />
                         </label>
                     </div>
                 </div>
                 <div className="signup-info-form-input-container">
-                    <div class="signup-info-form-field">
+                    <div className="signup-info-form-field">
                         <div className="floating">
                             <input
                                 value={firstName}
@@ -47,7 +62,7 @@ const SignupInfoForm = () => {
                             </label>
                         </div>
                     </div>
-                    <div class="signup-info-form-field">
+                    <div className="signup-info-form-field">
                         <div className="floating">
                             <input
                                 type="text"
@@ -63,7 +78,7 @@ const SignupInfoForm = () => {
                             </label>
                         </div>
                     </div>
-                    <div class="signup-info-form-field">
+                    <div className="signup-info-form-field">
                         <div className="floating">
                             <input
                                 type="text"
@@ -79,7 +94,7 @@ const SignupInfoForm = () => {
                             </label>
                         </div>
                     </div>
-                    <div class="signup-info-form-field">
+                    <div className="signup-info-form-field">
                         <div className="floating">
                             <input
                                 type="number"
