@@ -44,21 +44,24 @@ export const passwordRequirements = (password) => {
 
 export const profitableStocks = (trades) => {
     let tempTrades = [...trades]
+    if (!trades.length) {
+        return {profits: 0, stocks: 0}
+    }
     const tempTradesSet = new Set()
-    let ansArr = Array(tempTrades.length).fill(0)
+    let ansArr = Array(tempTrades?.length).fill(0)
 
     let j = 0
 
-    tempTrades = tempTrades.sort((a, b) => a.stock.localeCompare(b.stock))
-    ansArr[0] += tempTrades[0].pl
-    tempTradesSet.add(tempTrades[0].stock)
+    tempTrades = tempTrades?.sort((a, b) => a.stock.localeCompare(b?.stock))
+    ansArr[0] += tempTrades[0]?.pl
+    tempTradesSet.add(tempTrades[0]?.stock)
 
-    for (let i = 1; i < tempTrades.length; i++) {
-        tempTradesSet.add(tempTrades[i].stock)
-        if (tempTrades[i].stock !== tempTrades[i - 1].stock) {
+    for (let i = 1; i < tempTrades?.length; i++) {
+        tempTradesSet.add(tempTrades[i]?.stock)
+        if (tempTrades[i]?.stock !== tempTrades[i - 1]?.stock) {
             j++
         }
-        ansArr[j] += tempTrades[i].pl
+        ansArr[j] += tempTrades[i]?.pl
     }
 
     ansArr = ansArr.slice(0, tempTradesSet.size)

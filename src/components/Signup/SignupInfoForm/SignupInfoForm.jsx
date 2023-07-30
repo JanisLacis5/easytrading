@@ -1,13 +1,26 @@
 import {useState} from "react"
 import userIcon from "../../../assets/user-icon.svg"
 import "./signupinfoform.css"
+import {useDispatch} from "react-redux"
+import {login, setIsLoading, setIsNotLoading} from "../../../features/userSlice"
+import customFetch from "../../../utils"
+import {useNavigate} from "react-router-dom"
+import {toast} from "react-toastify"
+import {useGlobalContext} from "../../../context/globalContext"
+import md5 from "md5"
 
 const SignupInfoForm = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [username, setUsername] = useState("")
     const [account, setAccount] = useState("")
     const [image, setImage] = useState(userIcon)
+
+    const {email, setEmail, password, setPassword, setConfirmPassword} =
+        useGlobalContext()
 
     const temp = (e) => {
         const tgt = e.target
@@ -22,14 +35,43 @@ const SignupInfoForm = () => {
         }
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        dispatch(setIsLoading())
+
+        const {data} = await customFetch.post("/signup", {
+            email: email,
+            userData: {
+                firstName,
+                lastName,
+                username,
+                account,
+                image,
+            },
+            password: md5(password),
+        })
+        if (data.message !== "success") {
+            dispatch(setIsNotLoading())
+            toast.error(data.message)
+            return
+        }
+        localStorage.setItem("token", data.token)
+        setEmail("")
+        setPassword("")
+        setConfirmPassword("")
+        dispatch(login({id: data.id, info: data.info}))
+        toast.success("success")
+        navigate("/dashboard")
+    }
+
     return (
         <div className="signup-info-form">
             <h1> hello!</h1>
             <p>
-                Hello, we need to collect simple information about the user so
-                you can have better experience on our website.
+                We need to collect simple information about the user so you can
+                have better experience on our website.
             </p>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="signup-info-form-profile-pic">
                     <h2>Profile picture (optional)</h2>
                     <div className="signup-info-form-profile-pic-input">
@@ -45,9 +87,8 @@ const SignupInfoForm = () => {
                         </label>
                     </div>
                     <p>
-                        *for better image design it would be great to choose
-                        image with aspect ratio oh 1:1 of crop your chosen image
-                        to this aspect ratio
+                        *for better image design it would be great to choose or
+                        crop image with aspect ratio of 1:1
                     </p>
                 </div>
                 <div className="signup-info-form-input-container">
@@ -79,7 +120,7 @@ const SignupInfoForm = () => {
                             <label
                                 className={lastName ? "label-up" : ""}
                                 htmlFor="lastName">
-                                Your First Name:{" "}
+                                Last Name:{" "}
                             </label>
                         </div>
                     </div>
@@ -116,7 +157,7 @@ const SignupInfoForm = () => {
                         </div>
                     </div>
                     <div className="signup-info-form-field">
-                        <button>Finish</button>
+                        <button type="submit">Finish</button>
                     </div>
                 </div>
             </form>

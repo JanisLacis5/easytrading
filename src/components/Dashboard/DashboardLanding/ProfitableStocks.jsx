@@ -14,7 +14,6 @@ const ProfitableStocks = () => {
         setProfits(profitableStocks(tempTrades).profits)
         setStocks(profitableStocks(tempTrades).stocks)
     }, [user.trades])
-
     const data = {
         labels: stocks,
         datasets: [
@@ -49,7 +48,11 @@ const ProfitableStocks = () => {
         <>
             <h2 className="graph-title">Your most profitable stocks</h2>
             <div className="profitable-stocks">
-                <Bar data={data} options={options} />
+                {profits ? (
+                    <Bar data={data} options={options} />
+                ) : (
+                    <h2>No Data</h2>
+                )}
             </div>
         </>
     )

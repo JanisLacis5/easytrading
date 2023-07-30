@@ -28,6 +28,7 @@ const LoginForm = () => {
             })
             localStorage.setItem("token", data.token)
             if (data.message === "incorrect password") {
+                toast.error("Incorret password")
                 dispatch(setIsNotLoading())
                 setPassword("")
                 return
@@ -37,7 +38,7 @@ const LoginForm = () => {
                 toast.error(data.message)
                 return
             }
-            dispatch(login({id: data.id, trades: data.trades}))
+            dispatch(login({id: data.id, trades: data.trades, info: data.info}))
             navigate("/dashboard")
         } catch (error) {
             dispatch(setIsNotLoading())

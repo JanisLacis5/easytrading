@@ -3,20 +3,23 @@ import "../Login/login.css"
 import userIcon from "../../assets/user-icon.svg"
 import infoIcon from "../../assets/info-icon.svg"
 import passwordIcon from "../../assets/password-icon.svg"
-import {useState} from "react"
 import customFetch from "../../utils"
 import {toast} from "react-toastify"
-import md5 from "md5"
 import {useGlobalContext} from "../../context/globalContext"
 import {useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
-import {login, setIsLoading, setIsNotLoading} from "../../features/userSlice"
+import {setIsLoading, setIsNotLoading} from "../../features/userSlice"
 import {passwordRequirements} from "../../functions"
 
 const SignupForm = () => {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
+    const {
+        email,
+        setEmail,
+        password,
+        setPassword,
+        confirmPassword,
+        setConfirmPassword,
+    } = useGlobalContext()
 
     const {isHovered, setIsHovered, isMetReq, setIsMetReq} = useGlobalContext()
     const {isLoading} = useSelector((store) => store.user)
@@ -26,39 +29,34 @@ const SignupForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // dispatch(setIsLoading())
-        // if (password === confirmPassword) {
-        //     // if (!passwordRequirements(password)) {
-        //     //     setIsMetReq(false)
-        //     //     setPassword("")
-        //     //     setConfirmPassword("")
-        //     //     return
-        //     // }
-        //     const {data} = await customFetch.post("/signup", {
-        //         email: email,
-        //         password: md5(password),
-        //     })
-        //     setEmail("")
-        //     setIsMetReq(true)
-        //     setPassword("")
-        //     setConfirmPassword("")
-        //     if (data.message !== "success") {
-        //         dispatch(setIsNotLoading())
-        //         toast.error(data.message)
-        //         return
-        //     }
-        //     localStorage.setItem("token", data.token)
-        //     dispatch(login({id: data.id}))
-        //     toast.success("success")
-        //     navigate("/dashboard")
-        // } else {
-        //     dispatch(setIsNotLoading())
-        //     toast.error("Passwords do not match")
-        //     setEmail("")
-        //     setPassword("")
-        //     setConfirmPassword("")
-        // }
-        navigate("/signup/form")
+        if (password === confirmPassword) {
+            dispatch(setIsLoading())
+            const {data} = await customFetch.post("/checkuser", {email: email})
+            if (data.message === "success") {
+                if (!passwordRequirements(password)) {
+                    dispatch(setIsNotLoading())
+                    setIsMetReq(false)
+                    setPassword("")
+                    setConfirmPassword("")
+                    return
+                }
+                dispatch(setIsNotLoading())
+                setIsMetReq(true)
+                navigate("/signup/form")
+            } else {
+                dispatch(setIsNotLoading())
+                toast.error(data.message)
+                setEmail("")
+                setPassword("")
+                setConfirmPassword("")
+            }
+        } else {
+            dispatch(setIsNotLoading())
+            toast.error("Passwords do not match")
+            setEmail("")
+            setPassword("")
+            setConfirmPassword("")
+        }
     }
 
     if (isLoading) {
@@ -79,7 +77,7 @@ const SignupForm = () => {
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    // required
+                    required
                 />
             </div>
             <div className="signup-input">
@@ -94,7 +92,7 @@ const SignupForm = () => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    // required
+                    required
                 />
                 <img
                     src={infoIcon}
@@ -125,7 +123,7 @@ const SignupForm = () => {
                     placeholder="Confirm Password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    // required
+                    required
                 />
             </div>
             <button type="submit" className="login-button">

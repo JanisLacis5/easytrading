@@ -23,6 +23,11 @@ const AppContext = ({children}) => {
     // MODAL
     const [showModal, setShowModal] = useState(false)
 
+    //USER INFO FORM
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+
     return (
         <GlobalContext.Provider
             value={{
@@ -46,6 +51,12 @@ const AppContext = ({children}) => {
                 setIsMetReq,
                 showModal,
                 setShowModal,
+                email,
+                setEmail,
+                password,
+                setPassword,
+                confirmPassword,
+                setConfirmPassword,
             }}>
             {children}
         </GlobalContext.Provider>
