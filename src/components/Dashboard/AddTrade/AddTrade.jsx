@@ -5,6 +5,7 @@ import customFetch from "../../../utils"
 import {useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
 import {login} from "../../../features/userSlice"
+import {toast} from "react-toastify"
 
 const AddTrade = () => {
     const navigate = useNavigate()
@@ -37,14 +38,28 @@ const AddTrade = () => {
             time: time,
             action: action,
         })
-        dispatch(login({id: data.id, trades: data.trades}))
+        const infoUpdate = await customFetch.post("/updateaccbalance", {
+            id: user.id,
+            setAcc: accAfter,
+        })
+        if (infoUpdate.data.message === "success") {
+            dispatch(
+                login({
+                    id: data.id,
+                    trades: data.trades,
+                    info: infoUpdate.data.info,
+                })
+            )
+            navigate("/dashboard")
+        } else {
+            toast.error("There was an error")
+        }
         setStock("")
         setAccBefore("")
         setAccAfter("")
         setDate("")
         setTime("")
         setAction("")
-        navigate("/dashboard")
     }
 
     return (

@@ -45,6 +45,7 @@ const SignupInfoForm = () => {
                 firstName,
                 lastName,
                 username,
+                startingAccount: account,
                 account,
                 image,
             },

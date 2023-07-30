@@ -46,7 +46,6 @@ const userSlice = createSlice({
         },
         login: (state, {payload}) => {
             const trades = payload.trades || []
-            console.log(payload)
             localStorage.setItem("userId", JSON.stringify(payload.id))
             localStorage.setItem("userTrades", JSON.stringify(trades))
             localStorage.setItem("userInfo", JSON.stringify(payload.info))
@@ -66,6 +65,7 @@ const userSlice = createSlice({
                     ...state.user,
                     id: payload.id,
                     trades: reverseTrades,
+                    info: payload.info,
                 },
             }
         },

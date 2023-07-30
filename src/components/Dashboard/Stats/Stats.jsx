@@ -22,16 +22,28 @@ const Stats = () => {
             <h1 className="graph-title">Statistics</h1>
             <div className="detailed-stats-table">
                 <div>
-                    {/* TODO */}
                     <span>Your starting account balance: </span>
+                    <span>${user.info.startingAccount}</span>
                 </div>
                 <div>
-                    {/* TODO */}
                     <span>Your account balance now: </span>
+                    <span>${user.info.account}</span>
                 </div>
                 <div>
-                    {/* TODO */}
-                    <span>Account increase / decrease: </span>
+                    <span>Account P/L (%):</span>
+                    <span
+                        style={{
+                            color:
+                                countSt.totalProfit > 0
+                                    ? "var(--color-trade-green)"
+                                    : "var(--color-trade-red)",
+                        }}>
+                        {(
+                            (countSt.totalProfit / user.info.startingAccount) *
+                            100
+                        ).toFixed(0)}
+                        %
+                    </span>
                 </div>
                 <div>
                     <span>Account P/L </span>

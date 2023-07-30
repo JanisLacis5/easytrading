@@ -27,6 +27,11 @@ export const wonPl = (trades) => {
             temp = 0
         }
         temp += sortedTrades[i].pl
+        if (i === sortedTrades.length - 1) {
+            if (temp > 0) {
+                wonTradeDays.push(temp)
+            }
+        }
     }
 
     return {
