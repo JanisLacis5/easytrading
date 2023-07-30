@@ -1,0 +1,30 @@
+.user-button {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 50%;
+    height: 70%;
+    position: relative;
+}
+
+.user-button-profile-picture {
+    height: 100%;
+}
+
+.user-button-profile-picture img {
+    height: inherit;
+}
+
+.user-button button {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.user-button button h3 {
+    margin: 0;
+}
+
+.user-button button p {
+    font-size: 0.7rem;
+    height: 100%;
+    margin: 0;
+}

@@ -2,6 +2,7 @@ import {Link, useNavigate} from "react-router-dom"
 import "./navbar.css"
 import {useDispatch, useSelector} from "react-redux"
 import {logout, setIsLoading} from "../../features/userSlice"
+import UserButton from "../User/UserButton"
 
 const Navbar = () => {
     const dispatch = useDispatch()
@@ -39,16 +40,17 @@ const Navbar = () => {
                     </Link>
                 )}
                 {isLogged ? (
-                    <button
-                        type="button"
-                        className="login-btn"
-                        onClick={() => {
-                            dispatch(logout())
-                            dispatch(setIsLoading())
-                            navigate("/landing")
-                        }}>
-                        Logout
-                    </button>
+                    // <button
+                    //     type="button"
+                    //     className="login-btn"
+                    //     onClick={() => {
+                    //         dispatch(logout())
+                    //         dispatch(setIsLoading())
+                    //         navigate("/landing")
+                    //     }}>
+                    //     Logout
+                    // </button>
+                    <UserButton />
                 ) : (
                     <Link className="login-btn" to="/login">
                         Login

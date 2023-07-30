@@ -33,13 +33,13 @@ const SignupForm = () => {
             dispatch(setIsLoading())
             const {data} = await customFetch.post("/checkuser", {email: email})
             if (data.message === "success") {
-                if (!passwordRequirements(password)) {
-                    dispatch(setIsNotLoading())
-                    setIsMetReq(false)
-                    setPassword("")
-                    setConfirmPassword("")
-                    return
-                }
+                // if (!passwordRequirements(password)) {
+                //     dispatch(setIsNotLoading())
+                //     setIsMetReq(false)
+                //     setPassword("")
+                //     setConfirmPassword("")
+                //     return
+                // }
                 dispatch(setIsNotLoading())
                 setIsMetReq(true)
                 navigate("/signup/form")
