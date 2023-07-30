@@ -44,6 +44,11 @@ const SignupInfoForm = () => {
                             <img src={image} alt="profile picture" />
                         </label>
                     </div>
+                    <p>
+                        *for better image design it would be great to choose
+                        image with aspect ratio oh 1:1 of crop your chosen image
+                        to this aspect ratio
+                    </p>
                 </div>
                 <div className="signup-info-form-input-container">
                     <div className="signup-info-form-field">
