@@ -1,13 +1,17 @@
+/* USER BUTTON */
+
 .user-button {
     display: grid;
     grid-template-columns: 1fr 2fr;
     width: 60%;
     height: 80%;
     margin-left: 15%;
+    position: absolute;
 }
 
 .user-button-profile-picture {
     height: 100%;
+    position: relative;
 }
 
 .user-button-profile-picture div {
@@ -57,4 +61,88 @@
 
 .user-button button p span {
     color: var(--color-grey-300);
+}
+
+/* USER PAGE */
+
+.user-page {
+    height: 100vh;
+    width: 100%;
+    padding: 6.5rem 1rem 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-page-container {
+    width: 70%;
+    background-color: var(--color-grey-900);
+    height: 90%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 2fr;
+    padding: 1rem;
+}
+
+.user-page-image,
+.user-page-main-info,
+.user-page-aside,
+.user-page-content {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    color: var(--color-grey-300);
+}
+
+.user-page-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-page-image img {
+    position: absolute;
+    height: 90%;
+    border-radius: 50%;
+    background-color: var(--color-grey-400);
+}
+
+.user-page-main-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-page-main-info h2 {
+    font-size: 3rem;
+}
+
+.user-page-main-info h4 {
+    text-transform: none;
+    font-weight: 100;
+    margin-top: 1.5rem;
+    color: var(--color-grey-400);
+}
+
+.user-page-link-container {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user-page-aside a {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: var(--color-grey-400);
+}
+
+.user-page-aside a:last-child {
+    color: var(--color-trade-red);
 }

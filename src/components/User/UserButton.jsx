@@ -19,9 +19,7 @@ const UserButton = () => {
     return (
         <div className="user-button">
             <div className="user-button-profile-picture">
-                <div>
-                    <img src={info.image} alt="profile picture" />
-                </div>
+                <img src={info.image} alt="profile picture" />
             </div>
             <button
                 onClick={() => {

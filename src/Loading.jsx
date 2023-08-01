@@ -25,6 +25,6 @@ const Loading = () => {
         getData()
     }, [])
 
-    return <h1>Loading...</h1>
+    return <div className="loading"></div>
 }
 export default Loading

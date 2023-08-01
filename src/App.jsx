@@ -18,6 +18,11 @@ import {
     Calendar,
     SignupInfoForm,
     SignupLayout,
+    UserPage,
+    UserUpdateForm,
+    UserPricingPlan,
+    UserNotes,
+    UserDangerZone,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -112,6 +117,28 @@ function App() {
                 {
                     path: "contact",
                     element: <Contact />,
+                },
+                {
+                    path: "userpage",
+                    element: <UserPage />,
+                    children: [
+                        {
+                            path: "updates",
+                            element: <UserUpdateForm />,
+                        },
+                        {
+                            path: "pricing",
+                            element: <UserPricingPlan />,
+                        },
+                        {
+                            path: "notes",
+                            element: <UserNotes />,
+                        },
+                        {
+                            path: "danger",
+                            element: <UserDangerZone />,
+                        },
+                    ],
                 },
             ],
         },
