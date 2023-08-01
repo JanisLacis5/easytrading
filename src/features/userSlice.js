@@ -49,7 +49,7 @@ const userSlice = createSlice({
             localStorage.setItem("userId", JSON.stringify(payload.id))
             localStorage.setItem("userTrades", JSON.stringify(trades))
             localStorage.setItem("userInfo", JSON.stringify(payload.info))
-            let reverseTrades = payload.trades
+            let reverseTrades = [...trades]
             if (payload.trades && payload.trades.length) {
                 reverseTrades = reverseTrades.reverse()
             }

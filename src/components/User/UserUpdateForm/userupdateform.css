@@ -1,0 +1,111 @@
+.user-update-form {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.user-update-form-input {
+    height: 100%;
+}
+
+.floating {
+    height: 30%;
+    width: 50%;
+    position: relative;
+}
+
+.user-update-form-input label {
+    position: absolute;
+    height: 50%;
+    top: 15%;
+    left: 0;
+    pointer-events: none;
+    transition: 0.4s ease all;
+    font-size: 15px;
+}
+
+.user-update-form-input input:empty {
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-grey-300);
+    width: 100%;
+    caret-color: var(--color-grey-300);
+    color: var(--color-grey-300);
+    font-size: 1rem;
+}
+
+.user-update-form-input input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--color-grey-300);
+}
+
+.user-update-form-input input:focus ~ label {
+    top: -20px;
+    font-size: 12px;
+}
+
+.user-update-form-input .label-up {
+    top: -20px;
+    font-size: 12px;
+}
+
+.default-class {
+    height: 100%;
+}
+
+.user-update-form-submit {
+    height: 50%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.user-update-form-submit button {
+    height: 100%;
+    width: 35%;
+    background-color: var(--color-background);
+    color: var(--color-grey-300);
+    font-size: 1rem;
+    border: none;
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 1.5rem;
+}
+
+.user-update-form-submit button:hover {
+    opacity: 0.5;
+}
+
+.image-input {
+    height: 50%;
+    display: flex;
+    justify-content: start;
+}
+
+.image-input p {
+    font-size: 15px;
+    width: 20%;
+    height: 100%;
+}
+
+.image-input-button {
+    height: 100%;
+    width: 25%;
+}
+
+.image-input-button input {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.image-input-button label {
+    cursor: pointer;
+    height: 100%;
+    background-color: var(--color-grey-700);
+    padding: 0.7rem;
+    border-radius: 1rem;
+}

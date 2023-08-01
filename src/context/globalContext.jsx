@@ -28,6 +28,12 @@ const AppContext = ({children}) => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
+    // ACCOUNT UPDATE FORM
+    const [updatedUsername, setUpdatedUsername] = useState("")
+    const [updatedEmail, setUpdatedEmail] = useState("")
+    const [updatedAccountBalance, setUpdatedAccountBalance] = useState("")
+    const [updatedProfilePicture, setUpdatedProfilePicture] = useState("")
+
     return (
         <GlobalContext.Provider
             value={{
@@ -57,6 +63,14 @@ const AppContext = ({children}) => {
                 setPassword,
                 confirmPassword,
                 setConfirmPassword,
+                updatedUsername,
+                setUpdatedUsername,
+                updatedEmail,
+                setUpdatedEmail,
+                updatedAccountBalance,
+                setUpdatedAccountBalance,
+                updatedProfilePicture,
+                setUpdatedProfilePicture,
             }}>
             {children}
         </GlobalContext.Provider>

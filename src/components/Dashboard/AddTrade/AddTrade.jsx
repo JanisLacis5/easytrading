@@ -97,6 +97,7 @@ const AddTrade = () => {
                         name="acc-bef"
                         id="acc-bef"
                         placeholder="1000.00"
+                        defaultValue={user.info.account}
                         value={accBefore}
                         onChange={(e) => setAccBefore(e.target.value)}
                         required

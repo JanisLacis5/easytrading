@@ -123,7 +123,7 @@ function App() {
                     element: <UserPage />,
                     children: [
                         {
-                            path: "updates",
+                            index: true,
                             element: <UserUpdateForm />,
                         },
                         {
