@@ -19,7 +19,7 @@ const UserPage = () => {
                 </div>
                 <aside className="user-page-aside">
                     <div className="user-page-link-container">
-                        <Link to="/userpage/updates">Update info</Link>
+                        <Link to="/userpage">Update info</Link>
                         <Link to="/userpage/pricing">Pricing plans</Link>
                         <Link to="/userpage/notes">Notes</Link>
                         <Link to="/userpage/danger">Danger zone</Link>

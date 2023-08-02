@@ -1,0 +1,53 @@
+.danger-zone {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.danger-zone-action {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    border: 1px solid var(--color-trade-red);
+    padding: 1rem;
+}
+
+.danger-zone div:first-child {
+    margin-bottom: 3rem;
+}
+
+.danger-zone-action h4 {
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: var(--color-trade-red);
+}
+
+.danger-zone-action p {
+    font-size: 0.8rem;
+}
+
+.danger-zone-action div:last-child {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-top: 1.5rem;
+}
+
+.danger-zone-action button {
+    height: 20%;
+    width: 60%;
+    border: none;
+    border-radius: 2rem;
+    background-color: var(--color-trade-red);
+    color: var(--color-grey-300);
+    font-size: 0.83rem;
+    cursor: pointer;
+}
+
+.danger-zone-action button:hover {
+    opacity: 0.5;
+}
