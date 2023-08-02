@@ -96,10 +96,6 @@ p {
     border-radius: 24px;
 }
 
-.signup-info-form-input-container button:hover {
-    opacity: 0.5;
-}
-
 /* PROFILE PICTURE */
 
 .signup-info-form-profile-pic {

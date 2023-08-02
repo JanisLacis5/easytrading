@@ -28,10 +28,6 @@
     color: var(--color-grey-300);
 }
 
-.dashboard-page:hover {
-    opacity: 0.5;
-}
-
 .default-dashboard-graph {
     width: 100%;
     height: 100%;

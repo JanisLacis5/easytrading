@@ -41,16 +41,15 @@ const SignupInfoForm = () => {
 
         const {data} = await customFetch.post("/signup", {
             email: email,
-            userData: [
-                {
-                    firstName,
-                    lastName,
-                    username,
-                    startingAccount: account,
-                    account,
-                    image,
-                },
-            ],
+            userData: {
+                firstName,
+                lastName,
+                username,
+                startingAccount: account,
+                account,
+                image,
+            },
+
             password: md5(password),
         })
         if (data.message !== "success") {

@@ -44,6 +44,11 @@ img {
     display: block;
 }
 
+button:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
 h1,
 h2,
 h3,

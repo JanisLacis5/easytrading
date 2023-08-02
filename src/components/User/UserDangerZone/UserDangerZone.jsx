@@ -1,6 +1,16 @@
+import {useGlobalContext} from "../../../context/globalContext"
+import ChangePasswordForm from "./ChangePasswordForm"
 import "./userdangerzone.css"
 
 const UserDangerZone = () => {
+    const {changePassword, setChangePassword} = useGlobalContext()
+
+    const {isDelete, setIsDelete} = useGlobalContext()
+
+    if (changePassword) {
+        return <ChangePasswordForm />
+    }
+
     return (
         <div className="danger-zone">
             <div className="danger-zone-action">
@@ -13,7 +23,11 @@ const UserDangerZone = () => {
                     </p>
                 </div>
                 <div>
-                    <button type="button">Change Password</button>
+                    <button
+                        type="button"
+                        onClick={() => setChangePassword(true)}>
+                        Change Password
+                    </button>
                 </div>
             </div>
             <div className="danger-zone-action">
@@ -25,7 +39,9 @@ const UserDangerZone = () => {
                     </p>
                 </div>
                 <div>
-                    <button type="button">Delete Profile</button>
+                    <button type="button" onClick={() => setIsDelete(true)}>
+                        Delete Profile
+                    </button>
                 </div>
             </div>
         </div>

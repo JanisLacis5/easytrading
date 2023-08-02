@@ -4,7 +4,7 @@ const GlobalContext = createContext()
 export const useGlobalContext = () => useContext(GlobalContext)
 
 const AppContext = ({children}) => {
-    const [isHovered, setIsHovered] = useState(false)
+    const [isRequirements, setIsRequirements] = useState(false)
 
     // ADD TRADE FORM
     const [stock, setStock] = useState("")
@@ -34,11 +34,16 @@ const AppContext = ({children}) => {
     const [updatedAccountBalance, setUpdatedAccountBalance] = useState("")
     const [updatedProfilePicture, setUpdatedProfilePicture] = useState("")
 
+    // DANGER ZONE
+    const [changePassword, setChangePassword] = useState(false)
+    const [isDelete, setIsDelete] = useState(false)
+    const [askPassword, setAskPassword] = useState(false)
+
     return (
         <GlobalContext.Provider
             value={{
-                isHovered,
-                setIsHovered,
+                isRequirements,
+                setIsRequirements,
                 stock,
                 setStock,
                 accBefore,
@@ -71,6 +76,12 @@ const AppContext = ({children}) => {
                 setUpdatedAccountBalance,
                 updatedProfilePicture,
                 setUpdatedProfilePicture,
+                changePassword,
+                setChangePassword,
+                isDelete,
+                setIsDelete,
+                askPassword,
+                setAskPassword,
             }}>
             {children}
         </GlobalContext.Provider>

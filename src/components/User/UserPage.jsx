@@ -1,12 +1,16 @@
 import {useSelector} from "react-redux"
 import {Link, Outlet} from "react-router-dom"
+import {useGlobalContext} from "../../context/globalContext"
+import DeleteProfileModal from "../../components/User/UserDangerZone/DeleteProfileModal"
 
 const UserPage = () => {
     const {user} = useSelector((store) => store.user)
+    const {isDelete} = useGlobalContext()
     const info = user.info
 
     return (
         <div className="user-page">
+            {isDelete && <DeleteProfileModal />}
             <div className="user-page-container">
                 <div className="user-page-image">
                     <img src={info.image} alt="user profile picture" />

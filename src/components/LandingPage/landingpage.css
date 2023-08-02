@@ -69,6 +69,3 @@ main {
     align-items: center;
     justify-content: center;
 }
-.landing-button:hover {
-    opacity: 0.5;
-}

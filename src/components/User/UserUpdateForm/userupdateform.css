@@ -75,10 +75,6 @@
     border-radius: 1.5rem;
 }
 
-.user-update-form-submit button:hover {
-    opacity: 0.5;
-}
-
 .image-input {
     height: 50%;
     display: flex;

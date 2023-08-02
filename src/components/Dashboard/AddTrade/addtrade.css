@@ -132,8 +132,3 @@ label#pl-label {
     color: var(--color-grey-300);
     font-size: 1.5rem;
 }
-
-.addtrade-btn button:hover {
-    opacity: 0.5;
-    cursor: pointer;
-}

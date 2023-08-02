@@ -3,7 +3,7 @@ import "./signup.css"
 const Requirements = () => {
     return (
         <div className="password-requirements">
-            Password must contain at least :
+            <h2>Password must contain at least :</h2>
             <ul>
                 <li>
                     <h4>8 characters</h4>

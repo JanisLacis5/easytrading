@@ -21,7 +21,8 @@ const SignupForm = () => {
         setConfirmPassword,
     } = useGlobalContext()
 
-    const {isHovered, setIsHovered, isMetReq, setIsMetReq} = useGlobalContext()
+    const {isRequirements, setIsRequirements, isMetReq, setIsMetReq} =
+        useGlobalContext()
     const {isLoading} = useSelector((store) => store.user)
 
     const navigate = useNavigate()
@@ -98,7 +99,7 @@ const SignupForm = () => {
                     src={infoIcon}
                     alt="info-icon"
                     className="info-icon"
-                    onClick={() => setIsHovered(!isHovered)}
+                    onClick={() => setIsRequirements(!isRequirements)}
                 />
                 <h6
                     className={

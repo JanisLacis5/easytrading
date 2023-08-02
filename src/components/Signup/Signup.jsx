@@ -6,7 +6,7 @@ import {useGlobalContext} from "../../context/globalContext"
 import Requirements from "./Requirements"
 
 const Signup = () => {
-    const {isHovered} = useGlobalContext()
+    const {isRequirements} = useGlobalContext()
 
     return (
         <main>
@@ -21,7 +21,7 @@ const Signup = () => {
                     <div className="social-signup">
                         <div
                             className={
-                                isHovered ? "password-show" : "password"
+                                isRequirements ? "password-show" : "password"
                             }>
                             <Requirements />
                         </div>

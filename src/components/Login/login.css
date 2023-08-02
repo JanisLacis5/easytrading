@@ -91,10 +91,6 @@
     color: var(--color-grey-50);
 }
 
-.login-button:hover {
-    opacity: 0.3;
-}
-
 .social-login {
     display: flex;
     align-items: center;
@@ -124,10 +120,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-}
-
-.social-button:hover {
-    opacity: 0.5;
 }
 
 .social-icon {
