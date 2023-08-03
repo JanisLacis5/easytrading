@@ -35,6 +35,7 @@ const AppContext = ({children}) => {
     const [account, setAccount] = useState("")
     const [image, setImage] = useState(userIcon)
     const [pricingPlan, setPricingPlan] = useState("")
+    const [changePlan, setChangePlan] = useState(false)
 
     // ACCOUNT UPDATE FORM
     const [updatedUsername, setUpdatedUsername] = useState("")
@@ -104,6 +105,8 @@ const AppContext = ({children}) => {
                 setImage,
                 pricingPlan,
                 setPricingPlan,
+                changePlan,
+                setChangePlan,
             }}>
             {children}
         </GlobalContext.Provider>

@@ -44,7 +44,8 @@ img {
     display: block;
 }
 
-button:hover {
+button:hover,
+a:hover {
     opacity: 0.5;
     cursor: pointer;
 }

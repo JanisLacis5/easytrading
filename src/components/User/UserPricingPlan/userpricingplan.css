@@ -1,0 +1,49 @@
+.pricing-plan {
+    height: 50%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pricing-plan h2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    color: var(--color-grey-400);
+}
+
+.pricing-plan span {
+    scale: 1.1;
+    color: var(--color-grey-300);
+}
+
+.pricing-plan div {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.pricing-plan a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 60%;
+    border: none;
+    background-color: var(--color-grey-800);
+    border-radius: 2rem;
+    color: var(--color-grey-300);
+    font-size: 1rem;
+}
+
+.pricing-plan a:first-child {
+    background-color: var(--color-trade-green);
+}
+
+.pricing-plan div a.pricing-pro {
+    background-color: var(--color-grey-800);
+}

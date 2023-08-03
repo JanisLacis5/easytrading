@@ -4,7 +4,7 @@ import {useGlobalContext} from "../../context/globalContext"
 import {toast} from "react-toastify"
 import customFetch from "../../utils"
 import {login, setIsLoading, setIsNotLoading} from "../../features/userSlice"
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import md5 from "md5"
 import userIcon from "../../assets/user-icon.svg"
 import {useEffect, useState} from "react"
@@ -13,7 +13,7 @@ const Pricing = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const [isClicked, setIsClicked] = useState("")
+    const {user} = useSelector((store) => store.user)
 
     const {
         choosePricing,
@@ -35,6 +35,8 @@ const Pricing = () => {
         setUsername,
         setAccount,
         setImage,
+        changePlan,
+        setChangePlan,
     } = useGlobalContext()
 
     const handleSubmit = async () => {
@@ -45,6 +47,32 @@ const Pricing = () => {
         }
 
         dispatch(setIsLoading())
+
+        if (changePlan) {
+            if (pricingPlan === user.info.pricing) {
+                toast.success("This is your current plan")
+                dispatch(setIsNotLoading())
+                setChangePlan(false)
+                setChoosePricing(false)
+                setPricingPlan("")
+                navigate("/dashboard")
+                return
+            }
+            const {data} = await customFetch.post("/changeplan", {
+                plan: pricingPlan,
+                id: user.id,
+            })
+            dispatch(login({id: user.id, info: data.info}))
+            dispatch(setIsNotLoading())
+            toast.success(
+                `Plan succesfully updated to "${`${data.info.pricing.toUpperCase()}`}"`
+            )
+            setChangePlan(false)
+            setChoosePricing(false)
+            setPricingPlan("")
+            navigate("/dashboard")
+            return
+        }
 
         const {data} = await customFetch.post("/signup", {
             email: email,
@@ -78,6 +106,7 @@ const Pricing = () => {
         setAccount("")
         setImage(userIcon)
         setChoosePricing(false)
+        setPricingPlan("")
         dispatch(login({id: data.id, info: data.info}))
         toast.success("success")
         dispatch(setIsNotLoading())
@@ -110,7 +139,9 @@ const Pricing = () => {
                                 type="button"
                                 className="price-button"
                                 value="free"
-                                onClick={(e) => setPricingPlan(e.target.value)}>
+                                onClick={(e) => {
+                                    setPricingPlan(e.target.value)
+                                }}>
                                 Start free
                             </button>
                         </div>
