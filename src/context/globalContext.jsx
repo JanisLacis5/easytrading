@@ -1,4 +1,5 @@
 import {useContext, createContext, useState} from "react"
+import userIcon from "../assets/user-icon.svg"
 
 const GlobalContext = createContext()
 export const useGlobalContext = () => useContext(GlobalContext)
@@ -27,6 +28,13 @@ const AppContext = ({children}) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const [choosePricing, setChoosePricing] = useState(false)
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [username, setUsername] = useState("")
+    const [account, setAccount] = useState("")
+    const [image, setImage] = useState(userIcon)
+    const [pricingPlan, setPricingPlan] = useState("")
 
     // ACCOUNT UPDATE FORM
     const [updatedUsername, setUpdatedUsername] = useState("")
@@ -82,6 +90,20 @@ const AppContext = ({children}) => {
                 setIsDelete,
                 askPassword,
                 setAskPassword,
+                choosePricing,
+                setChoosePricing,
+                firstName,
+                setFirstName,
+                lastName,
+                setLastName,
+                username,
+                setUsername,
+                account,
+                setAccount,
+                image,
+                setImage,
+                pricingPlan,
+                setPricingPlan,
             }}>
             {children}
         </GlobalContext.Provider>

@@ -1,4 +1,3 @@
-import {useState} from "react"
 import userIcon from "../../../assets/user-icon.svg"
 import "./signupinfoform.css"
 import {useDispatch} from "react-redux"
@@ -13,14 +12,26 @@ const SignupInfoForm = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [username, setUsername] = useState("")
-    const [account, setAccount] = useState("")
-    const [image, setImage] = useState(userIcon)
-
-    const {email, setEmail, password, setPassword, setConfirmPassword} =
-        useGlobalContext()
+    const {
+        email,
+        setEmail,
+        password,
+        setPassword,
+        setConfirmPassword,
+        choosePricing,
+        setChoosePricing,
+        firstName,
+        setFirstName,
+        lastName,
+        setLastName,
+        username,
+        setUsername,
+        account,
+        setAccount,
+        image,
+        setImage,
+        pricingPlan,
+    } = useGlobalContext()
 
     const temp = (e) => {
         const tgt = e.target
@@ -38,16 +49,25 @@ const SignupInfoForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         dispatch(setIsLoading())
-
+        if (!choosePricing) {
+            console.log(3)
+            setChoosePricing(true)
+            navigate("/pricing")
+            dispatch(setIsNotLoading())
+            return
+        }
+        console.log(4)
         const {data} = await customFetch.post("/signup", {
             email: email,
             userData: {
+                email,
                 firstName,
                 lastName,
                 username,
                 startingAccount: account,
                 account,
                 image,
+                pricing: pricingPlan,
             },
 
             password: md5(password),
@@ -61,8 +81,15 @@ const SignupInfoForm = () => {
         setEmail("")
         setPassword("")
         setConfirmPassword("")
+        setFirstName("")
+        setLastName("")
+        setUsername("")
+        setAccount("")
+        setImage(userIcon)
+        setChoosePricing(false)
         dispatch(login({id: data.id, info: data.info}))
         toast.success("success")
+        dispatch(setIsNotLoading())
         navigate("/dashboard")
     }
 
