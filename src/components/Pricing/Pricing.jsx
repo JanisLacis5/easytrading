@@ -7,10 +7,13 @@ import {login, setIsLoading, setIsNotLoading} from "../../features/userSlice"
 import {useDispatch} from "react-redux"
 import md5 from "md5"
 import userIcon from "../../assets/user-icon.svg"
+import {useEffect, useState} from "react"
 
 const Pricing = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    const [isClicked, setIsClicked] = useState("")
 
     const {
         choosePricing,
@@ -34,8 +37,7 @@ const Pricing = () => {
         setImage,
     } = useGlobalContext()
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    const handleSubmit = async () => {
         if (!choosePricing) {
             setChoosePricing(true)
             navigate("/signup")
@@ -82,10 +84,11 @@ const Pricing = () => {
         navigate("/dashboard")
     }
 
-    const onClickFunc = (e) => {
-        setPricingPlan(e.target.id)
-        handleSubmit(e)
-    }
+    useEffect(() => {
+        if (pricingPlan) {
+            handleSubmit()
+        }
+    }, [pricingPlan])
 
     return (
         <main>
@@ -106,8 +109,8 @@ const Pricing = () => {
                             <button
                                 type="button"
                                 className="price-button"
-                                id="free"
-                                onClick={onClickFunc}>
+                                value="free"
+                                onClick={(e) => setPricingPlan(e.target.value)}>
                                 Start free
                             </button>
                         </div>
@@ -127,8 +130,8 @@ const Pricing = () => {
                             <button
                                 type="button"
                                 className="price-button"
-                                id="basic"
-                                onClick={onClickFunc}>
+                                value="basic"
+                                onClick={(e) => setPricingPlan(e.target.value)}>
                                 10.00 $/month
                             </button>
                         </div>
@@ -148,8 +151,8 @@ const Pricing = () => {
                             <button
                                 type="button"
                                 className="price-button"
-                                id="pro"
-                                onClick={onClickFunc}>
+                                value="pro"
+                                onClick={(e) => setPricingPlan(e.target.value)}>
                                 35.00 $/month
                             </button>
                         </div>

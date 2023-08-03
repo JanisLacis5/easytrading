@@ -50,13 +50,12 @@ const SignupInfoForm = () => {
         e.preventDefault()
         dispatch(setIsLoading())
         if (!choosePricing) {
-            console.log(3)
             setChoosePricing(true)
             navigate("/pricing")
             dispatch(setIsNotLoading())
             return
         }
-        console.log(4)
+
         const {data} = await customFetch.post("/signup", {
             email: email,
             userData: {
