@@ -23,9 +23,7 @@ const UserButton = () => {
             </div>
             <button
                 onClick={() => {
-                    dispatch(logout())
-                    dispatch(setIsLoading())
-                    navigate("/landing")
+                    navigate("/userpage")
                 }}>
                 <h3>{info?.username}</h3>
                 <p>

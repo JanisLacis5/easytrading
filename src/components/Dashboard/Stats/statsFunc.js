@@ -8,6 +8,9 @@ export const minPl = (trades) => {
 
 export const wonPl = (trades) => {
     let a = [...trades]
+    if (!a.length) {
+        return {averageWonDayPl: 0, maxWonDayPl: 0, biggestWin: 0, wonDays: 0}
+    }
     let sortedTrades = a.sort((a, b) => {
         const date1 = Number(a.date.replaceAll("-", ""))
         const date2 = Number(b.date.replaceAll("-", ""))
@@ -16,9 +19,9 @@ export const wonPl = (trades) => {
 
     let wonTradeDays = []
     let tempDate = sortedTrades[0].date
-    let temp = sortedTrades[0].pl
+    let temp = 0
 
-    for (let i = 1; i < sortedTrades.length; i++) {
+    for (let i = 0; i < sortedTrades.length; i++) {
         if (tempDate !== sortedTrades[i].date) {
             tempDate = sortedTrades[i].date
             if (temp > 0) {
@@ -46,6 +49,15 @@ export const wonPl = (trades) => {
 
 export const lostPl = (trades) => {
     let a = [...trades]
+
+    if (!a.length) {
+        return {
+            averageLostDayPl: 0,
+            biggestLostDayPl: 0,
+            biggestLoss: 0,
+            lostDays: 0,
+        }
+    }
     let sortedTrades = a.sort((a, b) => {
         const date1 = Number(a.date.replaceAll("-", ""))
         const date2 = Number(b.date.replaceAll("-", ""))
@@ -54,9 +66,9 @@ export const lostPl = (trades) => {
 
     let lostTradeDays = []
     let tempDate = sortedTrades[0].date
-    let temp = sortedTrades[0].pl
+    let temp = 0
 
-    for (let i = 1; i < sortedTrades.length; i++) {
+    for (let i = 0; i < sortedTrades.length; i++) {
         if (tempDate !== sortedTrades[i].date) {
             tempDate = sortedTrades[i].date
             if (temp < 0) {
@@ -71,13 +83,18 @@ export const lostPl = (trades) => {
             }
         }
     }
+    console.log(lostTradeDays)
 
     return {
         averageLostDayPl:
-            lostTradeDays.reduce((acc, val) => acc + val, 0) /
-            lostTradeDays.length,
-        biggestLostDayPl: Math.min(...lostTradeDays),
-        biggestLoss: Math.min(...a.map((o) => o.pl)),
+            lostTradeDays.length === 0
+                ? 0
+                : lostTradeDays.reduce((acc, val) => acc + val, 0) /
+                  lostTradeDays.length,
+        biggestLostDayPl:
+            lostTradeDays.length === 0 ? 0 : Math.min(...lostTradeDays),
+        biggestLoss:
+            lostTradeDays.length === 0 ? 0 : Math.min(...a.map((o) => o.pl)),
         lostDays: lostTradeDays.length,
     }
 }

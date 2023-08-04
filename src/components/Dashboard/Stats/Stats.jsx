@@ -17,6 +17,10 @@ const Stats = () => {
         setCountSt(countStats(user.trades))
     }, [user.trades])
 
+    useEffect(() => {
+        console.log(lostPlState)
+    }, [user.trades])
+
     return (
         <div className="detailed-stats">
             <h1 className="graph-title">Statistics</h1>
@@ -34,7 +38,9 @@ const Stats = () => {
                     <span
                         style={{
                             color:
-                                countSt.totalProfit > 0
+                                countSt.totalProfit === 0
+                                    ? "var(--color-grey-300)"
+                                    : countSt.totalProfit > 0
                                     ? "var(--color-trade-green)"
                                     : "var(--color-trade-red)",
                         }}>
@@ -51,11 +57,13 @@ const Stats = () => {
                         className="detailed-stats-stat"
                         style={{
                             color:
-                                countSt.totalProfit > 0
+                                countSt.totalProfit === 0
+                                    ? "var(--color-grey-300)"
+                                    : countSt.totalProfit > 0
                                     ? "var(--color-trade-green)"
                                     : "var(--color-trade-red)",
                         }}>
-                        {countSt.totalProfit && countSt.totalProfit > 0
+                        {countSt.totalProfit >= 0
                             ? `$${countSt.totalProfit.toFixed(2)}`
                             : `-$${(countSt.totalProfit * -1).toFixed(2)}`}
                     </span>
@@ -65,10 +73,12 @@ const Stats = () => {
                     <span
                         className="detailed-stats-stat"
                         style={{
-                            color: "var(--color-trade-green)",
+                            color:
+                                wonPlState.averageWonDayPl === 0
+                                    ? "var(--color-grey-300)"
+                                    : "var(--color-trade-green)",
                         }}>
-                        {wonPlState.averageWonDayPl &&
-                        wonPlState.averageWonDayPl > 0
+                        {wonPlState.averageWonDayPl >= 0
                             ? `$${wonPlState.averageWonDayPl.toFixed(2)}`
                             : `-$${(wonPlState.averageWonDayPl * -1).toFixed(
                                   2
@@ -80,7 +90,10 @@ const Stats = () => {
                     <span
                         className="detailed-stats-stat"
                         style={{
-                            color: "var(--color-trade-red)",
+                            color:
+                                lostPlState.averageLostDayPl === 0
+                                    ? "var(--color-grey-300)"
+                                    : "var(--color-trade-red)",
                         }}>
                         {lostPlState.averageLostDayPl &&
                             `-$${(lostPlState.averageLostDayPl * -1).toFixed(
@@ -93,7 +106,10 @@ const Stats = () => {
                     <span
                         className="detailed-stats-stat"
                         style={{
-                            color: "var(--color-trade-green)",
+                            color:
+                                wonPlState.biggestWin === 0
+                                    ? "var(--color-grey-300)"
+                                    : "var(--color-trade-green)",
                         }}>
                         {`$${wonPlState.biggestWin?.toFixed(2)}`}
                     </span>
@@ -103,7 +119,10 @@ const Stats = () => {
                     <span
                         className="detailed-stats-stat"
                         style={{
-                            color: "var(--color-trade-red)",
+                            color:
+                                lostPlState.biggestLoss === 0
+                                    ? "var(--color-grey-300)"
+                                    : "var(--color-trade-red)",
                         }}>
                         {lostPlState.biggestLoss &&
                             `-$${(lostPlState.biggestLoss * -1).toFixed(2)}`}
@@ -142,10 +161,12 @@ const Stats = () => {
                 <div>
                     <span>Won trades (%): </span>
                     <span className="detailed-stats-stat">
-                        {`${(
-                            (countSt.wonTrades / user.trades?.length) *
-                            100
-                        ).toFixed(0)}%`}
+                        {countSt.wonTrades === 0
+                            ? "0%"
+                            : `${(
+                                  (countSt.wonTrades / user.trades?.length) *
+                                  100
+                              ).toFixed(0)}%`}
                     </span>
                 </div>
             </div>

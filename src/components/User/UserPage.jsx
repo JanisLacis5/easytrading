@@ -1,12 +1,21 @@
-import {useSelector} from "react-redux"
-import {Link, Outlet} from "react-router-dom"
+import {useDispatch, useSelector} from "react-redux"
+import {Link, Outlet, useNavigate} from "react-router-dom"
 import {useGlobalContext} from "../../context/globalContext"
 import DeleteProfileModal from "../../components/User/UserDangerZone/DeleteProfileModal"
+import {logout} from "../../features/userSlice"
 
 const UserPage = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const {user} = useSelector((store) => store.user)
     const {isDelete} = useGlobalContext()
     const info = user.info
+
+    const logoutFunc = () => {
+        dispatch(logout())
+        navigate("/landing")
+    }
 
     return (
         <div className="user-page">
@@ -27,6 +36,11 @@ const UserPage = () => {
                         <Link to="/userpage/pricing">Pricing plans</Link>
                         <Link to="/userpage/notes">Notes</Link>
                         <Link to="/userpage/danger">Danger zone</Link>
+                    </div>
+                    <div>
+                        <button type="button" onClick={logoutFunc}>
+                            Logout
+                        </button>
                     </div>
                 </aside>
                 <div className="user-page-content">

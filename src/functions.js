@@ -87,6 +87,9 @@ export const profitableStocks = (trades) => {
 
 export const profitsPerDate = (trades) => {
     let temp = [...trades]
+    if (!temp.length) {
+        return 0
+    }
     const sortedArr = temp.sort((a, b) => {
         const date1 = Number(a.date.replaceAll("-", ""))
         const date2 = Number(b.date.replaceAll("-", ""))

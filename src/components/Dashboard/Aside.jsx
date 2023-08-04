@@ -42,9 +42,6 @@ const Aside = () => {
             <button className="dashboard-page" type="button">
                 Chatroom
             </button>
-            <Link className="dashboard-page" to="/userpage">
-                Test
-            </Link>
         </>
     )
 }
