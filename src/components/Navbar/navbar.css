@@ -7,7 +7,6 @@ nav {
     width: 100%;
     z-index: 1000;
     background-color: transparent;
-    position: absolute;
 }
 
 .logo h1 {

@@ -70,7 +70,7 @@ const userSlice = createSlice({
                     id: payload.id,
                     trades: reverseTrades,
                     info: payload.info,
-                    notes: payload.notes || [],
+                    notes: notes,
                 },
             }
         },

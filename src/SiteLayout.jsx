@@ -35,10 +35,10 @@ const SiteLayout = () => {
     }, [])
 
     return (
-        <>
+        <main>
             <Navbar />
             <Outlet />
-        </>
+        </main>
     )
 }
 export default SiteLayout

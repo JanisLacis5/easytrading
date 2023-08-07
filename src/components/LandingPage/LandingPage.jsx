@@ -18,7 +18,7 @@ const LandingPage = () => {
     }
 
     return (
-        <main>
+        <section className="landing-page">
             <img
                 className="background-image"
                 src={backImage}
@@ -31,16 +31,12 @@ const LandingPage = () => {
                 <div className="description">
                     <h3>Trading trackers, screeners and more</h3>
                     <div className="buttons">
-                        <Link className="landing-button" to="/about">
-                            Read more
-                        </Link>
-                        <Link to="/pricing" className="landing-button">
-                            Get Started
-                        </Link>
+                        <Link to="/about">Read more</Link>
+                        <Link to="/pricing">Get Started</Link>
                     </div>
                 </div>
             </div>
-        </main>
+        </section>
     )
 }
 export default LandingPage

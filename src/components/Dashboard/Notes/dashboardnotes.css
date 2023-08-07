@@ -1,0 +1,15 @@
+.dashboard-notes {
+    padding: var(--default-page-padding);
+}
+
+.dashboard-notes h1 {
+    color: var(--color-grey-300);
+    width: 100%;
+    text-align: center;
+}
+
+.dashboard-notes-container {
+    display: grid;
+    grid-auto-rows: 100%;
+    grid-template-columns: repeat(3, 1fr);
+}

@@ -29,6 +29,9 @@ const Aside = () => {
                     <Link className="secondary-link" to="/dashboard/log">
                         My Trades
                     </Link>
+                    <Link className="secondary-link" to="/dashboard/notes">
+                        Notes
+                    </Link>
                     <Link
                         className="secondary-link"
                         to="/dashboard/brokerlogin">

@@ -54,3 +54,67 @@ textarea:focus {
     font-size: 1.25rem;
     background-color: var(--color-grey-300);
 }
+
+/* NOTES PAGE */
+.user-notes {
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+    height: 100%;
+}
+
+.user-notes-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.user-note {
+    height: 100%;
+    padding: 1%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--color-grey-300);
+    color: var(--color-grey-950);
+}
+
+.user-note p {
+    margin-top: 5%;
+    width: 100%;
+    font-size: 0.75rem;
+}
+
+.user-note div {
+    height: 50%;
+    aspect-ratio: 3/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-note div img {
+    height: 100%;
+}
+
+.user-note a {
+    font-size: 0.65rem;
+    margin-top: auto;
+}
+
+.user-notes > div:last-child {
+    display: flex;
+    align-items: flex-end;
+}
+
+.user-notes > div:last-child a {
+    height: 70%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-grey-800);
+    color: var(--color-grey-300);
+    border-radius: 1.25rem;
+    border: none;
+}

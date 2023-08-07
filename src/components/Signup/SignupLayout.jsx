@@ -2,9 +2,9 @@ import {Outlet} from "react-router-dom"
 
 const SignupLayout = () => {
     return (
-        <main>
+        <section>
             <Outlet />
-        </main>
+        </section>
     )
 }
 export default SignupLayout

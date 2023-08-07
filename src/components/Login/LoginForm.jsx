@@ -38,7 +38,14 @@ const LoginForm = () => {
                 toast.error(data.message)
                 return
             }
-            dispatch(login({id: data.id, trades: data.trades, info: data.info}))
+            dispatch(
+                login({
+                    id: data.id,
+                    trades: data.trades,
+                    info: data.info,
+                    notes: data.notes,
+                })
+            )
             navigate("/dashboard")
         } catch (error) {
             dispatch(setIsNotLoading())

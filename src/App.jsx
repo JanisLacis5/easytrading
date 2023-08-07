@@ -24,6 +24,7 @@ import {
     UserNotes,
     UserDangerZone,
     AddNote,
+    DashboardNotes,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -82,6 +83,10 @@ function App() {
                         {
                             path: "brokerlogin",
                             element: <BrokerLogin />,
+                        },
+                        {
+                            path: "notes",
+                            element: <DashboardNotes />,
                         },
                     ],
                 },
