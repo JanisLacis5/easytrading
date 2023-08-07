@@ -39,8 +39,10 @@ export const wonPl = (trades) => {
 
     return {
         averageWonDayPl:
-            wonTradeDays.reduce((acc, val) => acc + val, 0) /
-            wonTradeDays.length,
+            wonTradeDays.length === 0
+                ? 0
+                : wonTradeDays.reduce((acc, val) => acc + val, 0) /
+                  wonTradeDays.length,
         maxWonDayPl: Math.max(...wonTradeDays),
         biggestWin: Math.max(...a.map((o) => o.pl)),
         wonDays: wonTradeDays.length,
@@ -83,7 +85,6 @@ export const lostPl = (trades) => {
             }
         }
     }
-    console.log(lostTradeDays)
 
     return {
         averageLostDayPl:

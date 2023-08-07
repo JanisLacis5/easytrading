@@ -14,6 +14,7 @@ const initialState = {
             typeof localStorage.getItem("userInfo") !== "undefined"
                 ? JSON.parse(localStorage.getItem("userInfo"))
                 : "",
+        notes: JSON.parse(localStorage.getItem("userNotes")),
     },
 }
 
@@ -46,9 +47,12 @@ const userSlice = createSlice({
         },
         login: (state, {payload}) => {
             const trades = payload.trades || []
+            const notes = payload.notes || []
             localStorage.setItem("userId", JSON.stringify(payload.id))
             localStorage.setItem("userTrades", JSON.stringify(trades))
             localStorage.setItem("userInfo", JSON.stringify(payload.info))
+            localStorage.setItem("userNotes", JSON.stringify(notes))
+
             let reverseTrades = [...trades]
             if (payload.trades && payload.trades.length) {
                 reverseTrades = reverseTrades.reverse()
@@ -66,6 +70,7 @@ const userSlice = createSlice({
                     id: payload.id,
                     trades: reverseTrades,
                     info: payload.info,
+                    notes: payload.notes || [],
                 },
             }
         },

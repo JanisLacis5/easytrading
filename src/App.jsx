@@ -23,6 +23,7 @@ import {
     UserPricingPlan,
     UserNotes,
     UserDangerZone,
+    AddNote,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -137,6 +138,10 @@ function App() {
                         {
                             path: "danger",
                             element: <UserDangerZone />,
+                        },
+                        {
+                            path: "addnote",
+                            element: <AddNote />,
                         },
                     ],
                 },

@@ -19,7 +19,7 @@ const Stats = () => {
 
     useEffect(() => {
         console.log(lostPlState)
-    }, [user.trades])
+    }, [user.trades, lostPlState])
 
     return (
         <div className="detailed-stats">
