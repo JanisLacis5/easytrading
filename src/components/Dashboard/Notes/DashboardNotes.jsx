@@ -8,13 +8,20 @@ const DashboardNotes = () => {
         <section className="dashboard-notes">
             <h1>Notes</h1>
             <div className="dashboard-notes-container">
-                {notes.map((note, index) => {
+                {notes.map((noteMain) => {
+                    const {image, note} = noteMain
                     return (
-                        <div key={index}>
+                        <div className="dashboard-note">
                             <div>
-                                <img src={note.image} alt="note image" />
+                                {image.length ? (
+                                    <img src={image} alt="note image" />
+                                ) : (
+                                    <div></div>
+                                )}
                             </div>
-                            <p>{note.note}</p>
+                            <div>
+                                <p>{note}</p>
+                            </div>
                         </div>
                     )
                 })}

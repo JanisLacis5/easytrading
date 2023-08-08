@@ -48,6 +48,7 @@ const AddTrade = () => {
                     id: data.id,
                     trades: data.trades,
                     info: infoUpdate.data.info,
+                    notes: user.notes,
                 })
             )
             navigate("/dashboard")

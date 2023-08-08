@@ -111,8 +111,7 @@ p {
 }
 
 .dashboard-page-1 {
-    min-height: 100vh;
-    padding-top: 6.5rem;
+    min-height: 100%;
     padding-right: 1rem;
     display: grid;
     grid-template-columns: 1fr 9fr;

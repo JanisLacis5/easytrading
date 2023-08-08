@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import "./usernotes.css"
 import customFetch from "../../../utils"
 import {toast} from "react-toastify"
@@ -15,10 +15,6 @@ const AddNote = () => {
     const [note, setNote] = useState("")
 
     const {user} = useSelector((store) => store.user)
-
-    useEffect(() => {
-        setImage(blankWhite)
-    }, [])
 
     const convertImage = (e) => {
         const tgt = e.target

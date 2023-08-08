@@ -14,15 +14,18 @@ const UserNotes = () => {
         <section className="user-notes">
             <h2>Last 3 entires:</h2>
             <div className="user-notes-container">
-                {lastNotes.map((note, index) => {
-                    console.log(note)
+                {lastNotes.map((noteMain, index) => {
+                    const {image, note} = noteMain
                     return (
                         <div className="user-note" key={index}>
                             <div>
-                                <img src={note.image} alt="note image" />
+                                {image ? (
+                                    <img src={image} alt="note image" />
+                                ) : (
+                                    <div></div>
+                                )}
                             </div>
-                            <p>{note.note}</p>
-                            <a href="">Full note</a>
+                            <p>{note}</p>
                         </div>
                     )
                 })}

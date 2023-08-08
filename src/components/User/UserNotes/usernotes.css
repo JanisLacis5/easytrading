@@ -94,17 +94,19 @@ textarea:focus {
 }
 
 .user-note div img {
-    height: 100%;
-}
-
-.user-note a {
-    font-size: 0.65rem;
-    margin-top: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 .user-notes > div:last-child {
     display: flex;
     align-items: flex-end;
+}
+
+.user-note > div:first-child div {
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
 }
 
 .user-notes > div:last-child a {
