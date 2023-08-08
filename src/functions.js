@@ -112,3 +112,13 @@ export const profitsPerDate = (trades) => {
 
     return profits
 }
+
+export const countPinnedNotes = (notes) => {
+    let count = 0
+    notes.map((note) => {
+        if (note.pinned) {
+            count++
+        }
+    })
+    return count
+}

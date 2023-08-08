@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom"
 import "./usernotes.css"
 import {useSelector} from "react-redux"
-import {useEffect} from "react"
 
 const UserNotes = () => {
     const {user} = useSelector((store) => store.user)
@@ -12,7 +11,7 @@ const UserNotes = () => {
 
     return (
         <section className="user-notes">
-            <h2>Last 3 entires:</h2>
+            <h2>Pinned notes:</h2>
             <div className="user-notes-container">
                 {lastNotes.map((noteMain, index) => {
                     const {image, note} = noteMain

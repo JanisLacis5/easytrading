@@ -34,7 +34,7 @@ const MyCalendar = () => {
     }
 
     return (
-        <main className="calendar-main">
+        <section className="calendar-main">
             <div className="calendar-container">
                 <Calendar
                     events={profitDates || []}
@@ -53,7 +53,7 @@ const MyCalendar = () => {
                     eventPropGetter={eventStyleGetter}
                 />
             </div>
-        </main>
+        </section>
     )
 }
 export default MyCalendar
