@@ -12,7 +12,7 @@ const AddNote = () => {
     const navigate = useNavigate()
 
     const [image, setImage] = useState("")
-    const [note, setNote] = useState("")
+    const [text, setText] = useState("")
 
     const {user} = useSelector((store) => store.user)
 
@@ -37,7 +37,7 @@ const AddNote = () => {
         }
         const {data} = await customFetch.post("/note", {
             image,
-            note,
+            text,
             id: user.id,
         })
         dispatch(
@@ -49,7 +49,7 @@ const AddNote = () => {
             })
         )
         setImage("")
-        setNote("")
+        setText("")
         toast.success("Note Added")
         navigate("/userpage/notes")
     }
@@ -75,8 +75,8 @@ const AddNote = () => {
                         cols="30"
                         rows="10"
                         placeholder="Text"
-                        value={note}
-                        onChange={(e) => setNote(e.target.value)}
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
                     />
                 </div>
                 <div>

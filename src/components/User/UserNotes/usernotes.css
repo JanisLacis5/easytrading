@@ -68,6 +68,13 @@ textarea:focus {
     justify-content: space-between;
 }
 
+.user-notes-container h2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .user-note {
     height: 100%;
     padding: 1%;
