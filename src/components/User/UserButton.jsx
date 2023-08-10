@@ -1,11 +1,9 @@
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import "./user.css"
-import {logout, setIsLoading} from "../../features/userSlice"
 import {useNavigate} from "react-router-dom"
 import {useEffect, useState} from "react"
 
 const UserButton = () => {
-    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const [info, setInfo] = useState({})
@@ -19,7 +17,11 @@ const UserButton = () => {
     return (
         <div className="user-button">
             <div className="user-button-profile-picture">
-                <img src={info.image} alt="profile picture" />
+                <img
+                    src={info.image}
+                    referrerPolicy="no-referrer"
+                    alt="profile picture"
+                />
             </div>
             <button
                 onClick={() => {

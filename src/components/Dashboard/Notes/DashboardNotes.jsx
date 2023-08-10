@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux"
 import DashboardNote from "./DashboardNote"
 
 const DashboardNotes = () => {
-    const dispatch = useDispatch()
     const {user} = useSelector((store) => store.user)
 
     return (

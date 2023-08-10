@@ -17,7 +17,7 @@ const AskPasswordForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const {data} = await customFetch.post("/deleteuser", {
+        const {data} = await customFetch.patch("/deleteuser", {
             id: user.id,
             password: md5(password),
         })

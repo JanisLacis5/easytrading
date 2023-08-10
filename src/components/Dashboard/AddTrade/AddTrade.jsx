@@ -38,7 +38,7 @@ const AddTrade = () => {
             time: time,
             action: action,
         })
-        const infoUpdate = await customFetch.post("/updateaccbalance", {
+        const infoUpdate = await customFetch.patch("/updateaccbalance", {
             id: user.id,
             setAcc: accAfter,
         })

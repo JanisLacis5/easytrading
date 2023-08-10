@@ -4,7 +4,6 @@ import "./userupdateform.css"
 import customFetch from "../../../utils"
 import {useDispatch, useSelector} from "react-redux"
 import {login, setIsLoading, setIsNotLoading} from "../../../features/userSlice"
-import {useEffect} from "react"
 
 const UserUpdateForm = () => {
     const dispatch = useDispatch()

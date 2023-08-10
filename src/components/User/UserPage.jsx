@@ -22,7 +22,11 @@ const UserPage = () => {
             {isDelete && <DeleteProfileModal />}
             <div className="user-page-container">
                 <div className="user-page-image">
-                    <img src={info.image} alt="user profile picture" />
+                    <img
+                        src={info.image}
+                        referrerPolicy="no-referrer"
+                        alt="user profile picture"
+                    />
                 </div>
                 <div className="user-page-main-info">
                     <h2>
