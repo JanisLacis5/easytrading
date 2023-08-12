@@ -124,7 +124,22 @@ main > * {
 }
 
 .dashboard-page-1 {
-    max-height: 100%;
+    display: grid;
+    height: 100%;
+    grid-template-columns: 2.5% 97.5%;
+}
+
+/* .dashboard-page-1 {
+    padding-right: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+} */
+
+.dashboard-page-1 > div {
+    height: 100%;
+    width: 100%;
+}
+/* .dashboard-page-1 {
     padding-right: 1rem;
     display: grid;
     grid-template-columns: 1fr 9fr;
@@ -136,4 +151,4 @@ main > * {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
