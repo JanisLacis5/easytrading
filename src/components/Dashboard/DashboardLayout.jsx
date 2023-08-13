@@ -12,9 +12,7 @@ const DashboardLayout = () => {
 
     return (
         <section className="dashboard-page-1">
-            <div>
-                <Aside />
-            </div>
+            <Aside />
             <Outlet />
         </section>
     )

@@ -7,6 +7,8 @@ export const useGlobalContext = () => useContext(GlobalContext)
 const AppContext = ({children}) => {
     const [isRequirements, setIsRequirements] = useState(false)
 
+    const [screenWidth, setScreenWidth] = useState(window.screen.width)
+
     // ADD TRADE FORM
     const [stock, setStock] = useState("")
     const [accBefore, setAccBefore] = useState("")
@@ -107,6 +109,8 @@ const AppContext = ({children}) => {
                 setPricingPlan,
                 changePlan,
                 setChangePlan,
+                screenWidth,
+                setScreenWidth,
             }}>
             {children}
         </GlobalContext.Provider>
