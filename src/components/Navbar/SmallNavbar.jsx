@@ -16,7 +16,7 @@ const SmallNavbar = () => {
                 </h1>
             </div>
             <button
-                style={{color: "white"}}
+                style={{color: "white", margin: "0"}}
                 type="button"
                 onClick={() => dispatch(toggleSmallLinks())}>
                 {showSmallLinks ? "close" : "open"}

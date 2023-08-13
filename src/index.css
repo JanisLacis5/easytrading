@@ -126,30 +126,16 @@ main > * {
 .dashboard-page-1 {
     display: grid;
     height: 100%;
-    grid-template-columns: 2.5% 97.5%;
-}
-
-/* .dashboard-page-1 {
-    padding-right: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 9fr;
-} */
-
-.dashboard-page-1 > div {
-    height: 100%;
     width: 100%;
-}
-
-/* .dashboard-page-1 {
+    grid-template-columns: 2.5% 97.5%;
+    overflow-x: hidden;
     padding-right: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 9fr;
 }
 
-.card-page {
+/* .card-page {
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-} */
+}  */

@@ -15,7 +15,7 @@ const SiteLayout = () => {
     const {screenWidth, setScreenWidth} = useGlobalContext()
 
     useEffect(() => {
-        window.onresize = () => setScreenWidth(window.screen.width)
+        window.onresize = () => setScreenWidth(window.innerWidth)
     }, [])
 
     useEffect(() => {
