@@ -29,7 +29,7 @@ const UserButton = () => {
                 }}>
                 <h3>{info?.username}</h3>
                 <p>
-                    Account balance: <span>${info?.account}</span>
+                    Balance: <span>${info?.account}</span>
                 </p>
             </button>
         </div>

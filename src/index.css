@@ -139,3 +139,15 @@ main > * {
     align-items: center;
     justify-content: center;
 }  */
+
+@media screen and (min-width: 900px) {
+    .dashboard-page-1 {
+        grid-template-columns: 3fr 22fr;
+    }
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}

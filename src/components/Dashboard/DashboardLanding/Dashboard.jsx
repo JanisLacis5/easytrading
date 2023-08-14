@@ -8,9 +8,7 @@ const Dashboard = () => {
         <div className="dashboard-landing">
             <WinLossGraph />
             <ProfitableStocks />
-            <section>
-                <Screener />
-            </section>
+            <Screener />
         </div>
     )
 }
