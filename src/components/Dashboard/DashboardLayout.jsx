@@ -1,10 +1,14 @@
 import {Outlet} from "react-router-dom"
-import Aside from "./Aside"
+import Aside from "./Aside/Aside"
 import {useSelector} from "react-redux"
 import "./dashboard.css"
+import {useGlobalContext} from "../../context/globalContext"
+import SmallAside from "./Aside/SmallAside"
 
 const DashboardLayout = () => {
     const {isLoading} = useSelector((store) => store.user)
+    const {showSmallAside} = useSelector((store) => store.small)
+    const {screenWidth} = useGlobalContext()
 
     if (isLoading) {
         return <div className="loading"></div>
@@ -12,8 +16,8 @@ const DashboardLayout = () => {
 
     return (
         <section className="dashboard-page-1">
-            <Aside />
-            <Outlet />
+            {screenWidth < 900 ? <SmallAside /> : <Aside />}
+            {!showSmallAside && <Outlet />}
         </section>
     )
 }

@@ -1,5 +1,6 @@
 .small-links {
     background-color: var(--color-background);
+    padding-left: 0.5rem;
 }
 
 .small-links .links {
@@ -28,9 +29,9 @@
 }
 
 .small-nav button {
-    width: 15%;
+    width: 5%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     background-color: transparent;
     border: none;
     padding: 0;

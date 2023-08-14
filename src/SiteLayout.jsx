@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar/Navbar"
 import {useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {useGlobalContext} from "./context/globalContext"
-import {reset} from "./features/smallSlice"
+import {resetLinks} from "./features/smallSlice"
 import "./components/Navbar/smalllink.css"
 import UserButton from "./components/User/UserButton"
 
@@ -20,7 +20,7 @@ const SiteLayout = () => {
 
     useEffect(() => {
         if (screenWidth > 900) {
-            dispatch(reset())
+            dispatch(resetLinks())
         }
     }, [screenWidth])
 
@@ -60,25 +60,25 @@ const SiteLayout = () => {
                         <Link
                             className="link"
                             to={isLogged ? "/dashboard" : "/landing"}
-                            onClick={() => dispatch(reset())}>
+                            onClick={() => dispatch(resetLinks())}>
                             {isLogged ? "Dashboard" : "Landing"}
                         </Link>
                         <Link
                             className="link"
                             to="/about"
-                            onClick={() => dispatch(reset())}>
+                            onClick={() => dispatch(resetLinks())}>
                             About
                         </Link>
                         <Link
                             className="link"
                             to="/pricing"
-                            onClick={() => dispatch(reset())}>
+                            onClick={() => dispatch(resetLinks())}>
                             Pricing
                         </Link>
                         <Link
                             className="link"
                             to="/contact"
-                            onClick={() => dispatch(reset())}>
+                            onClick={() => dispatch(resetLinks())}>
                             Contact
                         </Link>
                     </div>

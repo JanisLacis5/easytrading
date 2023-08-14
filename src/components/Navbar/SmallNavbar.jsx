@@ -19,11 +19,12 @@ const SmallNavbar = () => {
                 style={{color: "white", margin: "0"}}
                 type="button"
                 onClick={() => dispatch(toggleSmallLinks())}>
-                {showSmallLinks ? "close" : "open"}
+                {showSmallLinks ? (
+                    <RxCross1 size={20} />
+                ) : (
+                    <RxHamburgerMenu size={20} />
+                )}
             </button>
-            {/* <button type="button" onClick={() => dispatch(toggleSmallLinks())}>
-                {showSmallLinks ? <RxCross1 /> : <RxHamburgerMenu />}
-            </button> */}
         </nav>
     )
 }
