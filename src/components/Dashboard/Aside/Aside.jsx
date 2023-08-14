@@ -1,9 +1,5 @@
-import {useDispatch} from "react-redux"
 import "./aside.css"
-import {toggleTrading} from "../../../features/asideSlice"
 import {Link} from "react-router-dom"
-import {IoMdOpen} from "react-icons/io"
-import {useState} from "react"
 
 const Aside = () => {
     return (

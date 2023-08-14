@@ -1,4 +1,4 @@
-import "../dashboard.css"
+import "./dashboardlanding.css"
 import {Pie} from "react-chartjs-2"
 import "chart.js/auto"
 import {useSelector} from "react-redux"
@@ -26,6 +26,8 @@ const WinLossGraph = () => {
     const options = {
         animation: false,
         showLine: false,
+        responsive: true,
+        aspectRatio: 1,
         plugins: {
             legend: {
                 position: "bottom",
@@ -39,7 +41,7 @@ const WinLossGraph = () => {
     }
 
     return (
-        <>
+        <section className="default-dashboard-graph">
             <h2 className="graph-title">Won / Lost Trades</h2>
             <div className="pie-garph-container">
                 <select
@@ -112,7 +114,7 @@ const WinLossGraph = () => {
                     </p>
                 </li>
             </ul>
-        </>
+        </section>
     )
 }
 export default WinLossGraph

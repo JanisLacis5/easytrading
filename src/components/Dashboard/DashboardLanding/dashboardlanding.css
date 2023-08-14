@@ -1,0 +1,46 @@
+/* W/L TRADES */
+
+.default-dashboard-graph {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+}
+
+.graph-title {
+    color: var(--color-grey-300);
+    width: 100%;
+    text-align: center;
+}
+
+.pie-garph-container div {
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.pie-garph-container h2 {
+    height: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overall-stats {
+    color: var(--color-grey-300);
+    padding: 2rem 0;
+}
+
+.overall-stats p {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* PROFITABLE STOCKS */
+
+.stock-graph {
+    padding: 0 1rem;
+}
+
+.profitable-stocks {
+    padding: 1rem 0;
+}

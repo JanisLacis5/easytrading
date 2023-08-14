@@ -6,12 +6,8 @@ import Screener from "./Screener"
 const Dashboard = () => {
     return (
         <div className="dashboard-landing">
-            <section className="default-dashboard-graph">
-                <WinLossGraph />
-            </section>
-            <section className="stock-graph">
-                <ProfitableStocks />
-            </section>
+            <WinLossGraph />
+            <ProfitableStocks />
             <section>
                 <Screener />
             </section>

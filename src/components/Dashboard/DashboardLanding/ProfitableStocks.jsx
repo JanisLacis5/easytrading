@@ -45,7 +45,7 @@ const ProfitableStocks = () => {
     }
 
     return (
-        <>
+        <section className="stock-graph">
             <h2 className="graph-title">Your most profitable stocks</h2>
             <div className="profitable-stocks">
                 {profits ? (
@@ -54,7 +54,7 @@ const ProfitableStocks = () => {
                     <h2>No Data</h2>
                 )}
             </div>
-        </>
+        </section>
     )
 }
 export default ProfitableStocks

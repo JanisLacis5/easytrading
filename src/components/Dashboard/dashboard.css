@@ -31,17 +31,6 @@
     flex-direction: column;
 }
 
-.graph-title {
-    color: var(--color-grey-300);
-    width: 100%;
-    text-align: center;
-}
-
-.pie-graph-container {
-    display: flex;
-    justify-content: center;
-}
-
 /* .dashboard-pages {
     width: 100%;
     height: 100%;
