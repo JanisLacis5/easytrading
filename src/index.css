@@ -64,35 +64,6 @@ p {
     margin-bottom: 1.25rem;
 }
 
-@media screen and (min-width: 800px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    h3 {
-        font-size: 1rem;
-    }
-
-    body {
-        font-size: 1rem;
-    }
-
-    p {
-        font-size: 0.9rem;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-        line-height: 1;
-    }
-}
-
 @keyframes spinner {
     to {
         transform: rotate(360deg);
@@ -132,22 +103,17 @@ main > * {
     padding-right: 1rem;
 }
 
-/* .card-page {
+.card-page {
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column;
+    overflow: scroll;
     align-items: center;
-    justify-content: center;
-}  */
+}
 
 @media screen and (min-width: 900px) {
     .dashboard-page-1 {
-        grid-template-columns: 3fr 22fr;
-    }
-}
-
-@keyframes spinner {
-    to {
-        transform: rotate(360deg);
+        grid-template-columns: 2fr 22fr;
     }
 }
