@@ -24,7 +24,6 @@ const ContactForm = () => {
 
     return (
         <div className="contact-form">
-            <h2>Contact us via form</h2>
             <form className="contact-form-main" onSubmit={handleSubmit}>
                 <div className="contact-form-input-container">
                     <div className="floating">
