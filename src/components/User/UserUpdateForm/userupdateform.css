@@ -1,6 +1,6 @@
 .user-update-form {
-    height: 90%;
-    width: 100%;
+    height: 95%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -8,10 +8,12 @@
 
 .user-update-form-input {
     height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .floating {
-    height: 30%;
+    height: 35%;
     width: 50%;
     position: relative;
 }
@@ -23,7 +25,7 @@
     left: 0;
     pointer-events: none;
     transition: 0.4s ease all;
-    font-size: 15px;
+    font-size: 0.75rem;
 }
 
 .user-update-form-input input:empty {
@@ -34,7 +36,7 @@
     width: 100%;
     caret-color: var(--color-grey-300);
     color: var(--color-grey-300);
-    font-size: 1rem;
+    font-size: 0.75rem;
 }
 
 .user-update-form-input input:focus {
@@ -43,13 +45,13 @@
 }
 
 .user-update-form-input input:focus ~ label {
-    top: -20px;
-    font-size: 12px;
+    top: -0.8rem;
+    font-size: 0.65rem;
 }
 
 .user-update-form-input .label-up {
-    top: -20px;
-    font-size: 12px;
+    top: -0.8rem;
+    font-size: 0.65rem;
 }
 
 .default-class {
@@ -57,15 +59,14 @@
 }
 
 .user-update-form-submit {
-    height: 50%;
     width: 50%;
+    height: 100%;
     display: flex;
     justify-content: center;
 }
 
 .user-update-form-submit button {
-    height: 100%;
-    width: 35%;
+    width: 100%;
     background-color: var(--color-background);
     color: var(--color-grey-300);
     font-size: 1rem;
@@ -73,6 +74,9 @@
     margin-top: 1rem;
     cursor: pointer;
     border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image-input {
@@ -82,14 +86,18 @@
 }
 
 .image-input p {
-    font-size: 15px;
-    width: 20%;
+    font-size: 0.75rem;
+    width: 50%;
     height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .image-input-button {
     height: 100%;
-    width: 25%;
+    width: 50%;
+    display: flex;
+    align-items: center;
 }
 
 .image-input-button input {
@@ -101,7 +109,50 @@
 .image-input-button label {
     cursor: pointer;
     height: 100%;
+    width: 100%;
     background-color: var(--color-grey-700);
-    padding: 0.7rem;
     border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+    .image-input-button label {
+        width: 85%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .image-input-button label {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .image-input-button label {
+        width: 65%;
+    }
+
+    .user-update-form-input label {
+        font-size: 0.9rem;
+    }
+
+    .user-update-form-input input:focus ~ label {
+        top: -1rem;
+        font-size: 0.8rem;
+    }
+
+    .user-update-form-input .label-up {
+        top: -1rem;
+        font-size: 0.8rem;
+    }
+
+    .user-update-form-input input:empty {
+        font-size: 0.9rem;
+    }
+
+    .image-input p {
+        font-size: 0.9rem;
+    }
 }
