@@ -44,6 +44,12 @@ img {
     display: block;
 }
 
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
 button:hover,
 a:hover {
     opacity: 0.5;
