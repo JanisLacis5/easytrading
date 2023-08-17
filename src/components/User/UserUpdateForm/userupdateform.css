@@ -63,16 +63,16 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .user-update-form-submit button {
     width: 100%;
-    height: 60%;
+    height: 50%;
     background-color: var(--color-background);
     color: var(--color-grey-300);
     font-size: 1rem;
     border: none;
-    margin-top: 1rem;
     cursor: pointer;
     border-radius: 1.5rem;
     display: flex;
@@ -125,12 +125,20 @@
 }
 
 @media screen and (min-width: 900px) {
+    .user-update-form-submit {
+        width: 40%;
+    }
+
     .image-input-button label {
         width: 75%;
     }
 }
 
 @media screen and (min-width: 1200px) {
+    .user-update-form-submit {
+        width: 30%;
+    }
+
     .image-input-button label {
         width: 65%;
     }

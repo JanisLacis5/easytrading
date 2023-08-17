@@ -4,7 +4,7 @@ import {useGlobalContext} from "../../context/globalContext"
 import DeleteProfileModal from "../../components/User/UserDangerZone/DeleteProfileModal"
 import {logout} from "../../features/userSlice"
 import {RxHamburgerMenu} from "react-icons/rx"
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import {IoMdOpen} from "react-icons/io"
 import UserMenu from "./UserMenu"
 
@@ -15,19 +15,28 @@ const UserPage = () => {
     const [showMenu, setShowMenu] = useState(false)
 
     const {user} = useSelector((store) => store.user)
-    const {isDelete} = useGlobalContext()
+    const {isDelete, screenWidth} = useGlobalContext()
     const info = user.info
+
+    const logoutFunc = () => {
+        dispatch(logout())
+        navigate("/landing")
+    }
 
     return (
         <div className="user-page">
             {isDelete && <DeleteProfileModal />}
             <div className="user-page-container">
-                <button
-                    type="button"
-                    className="burger-menu"
-                    onClick={() => setShowMenu(!showMenu)}>
-                    <RxHamburgerMenu size={20} />
-                </button>
+                {screenWidth < 1200 ? (
+                    <button
+                        type="button"
+                        className="burger-menu"
+                        onClick={() => setShowMenu(!showMenu)}>
+                        <RxHamburgerMenu size={20} />
+                    </button>
+                ) : (
+                    <div></div>
+                )}
                 <div className="user-page-main-info">
                     <div className="user-page-image">
                         <img
@@ -41,14 +50,37 @@ const UserPage = () => {
                     </h2>
                     <h4>{info.email}</h4>
                 </div>
-                {showMenu ? (
-                    <aside className="user-page-aside">
-                        <UserMenu />
-                    </aside>
+                {screenWidth < 1200 ? (
+                    showMenu ? (
+                        <aside className="user-page-aside-s">
+                            <UserMenu />
+                        </aside>
+                    ) : (
+                        <div className="user-page-content">
+                            <Outlet />
+                        </div>
+                    )
                 ) : (
-                    <div className="user-page-content">
-                        <Outlet />
-                    </div>
+                    <>
+                        <aside className="user-page-aside">
+                            <div className="user-page-link-container">
+                                <Link to="/userpage">Update info</Link>
+                                <Link to="/userpage/pricing">
+                                    Pricing plans
+                                </Link>
+                                <Link to="/userpage/notes">Notes</Link>
+                                <Link to="/userpage/danger">Danger zone</Link>
+                            </div>
+                            <div>
+                                <button type="button" onClick={logoutFunc}>
+                                    Logout
+                                </button>
+                            </div>
+                        </aside>
+                        <div className="user-page-content">
+                            <Outlet />
+                        </div>
+                    </>
                 )}
             </div>
         </div>
