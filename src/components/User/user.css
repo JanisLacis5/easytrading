@@ -87,6 +87,7 @@
 .user-page-content {
     grid-row: 2 / 2;
     grid-column: 2 / 2;
+    padding: 1rem;
 }
 
 .user-page button {
@@ -160,6 +161,7 @@ h4 {
 
 .user-page-aside-s {
     grid-column: span 2;
+    width: 100%;
 }
 
 .user-page-aside-s .user-page-link-container {
@@ -168,6 +170,7 @@ h4 {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+    margin-top: 1rem;
 }
 
 .user-page-aside .user-page-link-container {
@@ -206,17 +209,30 @@ h4 {
     width: fit-content;
 }
 
-.user-page-aside-s,
-.user-page-aside div:last-child {
-    width: 100%;
-    height: 12.5%;
+.user-page-link-container > button:first-child svg {
+    color: var(--color-grey-400);
+    margin: 0;
 }
 
-.user-page-aside-s,
-.user-page-aside div:last-child button {
+.user-page-link-container a {
+    color: var(--color-grey-400);
+}
+
+.user-page-aside-s div:last-child {
+    height: 12.5%;
+    width: 100%;
+}
+
+.user-page-aside > div:last-child {
+    height: 12%;
+    width: 100%;
+}
+
+.user-page-aside-s div:last-child button,
+.user-page-aside button {
     font-family: inherit;
     height: 100%;
-    width: 35%;
+    width: 40%;
     border: none;
     border-radius: 1.5rem;
     color: var(--color-grey-300);
@@ -227,9 +243,8 @@ h4 {
     align-items: center;
 }
 
-.user-page-aside div:last-child button {
-    width: 90%;
-    height: 80%;
+.user-page-aside button {
+    width: 80%;
 }
 
 .user-page-link-container {
