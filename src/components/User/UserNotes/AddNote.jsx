@@ -31,7 +31,7 @@ const AddNote = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (image === blankWhite && !note) {
+        if (image === blankWhite && !text) {
             toast.error("Fill at least one field")
             return
         }

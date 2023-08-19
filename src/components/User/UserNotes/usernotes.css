@@ -37,22 +37,29 @@ textarea:focus {
 
 .user-notes-addnote form > div:first-child {
     align-items: center;
-    width: 50%;
+    width: 100%;
     justify-content: space-between;
 }
 
-.user-notes-addnote form > div:nth-child(3) {
+.user-notes-addnote form > div:first-child label {
+    width: 30%;
+}
+
+.user-notes-addnote form > div:last-child {
     align-items: flex-end;
     justify-content: center;
 }
 
 .user-notes-addnote button {
     height: 70%;
-    width: 25%;
+    width: 35%;
     border-radius: 1.5rem;
     border: none;
-    font-size: 1.25rem;
+    font-size: 1rem;
     background-color: var(--color-grey-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* NOTES PAGE */
@@ -118,12 +125,45 @@ textarea:focus {
 
 .user-notes > div:last-child a {
     height: 70%;
-    width: 20%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--color-grey-800);
     color: var(--color-grey-300);
-    border-radius: 1.25rem;
+    border-radius: 2rem;
     border: none;
+}
+
+@media screen and (min-width: 900px) {
+    .user-notes > div:last-child a {
+        width: 30%;
+    }
+    .user-notes-addnote form > div:first-child {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .user-notes > div:last-child a {
+        width: 25%;
+    }
+    .user-notes-addnote form > div:first-child {
+        width: 60%;
+    }
+    .user-notes-addnote button {
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .user-notes > div:last-child a {
+        width: 20%;
+    }
+    .user-notes-addnote form > div:first-child {
+        width: 50%;
+    }
+    .user-notes-addnote button {
+        width: 25%;
+    }
 }
