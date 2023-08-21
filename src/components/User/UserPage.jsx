@@ -7,14 +7,14 @@ import {RxHamburgerMenu} from "react-icons/rx"
 import {useEffect, useState} from "react"
 import {IoMdOpen} from "react-icons/io"
 import UserMenu from "./UserMenu"
+import {resetUserAside, toggleUserAside} from "../../features/smallSlice"
 
 const UserPage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const [showMenu, setShowMenu] = useState(false)
-
     const {user} = useSelector((store) => store.user)
+    const {showUserAside} = useSelector((store) => store.small)
     const {isDelete, screenWidth} = useGlobalContext()
     const info = user.info
 
@@ -31,7 +31,7 @@ const UserPage = () => {
                     <button
                         type="button"
                         className="burger-menu"
-                        onClick={() => setShowMenu(!showMenu)}>
+                        onClick={() => dispatch(toggleUserAside())}>
                         <RxHamburgerMenu size={20} />
                     </button>
                 ) : (
@@ -51,7 +51,7 @@ const UserPage = () => {
                     <h4>{info.email}</h4>
                 </div>
                 {screenWidth < 1200 ? (
-                    showMenu ? (
+                    showUserAside ? (
                         <aside className="user-page-aside-s">
                             <UserMenu />
                         </aside>

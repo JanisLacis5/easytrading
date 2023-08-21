@@ -9,25 +9,28 @@
 }
 
 .danger-zone-action {
-    height: 100%;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+    overflow: hidden;
+    height: 47.5%;
     border: 1px solid var(--color-trade-red);
-    padding: 1rem;
-}
-
-.danger-zone div:first-child {
-    margin-bottom: 3rem;
+    padding: 0.5rem;
+    display: flex;
 }
 
 .danger-zone-action h4 {
     font-weight: 300;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: var(--color-trade-red);
+    padding: 0;
 }
 
 .danger-zone-action p {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    height: 100%;
+    width: 100%;
+}
+
+.danger-zone-action > div:first-child {
+    width: 150%;
 }
 
 .danger-zone-action div:last-child {
@@ -36,18 +39,21 @@
     display: flex;
     justify-content: center;
     align-items: start;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
 }
 
 .danger-zone-action button {
-    height: 20%;
-    width: 60%;
+    height: 22%;
+    width: 80%;
     border: none;
     border-radius: 2rem;
     background-color: var(--color-trade-red);
     color: var(--color-grey-300);
-    font-size: 0.83rem;
+    font-size: 0.7rem;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* CHANGE PASSWORD FORM */
@@ -76,7 +82,7 @@
 
 .change-password-form-floating {
     position: relative;
-    width: 50%;
+    width: 100%;
     height: 30%;
 }
 
@@ -87,7 +93,7 @@
     left: 0;
     pointer-events: none;
     transition: 0.4s ease all;
-    font-size: 15px;
+    font-size: 0.8rem;
 }
 
 .change-password-form-floating input:empty {
@@ -98,7 +104,7 @@
     width: 100%;
     caret-color: var(--color-grey-300);
     color: var(--color-grey-300);
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .change-password-form-floating input:focus {
@@ -106,14 +112,10 @@
     border-bottom: 1px solid var(--color-grey-300);
 }
 
+.change-password-form-floating .label-up,
 .change-password-form-floating input:focus ~ label {
-    top: -15px;
-    font-size: 12px;
-}
-
-.change-password-form-floating .label-up {
-    top: -20px;
-    font-size: 12px;
+    top: -0.85rem;
+    font-size: 0.7rem;
 }
 
 .change-password-form-button-container {
@@ -123,7 +125,7 @@
 }
 
 .change-password-form-button-container div {
-    width: 50%;
+    width: 100%;
     height: 30%;
     display: flex;
     justify-content: space-evenly;
@@ -131,11 +133,14 @@
 
 .change-password-form-button-container button {
     height: 100%;
-    width: 25%;
+    width: 30%;
     border: none;
-    border-radius: 2rem;
+    border-radius: 1rem;
     color: var(--color-grey-300);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .change-password-form-button-container div button:first-child {
@@ -165,13 +170,16 @@
 .change-password-form-floating button {
     position: absolute;
     right: 0;
-    top: 0;
-    bottom: 0;
-    margin-top: auto;
-    margin-bottom: auto;
     height: 40%;
     background-color: transparent;
     border: none;
+    width: fit-content;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.change-password-form-floating button svg {
+    margin: 0;
 }
 
 h6.hide {
@@ -327,4 +335,33 @@ h6.hide {
 .ask-password-button-container div button:first-child {
     background-color: var(--color-trade-red);
     color: var(--color-grey-100);
+}
+
+@media screen and (min-width: 900px) {
+    /* MAIN PAGE */
+
+    .danger-zone-action button {
+        height: 20%;
+        width: 70%;
+    }
+    .danger-zone-action h4 {
+        font-size: 1.5rem;
+    }
+
+    /* CHANGE PASSWORD FORM */
+
+    .change-password-form-floating {
+        position: relative;
+        width: 70%;
+    }
+
+    .change-password-form-button-container > div {
+        width: 70%;
+        justify-content: flex-start;
+        column-gap: 10%;
+    }
+
+    .change-password-form-button-container > div button {
+        border-radius: 1.25rem;
+    }
 }
