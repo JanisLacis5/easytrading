@@ -96,9 +96,6 @@ main {
     height: 100vh;
     grid-template-rows: 1fr 9fr;
 }
-main > * {
-    max-height: 100%;
-}
 
 .dashboard-page-1 {
     display: grid;
