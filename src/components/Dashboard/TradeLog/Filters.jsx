@@ -47,10 +47,7 @@ const Filters = () => {
                     onChange={handleChange}
                 />
             </div>
-            <button
-                type="button"
-                className="tradelog-filters-cross"
-                onClick={() => dispatch(closeFilters())}>
+            <button type="button" onClick={() => dispatch(closeFilters())}>
                 <RxCross1 />
             </button>
             <div>
@@ -73,7 +70,6 @@ const Filters = () => {
                     <option value="negative">-</option>
                 </select>
             </div>
-
             <button
                 type="button"
                 id="tradelog-filters-clear"

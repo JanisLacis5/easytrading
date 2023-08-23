@@ -6,6 +6,7 @@ import {
     filterProducts,
     setFilteredProducts,
 } from "../../../features/filterSlice"
+import {useGlobalContext} from "../../../context/globalContext"
 
 const Trades = ({trades}) => {
     const dispatch = useDispatch()
@@ -13,6 +14,7 @@ const Trades = ({trades}) => {
     const {sortedTrades} = useSelector((store) => store.sort)
     const {user} = useSelector((store) => store.user)
     const {filters, filteredProducts} = useSelector((store) => store.filter)
+    const {screenWidth} = useGlobalContext()
 
     useEffect(() => {
         dispatch(filterProducts({trades: sortedTrades}))
@@ -34,7 +36,9 @@ const Trades = ({trades}) => {
                     return (
                         <div key={index} className="tradelog-trade-container">
                             <div className="tradelog-trade-time">
-                                <p>{date}</p>
+                                <p>
+                                    {screenWidth < 900 ? date.slice(5) : date}
+                                </p>
                                 <p>{time}</p>
                             </div>
                             <p>{stock.toUpperCase()}</p>

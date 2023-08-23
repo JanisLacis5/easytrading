@@ -103,7 +103,7 @@ const TradeLog = () => {
                     </span>
                 </button>
                 <button type="button" name="accBefore" onClick={handleChange}>
-                    <span>Acc Before $</span>
+                    <span>Before $</span>
                     <span>
                         {option === "accBefore" ? (
                             !value ? (
@@ -117,7 +117,7 @@ const TradeLog = () => {
                     </span>
                 </button>
                 <button type="button" name="accAfter" onClick={handleChange}>
-                    <span>Acc After $</span>
+                    <span>After $</span>
                     <span>
                         {option === "accAfter" ? (
                             !value ? (
