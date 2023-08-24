@@ -1,5 +1,5 @@
 import "./dashboardnotes.css"
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import DashboardNote from "./DashboardNote"
 
 const DashboardNotes = () => {
