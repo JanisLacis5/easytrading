@@ -26,7 +26,7 @@ import {
     AddNote,
     DashboardNotes,
     AddTradeLanding,
-    FileReader,
+    AddTradeFileReader,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -79,7 +79,7 @@ function App() {
                                 },
                                 {
                                     path: "addtradefile",
-                                    element: <FileReader />,
+                                    element: <AddTradeFileReader />,
                                 },
                                 {
                                     path: "addtradeform",

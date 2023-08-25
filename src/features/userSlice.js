@@ -87,6 +87,7 @@ const userSlice = createSlice({
             .addCase(clearTrades.fulfilled, (state, {payload}) => {
                 localStorage.setItem("userTrades", [])
                 state.user.trades = []
+                state.isLoading = false
             })
             .addCase(clearTrades.rejected, (state) => {
                 state.isLoading = false

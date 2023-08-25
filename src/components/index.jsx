@@ -22,4 +22,4 @@ export {default as UserPricingPlan} from "./User/UserPricingPlan/UserPricingPlan
 export {default as AddNote} from "./User/UserNotes/AddNote"
 export {default as DashboardNotes} from "./Dashboard/Notes/DashboardNotes"
 export {default as AddTradeLanding} from "./Dashboard/AddTrade/AddTradeLanding"
-export {default as FileReader} from "./Dashboard/AddTrade/FileReader"
+export {default as AddTradeFileReader} from "./Dashboard/AddTrade/AddTradeFileReader"

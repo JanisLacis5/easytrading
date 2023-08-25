@@ -17,10 +17,6 @@ const Stats = () => {
         setCountSt(countStats(user.trades))
     }, [user.trades])
 
-    useEffect(() => {
-        console.log(lostPlState)
-    }, [user.trades, lostPlState])
-
     return (
         <div className="detailed-stats">
             <h1 className="graph-title">Statistics</h1>
