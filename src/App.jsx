@@ -25,6 +25,8 @@ import {
     UserDangerZone,
     AddNote,
     DashboardNotes,
+    AddTradeLanding,
+    FileReader,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -70,7 +72,20 @@ function App() {
                         },
                         {
                             path: "addtrade",
-                            element: <AddTrade />,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <AddTradeLanding />,
+                                },
+                                {
+                                    path: "addtradefile",
+                                    element: <FileReader />,
+                                },
+                                {
+                                    path: "addtradeform",
+                                    element: <AddTrade />,
+                                },
+                            ],
                         },
                         {
                             path: "calendar",
