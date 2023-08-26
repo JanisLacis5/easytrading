@@ -24,7 +24,6 @@ const AddTradeFileReader = () => {
                 data: tradeData,
                 id: user.id,
             })
-            console.log(data)
             dispatch(login({id: user.id, trades: data.trades, info: user.info}))
         } catch (error) {
             console.log(error)
