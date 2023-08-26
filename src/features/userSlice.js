@@ -9,7 +9,7 @@ const initialState = {
             typeof localStorage.getItem("userId") !== "undefined"
                 ? JSON.parse(localStorage.getItem("userId"))
                 : "",
-        trades: JSON.parse(localStorage.getItem("userTrades")),
+        trades: JSON.parse(localStorage.getItem("userTrades" || [])),
         info:
             typeof localStorage.getItem("userInfo") !== "undefined"
                 ? JSON.parse(localStorage.getItem("userInfo"))
@@ -85,8 +85,8 @@ const userSlice = createSlice({
                 state.isLoading = true
             })
             .addCase(clearTrades.fulfilled, (state, {payload}) => {
-                localStorage.setItem("userTrades", [])
                 state.user.trades = []
+                localStorage.setItem("userTrades", JSON.stringify([]))
                 state.isLoading = false
             })
             .addCase(clearTrades.rejected, (state) => {

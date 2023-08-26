@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
 import {login} from "../../../features/userSlice"
 import {toast} from "react-toastify"
+import {useEffect} from "react"
 
 const AddTrade = () => {
     const navigate = useNavigate()
