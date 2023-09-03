@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit"
 
 const initialState = {
     tradingButton: false,
+    screenersButton: false,
 }
 
 const asideSlice = createSlice({
@@ -11,8 +12,11 @@ const asideSlice = createSlice({
         toggleTrading: (state) => {
             state.tradingButton = !state.tradingButton
         },
+        toggleScreeners: (state) => {
+            state.screenersButton = !state.screenersButton
+        },
     },
 })
 
-export const {toggleTrading} = asideSlice.actions
+export const {toggleTrading, toggleScreeners} = asideSlice.actions
 export default asideSlice.reducer

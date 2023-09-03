@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux"
 import "./aside.css"
 import {IoMdOpen} from "react-icons/io"
-import {toggleSmallAside} from "../../../features/smallSlice"
+import {toggleSmallAside} from "../../features/smallSlice"
 import AsidePages from "./AsidePages"
 
 const SmallAside = () => {

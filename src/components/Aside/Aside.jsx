@@ -1,13 +1,11 @@
 import {useDispatch, useSelector} from "react-redux"
 import "./aside.css"
-import {toggleTrading} from "../../../features/asideSlice"
+import {toggleTrading, toggleScreeners} from "../../features/asideSlice"
 import {Link} from "react-router-dom"
-import {resetAside} from "../../../features/smallSlice"
-import {RxCross1} from "react-icons/rx"
 
 const Aside = () => {
     const dispatch = useDispatch()
-    const {tradingButton} = useSelector((store) => store.aside)
+    const {tradingButton, screenersButton} = useSelector((store) => store.aside)
     return (
         <aside className="dashboard-pages">
             <button
@@ -40,9 +38,19 @@ const Aside = () => {
                     </Link>
                 </div>
             )}
-            <button className="dashboard-page" type="button">
+            <button
+                className="dashboard-page"
+                type="button"
+                onClick={() => dispatch(toggleScreeners())}>
                 Screeners
             </button>
+            {screenersButton && (
+                <div>
+                    <Link className="secondary-link" to="/screeners/hod">
+                        Hod screener
+                    </Link>
+                </div>
+            )}
             <button className="dashboard-page" type="button">
                 Chatroom
             </button>

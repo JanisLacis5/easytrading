@@ -27,6 +27,8 @@ import {
     DashboardNotes,
     AddTradeLanding,
     AddTradeFileReader,
+    ScreenerLayout,
+    HodScreener,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -162,6 +164,16 @@ function App() {
                         {
                             path: "addnote",
                             element: <AddNote />,
+                        },
+                    ],
+                },
+                {
+                    path: "screeners",
+                    element: <ScreenerLayout />,
+                    children: [
+                        {
+                            path: "hod",
+                            element: <HodScreener />,
                         },
                     ],
                 },

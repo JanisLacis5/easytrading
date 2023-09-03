@@ -1,8 +1,8 @@
 import {useDispatch, useSelector} from "react-redux"
 import "./aside.css"
-import {toggleTrading} from "../../../features/asideSlice"
+import {toggleTrading} from "../../features/asideSlice"
 import {Link} from "react-router-dom"
-import {resetAside} from "../../../features/smallSlice"
+import {resetAside} from "../../features/smallSlice"
 import {RxCross1} from "react-icons/rx"
 
 const AsidePages = () => {

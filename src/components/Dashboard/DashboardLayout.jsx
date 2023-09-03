@@ -1,9 +1,9 @@
 import {Outlet} from "react-router-dom"
-import Aside from "./Aside/Aside"
+import Aside from "../Aside/Aside"
 import {useSelector} from "react-redux"
 import "./dashboard.css"
 import {useGlobalContext} from "../../context/globalContext"
-import SmallAside from "./Aside/SmallAside"
+import SmallAside from "../Aside/SmallAside"
 
 const DashboardLayout = () => {
     const {isLoading} = useSelector((store) => store.user)
