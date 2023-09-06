@@ -1,16 +1,15 @@
 import "./hod.css"
-import {WebSocket} from "ws"
 
 const HodScreener = () => {
     // GET DATA FROM SERVER
-    // const socket = new WebSocket("ws://localhost:3000/api")
-    // socket.onopen = (event) => {
-    //     console.log("Connected to WebSocket server")
-    // }
-    // socket.onmessage = (event) => {
-    //     const data = JSON.parse(event.data)
-    //     console.log(`Received from server: ${data}`)
-    // }
+    const socket = new WebSocket("ws://localhost:3001")
+    socket.onopen = (event) => {
+        console.log("Connected to WebSocket server")
+    }
+    socket.onmessage = (event) => {
+        const data = event.data
+        console.log(`Received from server: ${data}`)
+    }
 
     const dataArray = []
 
@@ -255,11 +254,11 @@ const HodScreener = () => {
                 </div>
             </div>
             <div className="screener-main">
-                {data.map((stockObj) => {
+                {data.map((stockObj, index) => {
                     const {stock, time, price, float, volume, relVolume} =
                         stockObj
                     return (
-                        <div className="hod-stock">
+                        <div className="hod-stock" key={index}>
                             <div>
                                 <p>{time}</p>
                             </div>
