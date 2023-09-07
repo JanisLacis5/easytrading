@@ -1,233 +1,32 @@
+import {useEffect, useState} from "react"
 import "./hod.css"
 
 const HodScreener = () => {
     // GET DATA FROM SERVER
     const socket = new WebSocket("ws://localhost:3001")
+    const [data, setData] = useState([])
     socket.onopen = (event) => {
         console.log("Connected to WebSocket server")
     }
     socket.onmessage = (event) => {
-        const data = event.data
-        console.log(`Received from server: ${data}`)
+        const stockData = event.data
+        if (stockData !== "Client connected") {
+            setData([...data, JSON.parse(stockData)])
+        }
+        console.log(`Received from server: ${stockData}`)
     }
-
-    const dataArray = []
-
-    // TEST
-    const data = [
-        {
-            stock: "aapl",
-            time: 152447,
-            price: 911,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "tsla",
-            time: 152447,
-            price: 43,
-            float: 100_004_000,
-            volume: 100_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "vfs",
-            time: 152447,
-            price: 112,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "msft",
-            time: 152447,
-            price: 547,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "tsla",
-            time: 152447,
-            price: 43,
-            float: 100_004_000,
-            volume: 100_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "vfs",
-            time: 152447,
-            price: 112,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "msft",
-            time: 152447,
-            price: 547,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "tsla",
-            time: 152447,
-            price: 43,
-            float: 100_004_000,
-            volume: 100_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "vfs",
-            time: 152447,
-            price: 112,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "msft",
-            time: 152447,
-            price: 547,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "tsla",
-            time: 152447,
-            price: 43,
-            float: 100_004_000,
-            volume: 100_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "vfs",
-            time: 152447,
-            price: 112,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "msft",
-            time: 152447,
-            price: 547,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "tsla",
-            time: 152447,
-            price: 43,
-            float: 100_004_000,
-            volume: 100_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "vfs",
-            time: 152447,
-            price: 112,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "msft",
-            time: 152447,
-            price: 547,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "tsla",
-            time: 152447,
-            price: 43,
-            float: 100_004_000,
-            volume: 100_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "vfs",
-            time: 152447,
-            price: 112,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "msft",
-            time: 152447,
-            price: 547,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "tsla",
-            time: 152447,
-            price: 43,
-            float: 100_004_000,
-            volume: 100_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "vfs",
-            time: 152447,
-            price: 112,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "msft",
-            time: 152447,
-            price: 547,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "tsla",
-            time: 152447,
-            price: 43,
-            float: 100_004_000,
-            volume: 100_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "vfs",
-            time: 152447,
-            price: 112,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-        {
-            stock: "msft",
-            time: 152447,
-            price: 547,
-            float: 100_000_000,
-            volume: 270_000,
-            relVolume: 6.7,
-        },
-    ]
 
     const formatFloat = (flt) => {
         if (flt > 1_000_000_000) {
-            return String(flt / 1_000_000_000) + "B"
+            return String((flt / 1_000_000_000).toFixed(2)) + "B"
         }
 
         if (flt > 1_000_000) {
-            return String(flt / 1_000_000) + "M"
+            return String((flt / 1_000_000).toFixed(2)) + "M"
         }
 
         if (flt > 1_000) {
-            return String(flt / 1_000) + "K"
+            return String((flt / 1_000).toFixed(2)) + "K"
         }
     }
 
@@ -254,32 +53,33 @@ const HodScreener = () => {
                 </div>
             </div>
             <div className="screener-main">
-                {data.map((stockObj, index) => {
-                    const {stock, time, price, float, volume, relVolume} =
-                        stockObj
-                    return (
-                        <div className="hod-stock" key={index}>
-                            <div>
-                                <p>{time}</p>
+                {data.length &&
+                    data.map((stockObj, index) => {
+                        const {stock, time, price, float, volume, relVolume} =
+                            stockObj
+                        return (
+                            <div className="hod-stock" key={index}>
+                                <div>
+                                    <p>{time}</p>
+                                </div>
+                                <div>
+                                    <p>{stock?.toUpperCase()}</p>
+                                </div>
+                                <div>
+                                    <p>${price}</p>
+                                </div>
+                                <div>
+                                    <p>{formatFloat(float)}</p>
+                                </div>
+                                <div>
+                                    <p>{formatFloat(volume)}</p>
+                                </div>
+                                <div>
+                                    <p>{relVolume.toFixed(2)}</p>
+                                </div>
                             </div>
-                            <div>
-                                <p>{stock.toUpperCase()}</p>
-                            </div>
-                            <div>
-                                <p>${price}</p>
-                            </div>
-                            <div>
-                                <p>{formatFloat(float)}</p>
-                            </div>
-                            <div>
-                                <p>{formatFloat(volume)}</p>
-                            </div>
-                            <div>
-                                <p>{relVolume}</p>
-                            </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
             </div>
         </section>
     )
