@@ -29,6 +29,7 @@ import {
     AddTradeFileReader,
     ScreenerLayout,
     HodScreener,
+    CustomLayouts,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -171,6 +172,10 @@ function App() {
                     path: "screeners",
                     element: <ScreenerLayout />,
                     children: [
+                        {
+                            path: "layout",
+                            element: <CustomLayouts />,
+                        },
                         {
                             path: "hod",
                             element: <HodScreener />,

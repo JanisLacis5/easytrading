@@ -1,0 +1,45 @@
+.screener-layout {
+    height: 100%;
+    width: 100%;
+}
+
+.layouts-header {
+    height: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.layouts-main {
+    height: 95%;
+}
+
+.layout-buttons {
+    height: 100%;
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.layout-buttons button {
+    background-color: var(--color-grey-700);
+    border: 1px solid var(--color-grey-950);
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+
+.layout-buttons button:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-layouts {
+    color: var(--color-grey-300);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}

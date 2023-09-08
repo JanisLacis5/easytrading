@@ -6,6 +6,7 @@ import {Link} from "react-router-dom"
 const Aside = () => {
     const dispatch = useDispatch()
     const {tradingButton, screenersButton} = useSelector((store) => store.aside)
+
     return (
         <aside className="dashboard-pages">
             <button
@@ -46,7 +47,13 @@ const Aside = () => {
             </button>
             {screenersButton && (
                 <div>
-                    <Link className="secondary-link" to="/screeners/hod">
+                    <Link className="secondary-link" to="/screeners/layout">
+                        My layout
+                    </Link>
+                    <Link
+                        className="secondary-link"
+                        to="/screeners/hod"
+                        target="_blank">
                         Hod screener
                     </Link>
                 </div>

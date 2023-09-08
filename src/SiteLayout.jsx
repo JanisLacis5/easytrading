@@ -25,6 +25,9 @@ const SiteLayout = () => {
     }, [screenWidth])
 
     useEffect(() => {
+        if (window.location.pathname === "/screeners/hod") {
+            return
+        }
         if (window.location.pathname !== "/loading") {
             const currentPage = sessionStorage.getItem("currentPage")
             if (isLogged) {

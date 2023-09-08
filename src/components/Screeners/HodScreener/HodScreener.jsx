@@ -16,6 +16,7 @@ const HodScreener = () => {
         console.log(`Received from server: ${stockData}`)
     }
 
+    // FORMAT LARGE NUMBERS
     const formatFloat = (flt) => {
         if (flt > 1_000_000_000) {
             return String((flt / 1_000_000_000).toFixed(2)) + "B"
