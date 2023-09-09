@@ -1,14 +1,22 @@
 import "./layouts.css"
 import {AiOutlinePlus} from "react-icons/ai"
-import Draggable from "react-draggable"
-import {useGlobalContext} from "../../../context/globalContext"
+import {useEffect, useState} from "react"
+import {Rnd} from "react-rnd"
+import HodBlock from "./ScreenerBlocks/HodBlock"
+import GapBlock from "./ScreenerBlocks/GapBlock"
 
 const CustomLayouts = () => {
-    const totalLayouts = 5
-    const layouts = Array.from({length: totalLayouts}, (_, i) => i + 1)
-    const {screenWidth} = useGlobalContext()
+    const [state, setState] = useState({
+        height: 250,
+        width: 400,
+    })
+    const [userLayout, setUserLayout] = useState([])
 
-    if (totalLayouts === 0) {
+    useEffect(() => {
+        console.log(userLayout)
+    }, [userLayout])
+
+    if (!userLayout) {
         return (
             <section className="screener-layout">
                 <div className="layouts-header">
@@ -26,41 +34,65 @@ const CustomLayouts = () => {
             </section>
         )
     }
-
     return (
         <section className="screener-layout">
             <div className="layouts-header">
                 <div className="layout-buttons">
-                    {layouts.map((nr) => {
-                        return (
-                            <button type="button" key={nr}>
-                                {nr}
-                            </button>
-                        )
-                    })}
-
+                    <select
+                        name="addScreener"
+                        id="addScreener"
+                        onChange={(e) =>
+                            setUserLayout([...userLayout, e.target.value])
+                        }>
+                        <option value="">Add Screener</option>
+                        <option value="gap">Gap Screener</option>
+                        <option value="hod">HOD Screener</option>
+                    </select>
                     <button type="button">
                         <AiOutlinePlus />
                     </button>
+                    <button type="button">Save</button>
                 </div>
             </div>
             <div className="layouts-main">
                 <div id="lines">
-                    <Draggable
-                        handle=".handle"
-                        defaultPosition={{x: 0, y: 0}}
-                        position={null}
-                        grid={[40, 25]}
-                        scale={1}
-                        bounds={{
-                            left: 0,
-                            top: 0,
-                            right: screenWidth - 400,
-                        }}>
-                        <div className="layout">
-                            <div className="handle"></div>
-                        </div>
-                    </Draggable>
+                    {userLayout.map((layout, index) => {
+                        console.log(layout)
+                        if (layout === "hod") {
+                            return (
+                                <Rnd
+                                    key={index}
+                                    default={{
+                                        x: 0,
+                                        y: 0,
+                                        width: 400,
+                                        height: 250,
+                                    }}
+                                    dragGrid={[40, 25]}
+                                    resizeGrid={[40, 25]}
+                                    bounds={"parent"}>
+                                    <HodBlock />
+                                </Rnd>
+                            )
+                        }
+                        if (layout === "gap") {
+                            return (
+                                <Rnd
+                                    key={index}
+                                    default={{
+                                        x: 0,
+                                        y: 0,
+                                        width: 400,
+                                        height: 250,
+                                    }}
+                                    dragGrid={[40, 25]}
+                                    resizeGrid={[40, 25]}
+                                    bounds={"parent"}>
+                                    <GapBlock />
+                                </Rnd>
+                            )
+                        }
+                    })}
                 </div>
             </div>
         </section>
