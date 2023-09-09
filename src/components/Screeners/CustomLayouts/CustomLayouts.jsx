@@ -1,11 +1,12 @@
-import {useEffect} from "react"
 import "./layouts.css"
 import {AiOutlinePlus} from "react-icons/ai"
-import {Outlet} from "react-router-dom"
+import Draggable from "react-draggable"
+import {useGlobalContext} from "../../../context/globalContext"
 
 const CustomLayouts = () => {
     const totalLayouts = 5
     const layouts = Array.from({length: totalLayouts}, (_, i) => i + 1)
+    const {screenWidth} = useGlobalContext()
 
     if (totalLayouts === 0) {
         return (
@@ -37,12 +38,31 @@ const CustomLayouts = () => {
                             </button>
                         )
                     })}
+
                     <button type="button">
                         <AiOutlinePlus />
                     </button>
                 </div>
             </div>
-            <div className="layouts-main"></div>
+            <div className="layouts-main">
+                <div id="lines">
+                    <Draggable
+                        handle=".handle"
+                        defaultPosition={{x: 0, y: 0}}
+                        position={null}
+                        grid={[40, 25]}
+                        scale={1}
+                        bounds={{
+                            left: 0,
+                            top: 0,
+                            right: screenWidth - 400,
+                        }}>
+                        <div className="layout">
+                            <div className="handle"></div>
+                        </div>
+                    </Draggable>
+                </div>
+            </div>
         </section>
     )
 }

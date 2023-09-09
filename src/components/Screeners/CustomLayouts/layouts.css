@@ -1,7 +1,35 @@
+.handle {
+    height: 100%;
+    width: 100%;
+}
+
 .screener-layout {
     height: 100%;
     width: 100%;
 }
+
+#lines {
+    background-image: repeating-linear-gradient(
+            180deg,
+            var(--color-grey-700),
+            var(--color-grey-700) 1px,
+            transparent 1px,
+            transparent 25px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            var(--color-grey-700),
+            var(--color-grey-700) 1px,
+            transparent 1px,
+            transparent 40px
+        );
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/* //////////////////////////////////////////////////////////////////////////////// */
 
 .layouts-header {
     height: 5%;
@@ -12,6 +40,15 @@
 
 .layouts-main {
     height: 95%;
+    width: 100%;
+    position: relative;
+}
+
+.layout {
+    height: 250px;
+    width: 400px;
+    background-color: red;
+    z-index: 1;
 }
 
 .layout-buttons {
