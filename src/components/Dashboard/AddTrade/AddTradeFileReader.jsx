@@ -36,20 +36,41 @@ const AddTradeFileReader = () => {
     }
 
     const prepareFile = () => {
-        const fr = new FileReader()
-        fr.onload = async ({target}) => {
-            const csv = Papa.parse(target.result, {header: true})
-            const parsedData = csv?.data
-            const columns = parsedData
-            setTradeData(columns)
+        if (file) {
+            const reader = new FileReader()
+
+            reader.onload = (e) => {
+                const content = e.target.result
+                const lines = content.split("\n")
+                let tempArr = []
+
+                for (let i = 1; i < lines.length - 1; i++) {
+                    const LINE = lines[i].split(",")
+                    const stock = LINE[4].split(" ")[5].split(":")[1]
+                    const accBefore = parseFloat(LINE[1].replace(/\s/g, ""))
+                    const accAfter = parseFloat(LINE[2].replace(/\s/g, ""))
+                    const pl = parseFloat(LINE[3])
+                    const date = LINE[0].slice(1, 11)
+                    const time = LINE[0].slice(11, 17)
+                    const action = LINE[4].slice(8, 13)
+                    tempArr.push({
+                        stock,
+                        accAfter,
+                        accBefore,
+                        pl,
+                        date,
+                        time,
+                        action,
+                    })
+                }
+                setTradeData([...tempArr])
+            }
+            reader.readAsText(file)
         }
-        fr.readAsText(file)
     }
 
     useEffect(() => {
-        if (file) {
-            prepareFile()
-        }
+        prepareFile()
     }, [file])
 
     return (
