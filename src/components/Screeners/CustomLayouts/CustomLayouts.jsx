@@ -6,15 +6,18 @@ import HodBlock from "./ScreenerBlocks/HodBlock"
 import GapBlock from "./ScreenerBlocks/GapBlock"
 
 const CustomLayouts = () => {
-    const [state, setState] = useState({
-        height: 250,
-        width: 400,
-    })
     const [userLayout, setUserLayout] = useState([])
+    const layoutParams = new Array(userLayout.length).fill({
+        x: 0,
+        y: 0,
+        width: 400,
+        height: 250,
+    })
 
-    useEffect(() => {
-        console.log(userLayout)
-    }, [userLayout])
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(layoutParams)
+    }
 
     if (!userLayout) {
         return (
@@ -51,14 +54,18 @@ const CustomLayouts = () => {
                     <button type="button">
                         <AiOutlinePlus />
                     </button>
-                    <button type="button">Save</button>
+                    <button type="button" onClick={handleSubmit}>
+                        Save
+                    </button>
                 </div>
             </div>
             <div className="layouts-main">
                 <div id="lines">
                     {userLayout.map((layout, index) => {
-                        console.log(layout)
                         if (layout === "hod") {
+                            console.log(`${index} is hod`)
+                            let hodParams = layoutParams[index]
+                            console.log(hodParams)
                             return (
                                 <Rnd
                                     key={index}
@@ -70,12 +77,34 @@ const CustomLayouts = () => {
                                     }}
                                     dragGrid={[40, 25]}
                                     resizeGrid={[40, 25]}
-                                    bounds={"parent"}>
+                                    bounds={"parent"}
+                                    onDragStop={(e, d) => {
+                                        hodParams.x = d.x
+                                        hodParams.y = d.y
+                                    }}
+                                    onResizeStop={(
+                                        e,
+                                        direction,
+                                        ref,
+                                        delta,
+                                        position
+                                    ) => {
+                                        console.log("hod")
+                                        hodParams.width = Number(
+                                            ref.style.width.slice(0, -2)
+                                        )
+                                        hodParams.height = Number(
+                                            ref.style.height.slice(0, -2)
+                                        )
+                                    }}>
                                     <HodBlock />
                                 </Rnd>
                             )
                         }
                         if (layout === "gap") {
+                            console.log(`${index} is gap`)
+                            let gapParams = layoutParams[index]
+                            console.log(gapParams)
                             return (
                                 <Rnd
                                     key={index}
@@ -87,7 +116,25 @@ const CustomLayouts = () => {
                                     }}
                                     dragGrid={[40, 25]}
                                     resizeGrid={[40, 25]}
-                                    bounds={"parent"}>
+                                    bounds={"parent"}
+                                    onDragStop={(e, d) => {
+                                        gapParams.x = d.x
+                                        gapParams.y = d.y
+                                    }}
+                                    onResizeStop={(
+                                        e,
+                                        direction,
+                                        ref,
+                                        delta,
+                                        position
+                                    ) => {
+                                        gapParams.width = Number(
+                                            ref.style.width.slice(0, -2)
+                                        )
+                                        gapParams.height = Number(
+                                            ref.style.height.slice(0, -2)
+                                        )
+                                    }}>
                                     <GapBlock />
                                 </Rnd>
                             )
