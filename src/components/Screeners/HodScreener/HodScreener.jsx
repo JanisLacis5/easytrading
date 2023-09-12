@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import "./hod.css"
 
 const HodScreener = () => {
@@ -55,7 +55,7 @@ const HodScreener = () => {
             </div>
             <div className="screener-main">
                 {data.length &&
-                    data.map((stockObj, index) => {
+                    data.toReversed().map((stockObj, index) => {
                         const {stock, time, price, float, volume, relVolume} =
                             stockObj
                         return (

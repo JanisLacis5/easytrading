@@ -7,17 +7,24 @@ import GapBlock from "./ScreenerBlocks/GapBlock"
 
 const CustomLayouts = () => {
     const [userLayout, setUserLayout] = useState([])
-    const layoutParams = new Array(userLayout.length).fill({
+    const [isAddingScreener, setIsAddingScreener] = useState(false)
+
+    let temp = {
+        layout: null,
         x: 0,
         y: 0,
         width: 400,
         height: 250,
-    })
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(layoutParams)
     }
+
+    useEffect(() => {
+        console.log(layoutParams)
+    }, [layoutParams])
 
     if (!userLayout) {
         return (
@@ -44,16 +51,26 @@ const CustomLayouts = () => {
                     <select
                         name="addScreener"
                         id="addScreener"
-                        onChange={(e) =>
+                        onChange={(e) => {
                             setUserLayout([...userLayout, e.target.value])
-                        }>
+                            setIsAddingScreener(true)
+                        }}>
                         <option value="">Add Screener</option>
                         <option value="gap">Gap Screener</option>
                         <option value="hod">HOD Screener</option>
                     </select>
-                    <button type="button">
-                        <AiOutlinePlus />
-                    </button>
+                    {isAddingScreener ? (
+                        <button
+                            type="button"
+                            style={{backgroundColor: "green"}}>
+                            Done
+                        </button>
+                    ) : (
+                        <button type="button">
+                            <AiOutlinePlus />
+                        </button>
+                    )}
+
                     <button type="button" onClick={handleSubmit}>
                         Save
                     </button>
@@ -64,8 +81,6 @@ const CustomLayouts = () => {
                     {userLayout.map((layout, index) => {
                         if (layout === "hod") {
                             console.log(`${index} is hod`)
-                            let hodParams = layoutParams[index]
-                            console.log(hodParams)
                             return (
                                 <Rnd
                                     key={index}
@@ -79,8 +94,8 @@ const CustomLayouts = () => {
                                     resizeGrid={[40, 25]}
                                     bounds={"parent"}
                                     onDragStop={(e, d) => {
-                                        hodParams.x = d.x
-                                        hodParams.y = d.y
+                                        temp.x = d.x
+                                        temp.y = d.y
                                     }}
                                     onResizeStop={(
                                         e,
@@ -89,11 +104,10 @@ const CustomLayouts = () => {
                                         delta,
                                         position
                                     ) => {
-                                        console.log("hod")
-                                        hodParams.width = Number(
+                                        temp.width = Number(
                                             ref.style.width.slice(0, -2)
                                         )
-                                        hodParams.height = Number(
+                                        temp.height = Number(
                                             ref.style.height.slice(0, -2)
                                         )
                                     }}>
@@ -103,8 +117,6 @@ const CustomLayouts = () => {
                         }
                         if (layout === "gap") {
                             console.log(`${index} is gap`)
-                            let gapParams = layoutParams[index]
-                            console.log(gapParams)
                             return (
                                 <Rnd
                                     key={index}
@@ -118,8 +130,8 @@ const CustomLayouts = () => {
                                     resizeGrid={[40, 25]}
                                     bounds={"parent"}
                                     onDragStop={(e, d) => {
-                                        gapParams.x = d.x
-                                        gapParams.y = d.y
+                                        temp.x = d.x
+                                        temp.y = d.y
                                     }}
                                     onResizeStop={(
                                         e,
@@ -128,10 +140,10 @@ const CustomLayouts = () => {
                                         delta,
                                         position
                                     ) => {
-                                        gapParams.width = Number(
+                                        temp.width = Number(
                                             ref.style.width.slice(0, -2)
                                         )
-                                        gapParams.height = Number(
+                                        temp.height = Number(
                                             ref.style.height.slice(0, -2)
                                         )
                                     }}>
