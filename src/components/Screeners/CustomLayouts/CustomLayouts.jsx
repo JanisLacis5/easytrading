@@ -1,6 +1,6 @@
 import "./layouts.css"
 import {AiOutlinePlus} from "react-icons/ai"
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import Temp from "./Temp"
 import {useGlobalContext} from "../../../context/globalContext"
 
@@ -8,12 +8,8 @@ const CustomLayouts = () => {
     const [userLayout, setUserLayout] = useState([])
     const [notAllowedHover, setNotAllowedHover] = useState(false)
 
-    const {setIsDone, layoutParams, isAddingScreener, setIsAddingScreener} =
+    const {setIsDone, isAddingScreener, setIsAddingScreener} =
         useGlobalContext()
-
-    useEffect(() => {
-        console.log(layoutParams)
-    }, [layoutParams])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -40,24 +36,27 @@ const CustomLayouts = () => {
     return (
         <section className="screener-layout">
             <div className="layouts-header">
+                {isAddingScreener && notAllowedHover && (
+                    <p>Press "Done" to add next screener</p>
+                )}
                 <div className="layout-buttons">
-                    {isAddingScreener && notAllowedHover && (
-                        <p>Press "Done" to add next screener</p>
-                    )}
-                    <select
+                    <div
+                        className="screener-select-container"
                         onMouseEnter={() => setNotAllowedHover(true)}
-                        onMouseLeave={() => setNotAllowedHover(false)}
-                        name="addScreener"
-                        id="addScreener"
-                        onChange={(e) => {
-                            setUserLayout([...userLayout, e.target.value])
-                            setIsAddingScreener(true)
-                        }}
-                        disabled={isAddingScreener ? true : false}>
-                        <option value="">Add Screener</option>
-                        <option value="gap">Gap Screener</option>
-                        <option value="hod">HOD Screener</option>
-                    </select>
+                        onMouseLeave={() => setNotAllowedHover(false)}>
+                        <select
+                            value={""}
+                            name="addScreener"
+                            onChange={(e) => {
+                                setUserLayout([...userLayout, e.target.value])
+                                setIsAddingScreener(true)
+                            }}
+                            disabled={isAddingScreener ? true : false}>
+                            <option value="">Add Screener</option>
+                            <option value="gap">Gap Screener</option>
+                            <option value="hod">HOD Screener</option>
+                        </select>
+                    </div>
                     {isAddingScreener ? (
                         <button
                             type="button"
@@ -80,7 +79,7 @@ const CustomLayouts = () => {
                 <div id="lines">
                     {userLayout.map((layout, index) => {
                         return (
-                            <Temp key={index} layout={layout} inedx={index} />
+                            <Temp key={index} layout={layout} index={index} />
                         )
                     })}
                 </div>

@@ -27,6 +27,21 @@
 .layouts-header {
     height: 5%;
     width: 100%;
+    position: relative;
+}
+
+.layouts-header p {
+    height: 100%;
+    width: 25%;
+    color: pink;
+    position: absolute;
+    bottom: -170%;
+    background-color: var(--color-grey-300);
+    z-index: 1;
+    color: var(--color-grey-950);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .layouts-main {
@@ -48,7 +63,7 @@
 }
 
 .layout-buttons button,
-select {
+.screener-select-container {
     background-color: var(--color-grey-700);
     border: 1px solid var(--color-grey-950);
     height: 100%;
@@ -62,12 +77,15 @@ select {
     align-items: center;
 }
 
-.layout-buttons select {
+.screener-select-container select {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
     text-align-last: center;
+    border: none;
 }
 
 .layout-buttons select:disabled {
-    text-align-last: center;
     cursor: not-allowed;
 }
 

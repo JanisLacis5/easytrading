@@ -5,7 +5,7 @@ import HodBlock from "./ScreenerBlocks/HodBlock"
 import GapBlock from "./ScreenerBlocks/GapBlock"
 import {useGlobalContext} from "../../../context/globalContext"
 
-const Temp = ({layout}) => {
+const Temp = ({layout, index}) => {
     const [params, setParams] = useState({
         screener: null,
         x: 0,
@@ -23,7 +23,7 @@ const Temp = ({layout}) => {
     } = useGlobalContext()
 
     const done = () => {
-        setLayoutParams([...layoutParams, params])
+        setLayoutParams({...layoutParams, [index]: params})
         setIsDone(false)
         setIsAddingScreener(false)
         return
@@ -46,6 +46,14 @@ const Temp = ({layout}) => {
                 dragGrid={[40, 25]}
                 resizeGrid={[40, 25]}
                 bounds={"parent"}
+                onDragStart={() => {
+                    setIsDone(false)
+                    setIsAddingScreener(true)
+                }}
+                onResizeStart={() => {
+                    setIsDone(false)
+                    setIsAddingScreener(true)
+                }}
                 onDragStop={(e, d) => {
                     params.x = d.x
                     params.y = d.y
@@ -71,6 +79,14 @@ const Temp = ({layout}) => {
                 dragGrid={[40, 25]}
                 resizeGrid={[40, 25]}
                 bounds={"parent"}
+                onDragStart={() => {
+                    setIsDone(false)
+                    setIsAddingScreener(true)
+                }}
+                onResizeStart={(e, direction, ref, delta, position) => {
+                    setIsDone(false)
+                    setIsAddingScreener(true)
+                }}
                 onDragStop={(e, d) => {
                     params.x = d.x
                     params.y = d.y
