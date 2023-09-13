@@ -1,30 +1,23 @@
 import "./layouts.css"
 import {AiOutlinePlus} from "react-icons/ai"
 import {useEffect, useState} from "react"
-import {Rnd} from "react-rnd"
-import HodBlock from "./ScreenerBlocks/HodBlock"
-import GapBlock from "./ScreenerBlocks/GapBlock"
+import Temp from "./Temp"
+import {useGlobalContext} from "../../../context/globalContext"
 
 const CustomLayouts = () => {
     const [userLayout, setUserLayout] = useState([])
-    const [isAddingScreener, setIsAddingScreener] = useState(false)
+    const [notAllowedHover, setNotAllowedHover] = useState(false)
 
-    let temp = {
-        layout: null,
-        x: 0,
-        y: 0,
-        width: 400,
-        height: 250,
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(layoutParams)
-    }
+    const {setIsDone, layoutParams, isAddingScreener, setIsAddingScreener} =
+        useGlobalContext()
 
     useEffect(() => {
         console.log(layoutParams)
     }, [layoutParams])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+    }
 
     if (!userLayout) {
         return (
@@ -48,13 +41,19 @@ const CustomLayouts = () => {
         <section className="screener-layout">
             <div className="layouts-header">
                 <div className="layout-buttons">
+                    {isAddingScreener && notAllowedHover && (
+                        <p>Press "Done" to add next screener</p>
+                    )}
                     <select
+                        onMouseEnter={() => setNotAllowedHover(true)}
+                        onMouseLeave={() => setNotAllowedHover(false)}
                         name="addScreener"
                         id="addScreener"
                         onChange={(e) => {
                             setUserLayout([...userLayout, e.target.value])
                             setIsAddingScreener(true)
-                        }}>
+                        }}
+                        disabled={isAddingScreener ? true : false}>
                         <option value="">Add Screener</option>
                         <option value="gap">Gap Screener</option>
                         <option value="hod">HOD Screener</option>
@@ -62,7 +61,8 @@ const CustomLayouts = () => {
                     {isAddingScreener ? (
                         <button
                             type="button"
-                            style={{backgroundColor: "green"}}>
+                            style={{backgroundColor: "green"}}
+                            onClick={() => setIsDone(true)}>
                             Done
                         </button>
                     ) : (
@@ -79,78 +79,9 @@ const CustomLayouts = () => {
             <div className="layouts-main">
                 <div id="lines">
                     {userLayout.map((layout, index) => {
-                        if (layout === "hod") {
-                            console.log(`${index} is hod`)
-                            return (
-                                <Rnd
-                                    key={index}
-                                    default={{
-                                        x: 0,
-                                        y: 0,
-                                        width: 400,
-                                        height: 250,
-                                    }}
-                                    dragGrid={[40, 25]}
-                                    resizeGrid={[40, 25]}
-                                    bounds={"parent"}
-                                    onDragStop={(e, d) => {
-                                        temp.x = d.x
-                                        temp.y = d.y
-                                    }}
-                                    onResizeStop={(
-                                        e,
-                                        direction,
-                                        ref,
-                                        delta,
-                                        position
-                                    ) => {
-                                        temp.width = Number(
-                                            ref.style.width.slice(0, -2)
-                                        )
-                                        temp.height = Number(
-                                            ref.style.height.slice(0, -2)
-                                        )
-                                    }}>
-                                    <HodBlock />
-                                </Rnd>
-                            )
-                        }
-                        if (layout === "gap") {
-                            console.log(`${index} is gap`)
-                            return (
-                                <Rnd
-                                    key={index}
-                                    default={{
-                                        x: 0,
-                                        y: 0,
-                                        width: 400,
-                                        height: 250,
-                                    }}
-                                    dragGrid={[40, 25]}
-                                    resizeGrid={[40, 25]}
-                                    bounds={"parent"}
-                                    onDragStop={(e, d) => {
-                                        temp.x = d.x
-                                        temp.y = d.y
-                                    }}
-                                    onResizeStop={(
-                                        e,
-                                        direction,
-                                        ref,
-                                        delta,
-                                        position
-                                    ) => {
-                                        temp.width = Number(
-                                            ref.style.width.slice(0, -2)
-                                        )
-                                        temp.height = Number(
-                                            ref.style.height.slice(0, -2)
-                                        )
-                                    }}>
-                                    <GapBlock />
-                                </Rnd>
-                            )
-                        }
+                        return (
+                            <Temp key={index} layout={layout} inedx={index} />
+                        )
                     })}
                 </div>
             </div>

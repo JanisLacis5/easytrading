@@ -50,6 +50,10 @@ const AppContext = ({children}) => {
     const [isDelete, setIsDelete] = useState(false)
     const [askPassword, setAskPassword] = useState(false)
 
+    const [layoutParams, setLayoutParams] = useState([])
+    const [isDone, setIsDone] = useState(false)
+    const [isAddingScreener, setIsAddingScreener] = useState(false)
+
     return (
         <GlobalContext.Provider
             value={{
@@ -111,6 +115,12 @@ const AppContext = ({children}) => {
                 setChangePlan,
                 screenWidth,
                 setScreenWidth,
+                layoutParams,
+                setLayoutParams,
+                isDone,
+                setIsDone,
+                isAddingScreener,
+                setIsAddingScreener,
             }}>
             {children}
         </GlobalContext.Provider>
