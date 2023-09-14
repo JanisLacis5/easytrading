@@ -32,6 +32,7 @@ const DashboardNote = ({image, text, pinned, index}) => {
                 trades: user.trades,
                 info: user.info,
                 notes: data.notes,
+                layouts: user.layouts,
             })
         )
     }

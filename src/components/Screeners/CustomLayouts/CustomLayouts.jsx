@@ -3,16 +3,32 @@ import {AiOutlinePlus} from "react-icons/ai"
 import {useState} from "react"
 import Temp from "./Temp"
 import {useGlobalContext} from "../../../context/globalContext"
+import customFetch from "../../../utils"
+import {useDispatch, useSelector} from "react-redux"
+import {useNavigate} from "react-router-dom"
+import {login} from "../../../features/userSlice"
+import {toast} from "react-toastify"
 
 const CustomLayouts = () => {
     const [userLayout, setUserLayout] = useState([])
     const [notAllowedHover, setNotAllowedHover] = useState(false)
 
-    const {setIsDone, isAddingScreener, setIsAddingScreener} =
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const {setIsDone, isAddingScreener, setIsAddingScreener, layoutParams} =
         useGlobalContext()
+    const {user} = useSelector((store) => store.user)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const {data} = await customFetch.post("/new-layout", {
+            layout: layoutParams,
+            id: user.id,
+        })
+        const {id, trades, notes, info} = user
+        dispatch(login({id, trades, notes, info, layouts: data.layouts}))
+        toast.success("success")
     }
 
     if (!userLayout) {
@@ -57,18 +73,21 @@ const CustomLayouts = () => {
                             <option value="hod">HOD Screener</option>
                         </select>
                     </div>
-                    {isAddingScreener ? (
-                        <button
-                            type="button"
-                            style={{backgroundColor: "green"}}
-                            onClick={() => setIsDone(true)}>
-                            Done
-                        </button>
-                    ) : (
-                        <button type="button">
-                            <AiOutlinePlus />
-                        </button>
-                    )}
+
+                    <button
+                        type="button"
+                        style={
+                            isAddingScreener
+                                ? {backgroundColor: "green"}
+                                : {
+                                      backgroundColor: "green",
+                                      opacity: "0.5",
+                                      pointerEvents: "none",
+                                  }
+                        }
+                        onClick={() => setIsDone(true)}>
+                        Done
+                    </button>
 
                     <button type="button" onClick={handleSubmit}>
                         Save

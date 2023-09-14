@@ -62,7 +62,15 @@ const Pricing = () => {
                 plan: pricingPlan,
                 id: user.id,
             })
-            dispatch(login({id: user.id, info: data.info}))
+            dispatch(
+                login({
+                    id: user.id,
+                    info: data.info,
+                    trades: user.trades,
+                    layouts: user.layouts,
+                    notes: user.notes,
+                })
+            )
             dispatch(setIsNotLoading())
             toast.success(
                 `Plan succesfully updated to "${`${data.info.pricing.toUpperCase()}`}"`

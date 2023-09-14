@@ -15,6 +15,7 @@ const initialState = {
                 ? JSON.parse(localStorage.getItem("userInfo"))
                 : "",
         notes: JSON.parse(localStorage.getItem("userNotes")),
+        layouts: JSON.parse(localStorage.getItem("layouts")),
     },
 }
 
@@ -48,19 +49,17 @@ const userSlice = createSlice({
         login: (state, {payload}) => {
             const trades = payload.trades || []
             const notes = payload.notes || []
+            const layouts = payload.layouts || []
             localStorage.setItem("userId", JSON.stringify(payload.id))
             localStorage.setItem("userTrades", JSON.stringify(trades))
             localStorage.setItem("userInfo", JSON.stringify(payload.info))
             localStorage.setItem("userNotes", JSON.stringify(notes))
+            localStorage.setItem("layouts", JSON.stringify(layouts))
 
             let reverseTrades = [...trades]
-            if (payload.trades && payload.trades.length) {
+            if (trades && trades.length) {
                 reverseTrades = reverseTrades.reverse()
             }
-            if (!payload.trades) {
-                reverseTrades = []
-            }
-
             return {
                 ...state,
                 isLogged: true,
@@ -71,6 +70,7 @@ const userSlice = createSlice({
                     trades: reverseTrades,
                     info: payload.info,
                     notes: notes,
+                    layouts,
                 },
             }
         },

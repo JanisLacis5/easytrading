@@ -50,6 +50,7 @@ const AddTrade = () => {
                     trades: data.trades,
                     info: infoUpdate.data.info,
                     notes: user.notes,
+                    layouts: user.layouts,
                 })
             )
             navigate("/dashboard")
