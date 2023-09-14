@@ -1,7 +1,7 @@
 import "./layouts.css"
 import {AiOutlinePlus} from "react-icons/ai"
 import {useState} from "react"
-import Temp from "./Temp"
+import ScreenerBlock from "./ScreenerBlock"
 import {useGlobalContext} from "../../../context/globalContext"
 import customFetch from "../../../utils"
 import {useDispatch, useSelector} from "react-redux"
@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom"
 import {login} from "../../../features/userSlice"
 import {toast} from "react-toastify"
 
-const CustomLayouts = () => {
+const NewLayout = () => {
     const [userLayout, setUserLayout] = useState([])
     const [notAllowedHover, setNotAllowedHover] = useState(false)
 
@@ -31,31 +31,13 @@ const CustomLayouts = () => {
         toast.success("success")
     }
 
-    if (!userLayout) {
-        return (
-            <section className="screener-layout">
-                <div className="layouts-header">
-                    <div className="layout-buttons">
-                        <button type="button">
-                            <AiOutlinePlus />
-                        </button>
-                    </div>
-                </div>
-                <div className="layouts-main">
-                    <h2 className="no-layouts">
-                        You have no layouts (click on + to make one)
-                    </h2>
-                </div>
-            </section>
-        )
-    }
     return (
         <section className="screener-layout">
             <div className="layouts-header">
                 {isAddingScreener && notAllowedHover && (
                     <p>Press "Done" to add next screener</p>
                 )}
-                <div className="layout-buttons">
+                <div className="new-layout-buttons">
                     <div
                         className="screener-select-container"
                         onMouseEnter={() => setNotAllowedHover(true)}
@@ -94,11 +76,15 @@ const CustomLayouts = () => {
                     </button>
                 </div>
             </div>
-            <div className="layouts-main">
+            <div className="new-layout-main">
                 <div id="lines">
                     {userLayout.map((layout, index) => {
                         return (
-                            <Temp key={index} layout={layout} index={index} />
+                            <ScreenerBlock
+                                key={index}
+                                layout={layout}
+                                index={index}
+                            />
                         )
                     })}
                 </div>
@@ -106,4 +92,4 @@ const CustomLayouts = () => {
         </section>
     )
 }
-export default CustomLayouts
+export default NewLayout

@@ -5,7 +5,7 @@ import HodBlock from "./ScreenerBlocks/HodBlock"
 import GapBlock from "./ScreenerBlocks/GapBlock"
 import {useGlobalContext} from "../../../context/globalContext"
 
-const Temp = ({layout, index}) => {
+const ScreenerBlock = ({layout, index}) => {
     const [params, setParams] = useState({
         screener: null,
         x: 0,
@@ -121,4 +121,4 @@ const Temp = ({layout, index}) => {
         )
     }
 }
-export default Temp
+export default ScreenerBlock

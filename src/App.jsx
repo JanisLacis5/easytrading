@@ -1,8 +1,4 @@
-import {
-    createBrowserRouter,
-    RouterProvider,
-    useNavigate,
-} from "react-router-dom"
+import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import {
     LandingPage,
     About,
@@ -29,7 +25,7 @@ import {
     AddTradeFileReader,
     ScreenerLayout,
     HodScreener,
-    CustomLayouts,
+    ScreenerDashboard,
 } from "./components"
 import {useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -37,6 +33,7 @@ import {login} from "./features/userSlice"
 import DashboardLayout from "./components/Dashboard/DashboardLayout"
 import Loading from "./Loading"
 import SiteLayout from "./SiteLayout"
+import NewLayout from "./components/Screeners/CustomLayouts/NewLayout"
 
 function App() {
     const dispatch = useDispatch()
@@ -174,7 +171,11 @@ function App() {
                     children: [
                         {
                             path: "layout",
-                            element: <CustomLayouts />,
+                            element: <ScreenerDashboard />,
+                        },
+                        {
+                            path: "new-layout",
+                            element: <NewLayout />,
                         },
                         {
                             path: "hod",

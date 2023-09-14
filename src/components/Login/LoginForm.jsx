@@ -26,7 +26,6 @@ const LoginForm = () => {
                 email: email,
                 password: md5(password),
             })
-            console.log(data)
             localStorage.setItem("token", data.token)
             if (data.message === "incorrect password") {
                 toast.error("Incorret password")

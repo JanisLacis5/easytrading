@@ -60,6 +60,7 @@ const userSlice = createSlice({
             if (trades && trades.length) {
                 reverseTrades = reverseTrades.reverse()
             }
+
             return {
                 ...state,
                 isLogged: true,
@@ -70,7 +71,7 @@ const userSlice = createSlice({
                     trades: reverseTrades,
                     info: payload.info,
                     notes: notes,
-                    layouts,
+                    layouts: layouts,
                 },
             }
         },
